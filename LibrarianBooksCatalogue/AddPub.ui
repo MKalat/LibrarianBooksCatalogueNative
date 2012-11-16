@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddPub</class>
+ <widget class="QDialog" name="AddPub">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>317</width>
+    <height>139</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>LBC - Add Edition</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>6</x>
+     <y>6</y>
+     <width>79</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pub Date</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>6</x>
+     <y>24</y>
+     <width>73</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Publisher</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>6</x>
+     <y>42</y>
+     <width>46</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Language</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>6</x>
+     <y>60</y>
+     <width>85</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Edition No.</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>6</x>
+     <y>78</y>
+     <width>67</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Edition Country</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_DataWyd">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>6</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Wydawca">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>24</y>
+     <width>205</width>
+     <height>16</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_Jezyk">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>42</y>
+     <width>113</width>
+     <height>16</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_NrWyd">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>60</y>
+     <width>113</width>
+     <height>16</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_KrajWyd">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>78</y>
+     <width>113</width>
+     <height>16</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_OK">
+   <property name="geometry">
+    <rect>
+     <x>156</x>
+     <y>108</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_Cancel">
+   <property name="geometry">
+    <rect>
+     <x>234</x>
+     <y>108</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_OK</sender>
+   <signal>clicked()</signal>
+   <receiver>AddPub</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>187</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>230</x>
+     <y>96</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>AddPub</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>278</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>289</x>
+     <y>74</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
