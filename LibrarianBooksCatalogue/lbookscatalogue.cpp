@@ -120,28 +120,32 @@ void LBooksCatalogue::CreateDB()
 			"INFO_Oprawa TEXT, INFO_Ocena TEXT",NULL,NULL,&errmsg);
 		if (result != SQLITE_OK)
 		{
-			QMessageBox qmsg(QString(errmsg));
+			QMessageBox qmsg;
+			qmsg.setText(QString(errmsg));
 			qmsg.exec();
 		}
 		result = sqlite3_exec(db,"CREATE TABLE lbca (id int primaty key asc autoincrement, id_m int, "
 			"imie_nazw TEXT, narod TEXT, spec TEXT, rozdz TEXT",NULL,NULL,&errmsg);
 		if (result != SQLITE_OK)
 		{
-			QMessageBox qmsg(QString(errmsg));
+			QMessageBox qmsg;
+			qmsg.setText(QString(errmsg));
 			qmsg.exec();
 		}
 		result = sqlite3_exec(db,"CREATE TABLE lbcp (id int primary key asc autoincrement, id_m int, "
 			"data_wyd TEXT, wyd TEXT, jezyk TEXT, numer_wyd TEXT, kraj_wyd TEXT", NULL, NULL, &errmsg);
 		if (result != SQLITE_OK)
 		{
-			QMessageBox qmsg(QString(errmsg));
+			QMessageBox qmsg;
+			qmsg.setText(QString(errmsg));
 			qmsg.exec();
 		}
 		result = sqlite3_exec(db,"CREATE TABLE lbcb (id int primary key asc autoincrement, id_m int, "
 			"osoba TEXT, data_wyp TEXT, data_odd TEXT, stan_wyp TEXT, stan_odd TEXT", NULL, NULL, &errmsg);
 		if (result != SQLITE_OK)
 		{
-			QMessageBox qmsg(QString(errmsg));
+			QMessageBox qmsg;
+			qmsg.setText(QString(errmsg));
 			qmsg.exec();
 		}
 		sqlite3_free(errmsg);
@@ -156,7 +160,7 @@ void LBooksCatalogue::ReadRec(int id, int dir)
 	sqlite3 *db;
 	char *errmsg = 0;
 	int result;
-	char *table = 0;
+	char **table = 0;
 	int rows;
 	int cols;
 	if (sqlite3_open("lbcmain.db",&db))
@@ -248,7 +252,7 @@ void LBooksCatalogue::ReadRec(int id, int dir)
 			}
 			CalcRecInfo();
 		}
-		sqlite3_free_table(&table);
+		sqlite3_free_table(table);
 		sqlite3_free(errmsg);
 		sqlite3_close(db);
 	}
@@ -279,7 +283,7 @@ void LBooksCatalogue::SaveRec(int id)
 				", MZ_WWW=" + this->ui.lineEdit_MZ_WWW->text() +  
 				", INFO_IloscStr=" + this->ui.lineEdit_INFO_PageCount->text() + ", INFO_Format=" +
 				this->ui.lineEdit_INFO_Format->text() + ", INFO_Oprawa=" + this->ui.lineEdit_INFO_Oprawa->text() + 
-				", INFO_Cena=" + this->ui.lineEdit_INFO_Cena->text().toAscii() + " where id=" + QString(cur_id).toAscii(),NULL,NULL,&errmsg);
+				", INFO_Cena=" + this->ui.lineEdit_INFO_Cena->text().toAscii() + " where id=" + QString(cur_id).toAscii()),NULL,NULL,&errmsg);
 
 			if (result == SQLITE_OK)
 			{
