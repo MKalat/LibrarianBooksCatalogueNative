@@ -109,47 +109,26 @@ bool LBooksCatalogue::CheckDBExists()
 
 void LBooksCatalogue::CreateDB()
 {
-	sqlite3 *db;
-	char *errmsg = 0;
-	int result;
-	if (sqlite3_open("lbcmain.db",&db) != 0)
-	{
-		result = sqlite3_exec(db,"CREATE TABLE lbcmain (id int primary key asc autoincrement, tytul TEXT, tytul_oryg TEXT, "
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
+		QSqlQuery query(db);
+				query.exec("CREATE TABLE lbcmain (id int primary key asc autoincrement, tytul TEXT, tytul_oryg TEXT, "
 			"gatunek TEXT, ilosc TEXT, rok_wyd TEXT, wydawnictwo TEXT, jezyk_wydania TEXT, opis TEXT, WL_ImieNazw TEXT, "
 			"WL_Adres TEXT, MZ_Nazwa TEXT, MZ_Adres TEXT, MZ_WWW TEXT, INFO_IloscStr TEXT, INFO_Format TEXT,  "
-			"INFO_Oprawa TEXT, INFO_Ocena TEXT",NULL,NULL,&errmsg);
-		if (result != SQLITE_OK)
-		{
-			QMessageBox qmsg;
-			qmsg.setText(QString(errmsg));
-			qmsg.exec();
-		}
-		result = sqlite3_exec(db,"CREATE TABLE lbca (id int primaty key asc autoincrement, id_m int, "
-			"imie_nazw TEXT, narod TEXT, spec TEXT, rozdz TEXT",NULL,NULL,&errmsg);
-		if (result != SQLITE_OK)
-		{
-			QMessageBox qmsg;
-			qmsg.setText(QString(errmsg));
-			qmsg.exec();
-		}
-		result = sqlite3_exec(db,"CREATE TABLE lbcp (id int primary key asc autoincrement, id_m int, "
-			"data_wyd TEXT, wyd TEXT, jezyk TEXT, numer_wyd TEXT, kraj_wyd TEXT", NULL, NULL, &errmsg);
-		if (result != SQLITE_OK)
-		{
-			QMessageBox qmsg;
-			qmsg.setText(QString(errmsg));
-			qmsg.exec();
-		}
-		result = sqlite3_exec(db,"CREATE TABLE lbcb (id int primary key asc autoincrement, id_m int, "
-			"osoba TEXT, data_wyp TEXT, data_odd TEXT, stan_wyp TEXT, stan_odd TEXT", NULL, NULL, &errmsg);
-		if (result != SQLITE_OK)
-		{
-			QMessageBox qmsg;
-			qmsg.setText(QString(errmsg));
-			qmsg.exec();
-		}
-		sqlite3_free(errmsg);
-		sqlite3_close(db);
+			"INFO_Oprawa TEXT, INFO_Ocena TEXT");
+		QSqlQuery query2(db);
+				query2.exec("CREATE TABLE lbca (id int primaty key asc autoincrement, id_m int, "
+			"imie_nazw TEXT, narod TEXT, spec TEXT, rozdz TEXT");
+		QSqlQuery query3(db);
+				query3.exec(db,"CREATE TABLE lbcp (id int primary key asc autoincrement, id_m int, "
+			"data_wyd TEXT, wyd TEXT, jezyk TEXT, numer_wyd TEXT, kraj_wyd TEXT");
+		QSqlQuery query4(db);
+				query4.exec(db,"CREATE TABLE lbcb (id int primary key asc autoincrement, id_m int, "
+			"osoba TEXT, data_wyp TEXT, data_odd TEXT, stan_wyp TEXT, stan_odd TEXT");
+		
 
 	}
 }
@@ -157,46 +136,60 @@ void LBooksCatalogue::CreateDB()
 void LBooksCatalogue::ReadRec(int id, int dir)
 {
 	
-	sqlite3 *db;
-	char *errmsg = 0;
-	int result;
-	char **table = 0;
-	int rows;
-	int cols;
-	if (sqlite3_open("lbcmain.db",&db))
-	{
-		if (sqlite3_get_table(db,"SELECT id, tytul, tytul_oryg, "
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
+		QSqlQuery query(db);
+				query.exec("SELECT id, tytul, tytul_oryg, "
 			"gatunek, ilosc, rok_wyd, wydawnictwo, jezyk_wydania, opis, WL_ImieNazw, "
 			"WL_Adres, MZ_Nazwa, MZ_Adres, MZ_WWW, INFO_IloscStr, INFO_Format,  "
-			"INFO_Oprawa, INFO_Ocena FROM lbcmain WHERE id=" + QString(cur_id).toAscii(),&table,&rows,&cols,&errmsg) == SQLITE_OK)
-		{
+			"INFO_Oprawa, INFO_Ocena FROM lbcmain WHERE id=" + QString(cur_id).toAscii());
+		QSqlRecord qrec = query.record();
+		int titleCol = rec.indexOf("tytul");
+		int title_origCol = rec.indexOf("tytul_oryg");
+		int genreCol = rec.indexOf("gatunek");
+		int countCol = rec.indexOf("ilosc");
+		int year_pub = rec.indexOf("rok_wyd");
+		int pubCol = rec.indexOf("wydawnictwo");
+		int lang_pubCol = rec.indexOf("jezyk_wydania");
+		int descCol = rec.indexOf("opis");
+		int WL_Im_Nazw_Col = rec.indexOf("WL_ImieNazw");
+		int WL_Adres_Col = rec.indexOf("WL_Adres");
+		int MZ_Nazwa_Col = rec.indexOf("MZ_Nazwa");
+		int MZ_Adres_Col = rec.indexOf("MZ_Adres");
+		int MZ_WWW_Col = rec.indexOf("MZ_WWW");
+		int INFO_IloscStr_Col = rec.indexOf("INFO_IloscStr");
+		int INFO_Format_Col = rec.indexOf("INFO_Format");
+		int INFO_Oprawa_Col = rec.indexOf("INFO_Oprawa");
+		int INFO_Ocena_Col = rec.indexOf("INFO_Ocena");
 
-			this->ui.lineEdit_Tytul->setText(QString(table[1+cols]));
-			this->ui.lineEdit_TytulOryg->setText(QString(table[2+cols]));
-			this->ui.lineEdit_Gatunek->setText(QString(table[3+cols]));
-			this->ui.lineEdit_Count->setText(QString(table[4+cols]));
-			this->ui.lineEdit_DatePub->setText(QString(table[5+cols]));
-			this->ui.lineEdit_Publisher->setText(QString(table[6+cols]));
-			this->ui.lineEdit_PubLang->setText(QString(table[7+cols]));
-			this->ui.textEdit_Opis->setText(QString(table[8+cols]));
-			this->ui.lineEdit_WL_Imienazw->setText(QString(table[9+cols]));
-			this->ui.lineEdit_WL_Adres->setText(QString(table[10+cols]));
-			this->ui.lineEdit_MZ_Nazwa->setText(QString(table[11+cols]));
-			this->ui.lineEdit__MZ_Adres->setText(QString(table[12+cols]));
-			this->ui.lineEdit_MZ_WWW->setText(QString(table[13+cols]));
-			this->ui.lineEdit_INFO_PageCount->setText(QString(table[14+cols]));
-			this->ui.lineEdit_INFO_Format->setText(QString(table[15+cols]));
-			this->ui.lineEdit_INFO_Oprawa->setText(QString(table[16+cols]));
-			this->ui.lineEdit_INFO_Cena->setText(QString(table[17+cols]));
+		query.next();
+
+			this->ui.lineEdit_Tytul->setText(QString(query.value(titleCol).toString());
+			this->ui.lineEdit_TytulOryg->setText(QString(query.value(title_origCol).toString());
+			this->ui.lineEdit_Gatunek->setText(QString(query.value(genreCol).toString());
+			this->ui.lineEdit_Count->setText(QString(query.value(countCol).toString());
+			this->ui.lineEdit_DatePub->setText(QString(query.value(year_pub).toString());
+			this->ui.lineEdit_Publisher->setText(QString(query.value(pubCol).toString());
+			this->ui.lineEdit_PubLang->setText(QString(query.value(lang_pubCol).toString());
+			this->ui.textEdit_Opis->setText(QString(query.value(descCol).toString());
+			this->ui.lineEdit_WL_Imienazw->setText(QString(query.value(WL_Im_Nazw_Col).toString());
+			this->ui.lineEdit_WL_Adres->setText(QString(query.value(WL_Adres_Col).toString());
+			this->ui.lineEdit_MZ_Nazwa->setText(QString(query.value(MZ_Nazwa_Col).toString());
+			this->ui.lineEdit__MZ_Adres->setText(QString(query.value(MZ_Adres_Col).toString());
+			this->ui.lineEdit_MZ_WWW->setText(QString(query.value(MZ_WWW_Col).toString());
+			this->ui.lineEdit_INFO_PageCount->setText(QString(query.value(INFO_IloscStr_Col).toString());
+			this->ui.lineEdit_INFO_Format->setText(QString(query.value(INFO_Format_Col).toString());
+			this->ui.lineEdit_INFO_Oprawa->setText(QString(query.value(INFO_Oprawa_Col).toString();
+			this->ui.lineEdit_INFO_Cena->setText(QString(query.value(INFO_Ocena_Col).toString());
+			
 		
 			//Authors
-			table = 0;
-			errmsg = 0;
+			QSqlQuery query(db);
+				query.exec("select id, id_m, imie_nazw, narod, spec, rozdz from lbca where id_m=" + QString(cur_id).toAscii());
 			
-			result = sqlite3_get_table(db,"select id, id_m, imie_nazw, narod, spec, rozdz from lbca where id_m=" + QString(cur_id).toAscii(),
-				&table,&rows,&cols,&errmsg);
-			if (result == SQLITE_OK)
-			{
 				this->ui.tableWidget_Autorzy->setRowCount(rows);
 				for (int x = 0; x < rows; x++)
 				{
@@ -273,7 +266,7 @@ void LBooksCatalogue::SaveRec(int id)
 	char *errmsg = 0;
 	if (sqlite3_open("lbcmain.db",&db) == SQLITE_OK)
 	{
-			result = sqlite3_exec(db,QString("update lbcmain set tytul=" + this->ui.lineEdit_Tytul->text() + ", tytul_oryg=" +
+			QString qstrqry("update lbcmain set tytul=" + this->ui.lineEdit_Tytul->text() + ", tytul_oryg=" +
 				this->ui.lineEdit_TytulOryg->text() + ", gatunek=" + this->ui.lineEdit_Gatunek->text() + 
 				", ilosc=" + this->ui.lineEdit_Count->text() + ", rok_wyd=" + this->ui.lineEdit_DatePub->text() + 
 				", wydawnictwo=" + this->ui.lineEdit_Publisher->text() + ", jezyk_wydania=" + this->ui.lineEdit_PubLang->text() +
@@ -283,7 +276,9 @@ void LBooksCatalogue::SaveRec(int id)
 				", MZ_WWW=" + this->ui.lineEdit_MZ_WWW->text() +  
 				", INFO_IloscStr=" + this->ui.lineEdit_INFO_PageCount->text() + ", INFO_Format=" +
 				this->ui.lineEdit_INFO_Format->text() + ", INFO_Oprawa=" + this->ui.lineEdit_INFO_Oprawa->text() + 
-				", INFO_Cena=" + this->ui.lineEdit_INFO_Cena->text().toAscii() + " where id=" + QString(cur_id).toAscii()),NULL,NULL,&errmsg);
+				", INFO_Cena=" + this->ui.lineEdit_INFO_Cena->text() + " where id=" + QString(cur_id));
+				QByteArray qry(qstrqry.toAscii());
+			result = sqlite3_exec(db,qry.data(),NULL,NULL,&errmsg);
 
 			if (result == SQLITE_OK)
 			{
@@ -292,8 +287,10 @@ void LBooksCatalogue::SaveRec(int id)
 				
 			}
 			else
-			{
-				QMessageBox qmsg(errmsg);
+			{	
+				QByteArray errormesg(errmsg);
+				QString qstrerrmesg(errormesg);
+				QMessageBox qmsg(QMessageBox::Critical,QString("Error"),qstrerrmesg,QMessageBox::Ok);
 				qmsg.exec();
 
 			}
@@ -312,12 +309,12 @@ void LBooksCatalogue::SaveSettings()
 
 void LBooksCatalogue::UpdateDB(int id)
 {
-	sqlite3 *db;
-	int result;
-	char *errmsg = 0;
-	if (sqlite3_open("lbcmain.db",db) == SQLITE_OK)
-	{
-		if (this->ui.tableWidget_Autorzy->rowCount() > 0) //Authors
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
+	if (this->ui.tableWidget_Autorzy->rowCount() > 0) //Authors
 		{
 			for (int x = 0; x < this->ui.tableWidget_Autorzy->rowCount(); x++)
 			{
@@ -327,9 +324,10 @@ void LBooksCatalogue::UpdateDB(int id)
 					QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,y);
 					qsl << item->text();
 				}
-
-				sqlite3_exec(db,"update lbca set imie_nazw=" + qsl[2] + ", narod=" + qsl[3] + 
-					", spec=" + qsl[4] + ", rozdz=" + qsl[5] + "where id=" + qsl[0],NULL,NULL,&errmsg);
+				QSqlQuery query(db);
+				query.exec("update lbca set imie_nazw=" + qsl[2] + ", narod=" + qsl[3] + 
+					", spec=" + qsl[4] + ", rozdz=" + qsl[5] + "where id=" + qsl[0]);
+				
 			}
 
 
@@ -345,9 +343,10 @@ void LBooksCatalogue::UpdateDB(int id)
 					QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,y);
 					qsl << item->text();
 				}
-
-				sqlite3_exec(db,"update lbcp set data_wyd=" + qsl[2] + ", wydawnictwo=" + qsl[3] +
-					", jezyk=" + qsl[4] + ", numer_wyd=" + qsl[5] + ", kraj_wyd=" + qsl[6] + " where id=" + qsl[0],NULL,NULL,&errmsg);
+				QSqlQuery query(db);
+				query.exec("update lbcp set data_wyd=" + qsl[2] + ", wydawnictwo=" + qsl[3] +
+					", jezyk=" + qsl[4] + ", numer_wyd=" + qsl[5] + ", kraj_wyd=" + qsl[6] + " where id=" + qsl[0]);
+				
 			}
 		}
 
@@ -361,9 +360,10 @@ void LBooksCatalogue::UpdateDB(int id)
 					QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,y);
 					qsl << item->text();
 				}
-
-				sqlite3_exec(db,"update lbcb set osoba=" + qsl[2] + ", data_wyp=" + qsl[3] + 
-					", data_odd=" + qsl[4] + ", stan_wyp=" + qsl[5] + ", stan_odd=" + qsl[6] + " where id=" + qsl[0],NULL,NULL,&errmsg);
+				QSqlQuery query(db);
+				query.exec("update lbcb set osoba=" + qsl[2] + ", data_wyp=" + qsl[3] + 
+					", data_odd=" + qsl[4] + ", stan_wyp=" + qsl[5] + ", stan_odd=" + qsl[6] + " where id=" + qsl[0]);
+				
 			}
 		}
 	}
@@ -380,7 +380,7 @@ void LBooksCatalogue::ReadStartRec()
 	char *table = 0;
 	int rows;
 	int cols;
-	if (sqlite3_open("lbcmain.db",db) == SQLITE_OK)
+	if (sqlite3_open("lbcmain.db",&db) == SQLITE_OK)
 	{
 		result = sqlite3_get_table(db,"select id from mkbcmain",&&table,&rows,&cols,&errmsg);
 		if (result == 0)
@@ -400,9 +400,9 @@ void LBooksCatalogue::AddNewRec(int id)
 {
 	sqlite3 *db;
 	char *errmsg = 0;
-	if (sqlite3_open("lbcmain.db",db) == 0)
+	if (sqlite3_open("lbcmain.db",&db) == 0)
 	{
-		if (sqlite3_exec(db,"INSERT INTO main.lbcmain "
+		QString qstrquery("INSERT INTO main.lbcmain "
 			" VALUES (" + this->ui.lineEdit_Tytul->text() + " , " + this->ui.lineEdit_TytulOryg->text() + " , " +
 			this->ui.lineEdit_Gatunek->text() + " , " + this->ui.lineEdit_Count->text() + " , " + 
 			this->ui.lineEdit_DatePub->text() + " , " + this->ui.lineEdit_Publisher->text() + " , " +
@@ -411,12 +411,16 @@ void LBooksCatalogue::AddNewRec(int id)
 			this->ui.lineEdit_MZ_Nazwa->text() + " , " +
 			this->ui.lineEdit__MZ_Adres->text() + " , " + this->ui.lineEdit_MZ_WWW->text() + " , " +
 			this->ui.lineEdit_INFO_PageCount->text() + " , " + this->ui.lineEdit_INFO_Format->text() + " , " +
-			this->ui.lineEdit_INFO_Oprawa->text() + " , " + this->ui.lineEdit_INFO_Cena->text() + " )",NULL,NULL,&errmsg) != 0)
+			this->ui.lineEdit_INFO_Oprawa->text() + " , " + this->ui.lineEdit_INFO_Cena->text() + " )");
+		QByteArray query(qstrquery.toAscii());
+
+		if (sqlite3_exec(db,query.data(),NULL,NULL,&errmsg) != 0)
 			
 		{
-			QMessageBox msg(errmsg);
-
-			msg.exec();
+			QByteArray errormesg(errmsg);
+			QString qstrerrmesg(errormesg);
+			QMessageBox qmsg(QMessageBox::Critical,QString("Error"),qstrerrmesg,QMessageBox::Ok);
+			qmsg.exec();
 			return;
 		}
 			
@@ -436,7 +440,7 @@ int LBooksCatalogue::GetLastId(int db)
 	int cols;
 	int ret = 0;
 	char *table = 0;
-	if (sqlite3_open("lbcmain.db",db) == 0)
+	if (sqlite3_open("lbcmain.db",&db) == 0)
 	{
 		switch (db)
 		{
@@ -499,6 +503,7 @@ void LBooksCatalogue::InsertDB(int id)
 					QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,y);
 					qsl << item->text();
 				}
+
 				QSqlQuery query("insert into lbca(id_m, imie_nazw, narod, spec, rozdz)"
 					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ")",db);
 			}

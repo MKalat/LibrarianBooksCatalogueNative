@@ -13,7 +13,7 @@
 #include "Wyszukaj.h"
 #include <stdio.h>
 #include <iostream>
-#include "sqlite3.h"
+//#include "sqlite3.h"
 //#include "data_struts.h"
 
 class LBooksCatalogue : public QMainWindow
