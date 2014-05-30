@@ -66,6 +66,7 @@ void LBooksCatalogue::BTN_NEW_CLICKED()
 
 	new_rec_adding = true;
 	ClearCtrls();
+	this->ui.pushButton_NEW->setEnabled(false);
 
 }
 
@@ -123,10 +124,10 @@ if(db.open())
 				query2.exec("CREATE TABLE lbca (id int primaty key asc autoincrement, id_m int, "
 			"imie_nazw TEXT, narod TEXT, spec TEXT, rozdz TEXT");
 		QSqlQuery query3(db);
-				query3.exec(db,"CREATE TABLE lbcp (id int primary key asc autoincrement, id_m int, "
+				query3.exec("CREATE TABLE lbcp (id int primary key asc autoincrement, id_m int, "
 			"data_wyd TEXT, wyd TEXT, jezyk TEXT, numer_wyd TEXT, kraj_wyd TEXT");
 		QSqlQuery query4(db);
-				query4.exec(db,"CREATE TABLE lbcb (id int primary key asc autoincrement, id_m int, "
+				query4.exec("CREATE TABLE lbcb (id int primary key asc autoincrement, id_m int, "
 			"osoba TEXT, data_wyp TEXT, data_odd TEXT, stan_wyp TEXT, stan_odd TEXT");
 		
 
@@ -167,23 +168,23 @@ if(db.open())
 
 		query.next();
 
-			this->ui.lineEdit_Tytul->setText(QString(query.value(titleCol).toString());
-			this->ui.lineEdit_TytulOryg->setText(QString(query.value(title_origCol).toString());
-			this->ui.lineEdit_Gatunek->setText(QString(query.value(genreCol).toString());
-			this->ui.lineEdit_Count->setText(QString(query.value(countCol).toString());
-			this->ui.lineEdit_DatePub->setText(QString(query.value(year_pub).toString());
-			this->ui.lineEdit_Publisher->setText(QString(query.value(pubCol).toString());
-			this->ui.lineEdit_PubLang->setText(QString(query.value(lang_pubCol).toString());
-			this->ui.textEdit_Opis->setText(QString(query.value(descCol).toString());
-			this->ui.lineEdit_WL_Imienazw->setText(QString(query.value(WL_Im_Nazw_Col).toString());
-			this->ui.lineEdit_WL_Adres->setText(QString(query.value(WL_Adres_Col).toString());
-			this->ui.lineEdit_MZ_Nazwa->setText(QString(query.value(MZ_Nazwa_Col).toString());
-			this->ui.lineEdit__MZ_Adres->setText(QString(query.value(MZ_Adres_Col).toString());
-			this->ui.lineEdit_MZ_WWW->setText(QString(query.value(MZ_WWW_Col).toString());
-			this->ui.lineEdit_INFO_PageCount->setText(QString(query.value(INFO_IloscStr_Col).toString());
-			this->ui.lineEdit_INFO_Format->setText(QString(query.value(INFO_Format_Col).toString());
-			this->ui.lineEdit_INFO_Oprawa->setText(QString(query.value(INFO_Oprawa_Col).toString();
-			this->ui.lineEdit_INFO_Cena->setText(QString(query.value(INFO_Ocena_Col).toString());
+			this->ui.lineEdit_Tytul->setText(QString(query.value(titleCol).toString()));
+			this->ui.lineEdit_TytulOryg->setText(QString(query.value(title_origCol).toString()));
+			this->ui.lineEdit_Gatunek->setText(QString(query.value(genreCol).toString()));
+			this->ui.lineEdit_Count->setText(QString(query.value(countCol).toString()));
+			this->ui.lineEdit_DatePub->setText(QString(query.value(year_pub).toString()));
+			this->ui.lineEdit_Publisher->setText(QString(query.value(pubCol).toString()));
+			this->ui.lineEdit_PubLang->setText(QString(query.value(lang_pubCol).toString()));
+			this->ui.textEdit_Opis->setText(QString(query.value(descCol).toString()));
+			this->ui.lineEdit_WL_Imienazw->setText(QString(query.value(WL_Im_Nazw_Col).toString()));
+			this->ui.lineEdit_WL_Adres->setText(QString(query.value(WL_Adres_Col).toString()));
+			this->ui.lineEdit_MZ_Nazwa->setText(QString(query.value(MZ_Nazwa_Col).toString()));
+			this->ui.lineEdit__MZ_Adres->setText(QString(query.value(MZ_Adres_Col).toString()));
+			this->ui.lineEdit_MZ_WWW->setText(QString(query.value(MZ_WWW_Col).toString()));
+			this->ui.lineEdit_INFO_PageCount->setText(QString(query.value(INFO_IloscStr_Col).toString()));
+			this->ui.lineEdit_INFO_Format->setText(QString(query.value(INFO_Format_Col).toString()));
+			this->ui.lineEdit_INFO_Oprawa->setText(QString(query.value(INFO_Oprawa_Col).toString()));
+			this->ui.lineEdit_INFO_Cena->setText(QString(query.value(INFO_Ocena_Col).toString()));
 			
 		
 			//Authors
@@ -202,28 +203,28 @@ if(db.open())
 						query2.next();
 						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,0);
 						item->setText(query2.value(idCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,1);
-						item->setText(query2.value(idmCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,2);
-						item->setText(query2.value(imienazwCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,3);
-						item->setText(query2.value(narodCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,4);
-						item->setText(query2.value(specCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,5);
-						item->setText(query2.value(rozdzCol).toString());
+						QTableWidgetItem *item2 = this->ui.tableWidget_Autorzy->item(x,1);
+						item2->setText(query2.value(idmCol).toString());
+						QTableWidgetItem *item3 = this->ui.tableWidget_Autorzy->item(x,2);
+						item3->setText(query2.value(imienazwCol).toString());
+						QTableWidgetItem *item4 = this->ui.tableWidget_Autorzy->item(x,3);
+						item4->setText(query2.value(narodCol).toString());
+						QTableWidgetItem *item5 = this->ui.tableWidget_Autorzy->item(x,4);
+						item5->setText(query2.value(specCol).toString());
+						QTableWidgetItem *item6 = this->ui.tableWidget_Autorzy->item(x,5);
+						item6->setText(query2.value(rozdzCol).toString());
 					
 
 				}
-			}
+			
 			
 
 			//Wydania
 			QSqlQuery query3(db);
 				query3.exec("select id, id_m, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd from lbcp where id_m=" + QString(cur_id).toAscii());
 				QSqlRecord qrec3 = query3.record();
-			int idCol = qrec3.indexOf("id");
-			int idmCol = qrec3.indexOf("id_m");
+			int idwCol = qrec3.indexOf("id");
+			int idwmCol = qrec3.indexOf("id_m");
 			int datawydCol = qrec3.indexOf("data_wyd");
 			int wydCol = qrec3.indexOf("wydawnictwo");
 			int langCol = qrec3.indexOf("jezyk");
@@ -234,33 +235,33 @@ if(db.open())
 				{
 						query3.next();
 						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,0);
-						item->setText(query3.value(idCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,1);
-						item->setText(query3.value(idmCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,2);
-						item->setText(query3.value(datawydCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,3);
-						item->setText(query3.value(wydCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,4);
-						item->setText(query3.value(langCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,5);
-						item->setText(query3.value(pubnoCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,6);
-						item->setText(query3.value(krajwydCol).toString());
+						item->setText(query3.value(idwCol).toString());
+						QTableWidgetItem *item2 = this->ui.tableWidget_Wydania->item(x,1);
+						item2->setText(query3.value(idwmCol).toString());
+						QTableWidgetItem *item3 = this->ui.tableWidget_Wydania->item(x,2);
+						item3->setText(query3.value(datawydCol).toString());
+						QTableWidgetItem *item4 = this->ui.tableWidget_Wydania->item(x,3);
+						item4->setText(query3.value(wydCol).toString());
+						QTableWidgetItem *item5 = this->ui.tableWidget_Wydania->item(x,4);
+						item5->setText(query3.value(langCol).toString());
+						QTableWidgetItem *item6 = this->ui.tableWidget_Wydania->item(x,5);
+						item6->setText(query3.value(pubnoCol).toString());
+						QTableWidgetItem *item7 = this->ui.tableWidget_Wydania->item(x,6);
+						item7->setText(query3.value(krajwydCol).toString());
 						
 					
 
 
 				}
-			}
+			
 			
 			// BIBLIO
 			QSqlQuery query4(db);
 				query4.exec("select id, id_m, osoba, data_wyp, data_odd, "
 				"stan_wyp, stan_odd from lbcb where id_m=" + QString(cur_id).toAscii());
 			QSqlRecord qrec4 = query4.record();
-			int idCol = qrec4.indexOf("id");
-			int idmCol = qrec4.indexOf("id_m");
+			int idbCol = qrec4.indexOf("id");
+			int idbmCol = qrec4.indexOf("id_m");
 			int osobaCol = qrec4.indexOf("osoba");
 			int dwypCol = qrec4.indexOf("data_wyp");
 			int doddCol = qrec4.indexOf("data_odd");
@@ -272,25 +273,24 @@ if(db.open())
 					
 						query4.next();
 						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,0);
-						item->setText(query4.value(idCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,1);
-						item->setText(query4.value(idmCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,2);
-						item->setText(query4.value(osobaCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,3);
-						item->setText(query4.value(dwypCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,4);
-						item->setText(query4.value(doddCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,5);
-						item->setText(query4.value(swypCol).toString());
-						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,6);
-						item->setText(query4.value(soddCol).toString());
+						item->setText(query4.value(idbCol).toString());
+						QTableWidgetItem *item2 = this->ui.tableWidget_BIBLIO_WypoIN->item(x,1);
+						item2->setText(query4.value(idbmCol).toString());
+						QTableWidgetItem *item3 = this->ui.tableWidget_BIBLIO_WypoIN->item(x,2);
+						item3->setText(query4.value(osobaCol).toString());
+						QTableWidgetItem *item4 = this->ui.tableWidget_BIBLIO_WypoIN->item(x,3);
+						item4->setText(query4.value(dwypCol).toString());
+						QTableWidgetItem *item5 = this->ui.tableWidget_BIBLIO_WypoIN->item(x,4);
+						item5->setText(query4.value(doddCol).toString());
+						QTableWidgetItem *item6 = this->ui.tableWidget_BIBLIO_WypoIN->item(x,5);
+						item6->setText(query4.value(swypCol).toString());
+						QTableWidgetItem *item7 = this->ui.tableWidget_BIBLIO_WypoIN->item(x,6);
+						item7->setText(query4.value(soddCol).toString());
 					
 				
 				}
-			}
 			CalcRecInfo();
-		}
+		
 		
 	}
 	
@@ -334,7 +334,7 @@ if(db.open())
 				
 
 			}
-	}
+	
 	
 
 }
@@ -406,8 +406,7 @@ if(db.open())
 			}
 		}
 	}
-	sqlite3_free(errmsg);
-	sqlite3_close(db);
+	
 
 }
 
@@ -419,13 +418,13 @@ void LBooksCatalogue::ReadStartRec()
 if(db.open())
 {
 		QSqlQuery query(db);
-				query.exec("select id from mkbcmain");
+				query.exec("select MIN(id) as min_id from lbcmain");
 		if (query.size()> 0)
 		{
 			QSqlRecord qrec = query.record();
-			int idCol = qrec.indexOf("id");
+			int idCol = qrec.indexOf("min_id");
 			
-			cur_id = QString(query.value(idCol).toInt());
+			cur_id = query.value(idCol).toInt();
 			ReadRec(0,0);
 		}
 	
@@ -453,29 +452,30 @@ if(db.open())
 			this->ui.lineEdit_INFO_PageCount->text() + " , " + this->ui.lineEdit_INFO_Format->text() + " , " +
 			this->ui.lineEdit_INFO_Oprawa->text() + " , " + this->ui.lineEdit_INFO_Cena->text() + " )");
 		
-		InsertDB(GetLastId(0),db);
+		InsertDB(GetLastId(0));
 		
 		
-	
+}
 }
 
-int LBooksCatalogue::GetLastId(int db)
+int LBooksCatalogue::GetLastId(int table)
 {
 	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 	db.setDatabaseName("lbcmain.db");
 
 if(db.open())
 {
-		switch (db)
+		switch (table)
 		{
 		case 0: // MAIN
 			
 				QSqlQuery query(db);
-				query.exec("select id from lbcmain");
+				query.exec("select MAX(id) as max_id from lbcmain");
 				if (query.size()> 0)
 				{
 					QSqlRecord qrec = query.record();
-					int idCol = qrec.indexOf("id");
+					
+					int idCol = qrec.indexOf("max_id");
 			
 					ret = QString(query.value(idCol).toInt());
 				}
@@ -483,11 +483,11 @@ if(db.open())
 		case 1: 
 			// Authors
 				QSqlQuery query(db);
-				query.exec("select id from lbca");
+				query.exec("select MAX(id) as max_id from lbca");
 				if (query.size()> 0)
 				{
 					QSqlRecord qrec = query.record();
-					int idCol = qrec.indexOf("id");
+					int idCol = qrec.indexOf("max_id");
 				
 					ret = QString(query.value(idCol).toInt());
 				}
@@ -496,22 +496,22 @@ if(db.open())
 
 		case 2: // Wydania
 				QSqlQuery query(db);
-				query.exec("select id from lbcp");
+				query.exec("select MAX(id) as max_id from lbcp");
 				if (query.size()> 0)
 				{
 					QSqlRecord qrec = query.record();
-					int idCol = qrec.indexOf("id");
+					int idCol = qrec.indexOf("max");
 				ret = QString(query.value(idCol).toInt());
 			}
 			break;
 
 		case 3:  // BIBLIO
 				QSqlQuery query(db);
-				query.exec("select id from lbcb");
+				query.exec("select MAX(id) as max_id from lbcb");
 				if (query.size()> 0)
 				{
 					QSqlRecord qrec = query.record();
-					int idCol = qrec.indexOf("id");
+					int idCol = qrec.indexOf("max_id");
 					ret = QString(query.value(idCol).toInt());
 				}
 			break;
@@ -530,8 +530,11 @@ if(db.open())
 void LBooksCatalogue::InsertDB(int id)
 {
 	
-	if (db.isValid())
-	{
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
 		if (this->ui.tableWidget_Autorzy->rowCount() > 0) //Authors
 		{
 			for (int x = 0; x < this->ui.tableWidget_Autorzy->rowCount(); x++)
@@ -542,9 +545,9 @@ void LBooksCatalogue::InsertDB(int id)
 					QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,y);
 					qsl << item->text();
 				}
-
-				QSqlQuery query("insert into lbca(id_m, imie_nazw, narod, spec, rozdz)"
-					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ")",db);
+				QSqlQuery query(db);
+				query.exec("insert into lbca(id_m, imie_nazw, narod, spec, rozdz)"
+					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ")");
 			}
 
 		}
@@ -559,8 +562,9 @@ void LBooksCatalogue::InsertDB(int id)
 					QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,y);
 					qsl << item->text();
 				}
-				QSqlQuery query("insert into lbcp(id_m int, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd)"
-					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ", " + qsl[4] + ")",db);
+				QSqlQuery query(db);
+				query.exec("insert into lbcp(id_m int, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd)"
+					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ", " + qsl[4] + ")");
 			}
 		}
 
@@ -574,8 +578,9 @@ void LBooksCatalogue::InsertDB(int id)
 					QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,y);
 					qsl << item->text();
 				}
-				QSqlQuery query("insert into lbcb(id_m, osoba, data_wyp, data_odd, stan_wyp, stan_odd"
-					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ", " + qsl[4] + ")",db);
+				QSqlQuery query(db);
+				query.exec("insert into lbcb(id_m, osoba, data_wyp, data_odd, stan_wyp, stan_odd"
+					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ", " + qsl[4] + ")");
 			}
 
 		}
@@ -585,36 +590,35 @@ void LBooksCatalogue::InsertDB(int id)
 
 void LBooksCatalogue::InsertRecDB(int id, int table)
 {
-	QSqlDatabase db = OpenDB();
-	QStringList qsl(params_db);
-	if (db.isValid())
-	{
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
 		if (table == 0) // Authors
 		{	
-			if (qsl.count() == 4)
-			{
-				QSqlQuery query1("insert into lbca(id_m, imie_nazw, narod, spec, rozdz)"
-					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ")",db);
-			}
+			
+				QSqlQuery query(db);
+				query.exec("insert into lbca(id_m, imie_nazw, narod, spec, rozdz)"
+					"VALUES(" + QString(id) + ", " ", " ", " ", " ")");
+			
 
 		}
 		else if (table == 1) // PUB
 		{
-			if (qsl.count() == 5)
-			{
-				QSqlQuery query2("insert into lbcp(id_m int, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd)"
-					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + 
-					", " + qsl[4] + ")",db);
-			}
+			
+				QSqlQuery query(db);
+				query.exec("insert into lbcp(id_m int, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd)"
+					"VALUES(" + QString(id) + ", " ", " ", " ", " ", " ")");
+			
 		}
 		else if (table == 2) // BIBLIO
 		{
-			if (qsl.count() == 5)
-			{
-				QSqlQuery query3("insert into lbcb(id_m, osoba, data_wyp, data_odd, stan_wyp, stan_odd"
-					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + 
-					", " + qsl[4] + ")",db);
-			}
+			
+				QSqlQuery query(db);
+				query.exec("insert into lbcb(id_m, osoba, data_wyp, data_odd, stan_wyp, stan_odd"
+					"VALUES(" + QString(id) + ", " ", " ", " ", " ", " ")");
+			
 		}
 
 
@@ -789,7 +793,21 @@ void LBooksCatalogue::CalcRecInfo()
 
 int LBooksCatalogue::FindNextId()
 {
-	//TODO: napisac znajdowanie id nastêpnego rekordu
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
+		QSqlQuery query(db);
+				query.exec("SELECT id from lbcmain");
+				QSqlRecord qrec = query.record();
+		int idCol = qrec.indexOf("id");
+		for (int x = 0; x < query.size(); x++)
+		{
+			
+
+		}
+
 
 }
 

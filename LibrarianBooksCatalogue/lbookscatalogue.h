@@ -13,6 +13,9 @@
 #include "Wyszukaj.h"
 #include <stdio.h>
 #include <iostream>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlRecord>
 //#include "sqlite3.h"
 //#include "data_struts.h"
 
