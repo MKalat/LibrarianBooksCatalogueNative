@@ -147,23 +147,23 @@ if(db.open())
 			"WL_Adres, MZ_Nazwa, MZ_Adres, MZ_WWW, INFO_IloscStr, INFO_Format,  "
 			"INFO_Oprawa, INFO_Ocena FROM lbcmain WHERE id=" + QString(cur_id).toAscii());
 		QSqlRecord qrec = query.record();
-		int titleCol = rec.indexOf("tytul");
-		int title_origCol = rec.indexOf("tytul_oryg");
-		int genreCol = rec.indexOf("gatunek");
-		int countCol = rec.indexOf("ilosc");
-		int year_pub = rec.indexOf("rok_wyd");
-		int pubCol = rec.indexOf("wydawnictwo");
-		int lang_pubCol = rec.indexOf("jezyk_wydania");
-		int descCol = rec.indexOf("opis");
-		int WL_Im_Nazw_Col = rec.indexOf("WL_ImieNazw");
-		int WL_Adres_Col = rec.indexOf("WL_Adres");
-		int MZ_Nazwa_Col = rec.indexOf("MZ_Nazwa");
-		int MZ_Adres_Col = rec.indexOf("MZ_Adres");
-		int MZ_WWW_Col = rec.indexOf("MZ_WWW");
-		int INFO_IloscStr_Col = rec.indexOf("INFO_IloscStr");
-		int INFO_Format_Col = rec.indexOf("INFO_Format");
-		int INFO_Oprawa_Col = rec.indexOf("INFO_Oprawa");
-		int INFO_Ocena_Col = rec.indexOf("INFO_Ocena");
+		int titleCol = qrec.indexOf("tytul");
+		int title_origCol = qrec.indexOf("tytul_oryg");
+		int genreCol = qrec.indexOf("gatunek");
+		int countCol = qrec.indexOf("ilosc");
+		int year_pub = qrec.indexOf("rok_wyd");
+		int pubCol = qrec.indexOf("wydawnictwo");
+		int lang_pubCol = qrec.indexOf("jezyk_wydania");
+		int descCol = qrec.indexOf("opis");
+		int WL_Im_Nazw_Col = qrec.indexOf("WL_ImieNazw");
+		int WL_Adres_Col = qrec.indexOf("WL_Adres");
+		int MZ_Nazwa_Col = qrec.indexOf("MZ_Nazwa");
+		int MZ_Adres_Col = qrec.indexOf("MZ_Adres");
+		int MZ_WWW_Col = qrec.indexOf("MZ_WWW");
+		int INFO_IloscStr_Col = qrec.indexOf("INFO_IloscStr");
+		int INFO_Format_Col = qrec.indexOf("INFO_Format");
+		int INFO_Oprawa_Col = qrec.indexOf("INFO_Oprawa");
+		int INFO_Ocena_Col = qrec.indexOf("INFO_Ocena");
 
 		query.next();
 
@@ -187,67 +187,111 @@ if(db.open())
 			
 		
 			//Authors
-			QSqlQuery query(db);
-				query.exec("select id, id_m, imie_nazw, narod, spec, rozdz from lbca where id_m=" + QString(cur_id).toAscii());
-			
-				this->ui.tableWidget_Autorzy->setRowCount(rows);
-				for (int x = 0; x < rows; x++)
+			QSqlQuery query2(db);
+				query2.exec("select id, id_m, imie_nazw, narod, spec, rozdz from lbca where id_m=" + QString(cur_id).toAscii());
+			QSqlRecord qrec2 = query2.record();
+			int idCol = qrec2.indexOf("id");
+			int idmCol = qrec2.indexOf("id_m");
+			int imienazwCol = qrec2.indexOf("imie_nazw");
+			int narodCol = qrec2.indexOf("narod");
+			int specCol = qrec2.indexOf("spec");
+			int rozdzCol = qrec2.indexOf("rozdz");
+				this->ui.tableWidget_Autorzy->setRowCount(query2.size());
+				for (int x = 0; x < query2.size(); x++)
 				{
-					for (int y = 0; y < cols; y++) //columns
-					{
-						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,y);
-						item->setText(QString(table[((x + 1) * cols) + y]));
-					}
+						query2.next();
+						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,0);
+						item->setText(query2.value(idCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,1);
+						item->setText(query2.value(idmCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,2);
+						item->setText(query2.value(imienazwCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,3);
+						item->setText(query2.value(narodCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,4);
+						item->setText(query2.value(specCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,5);
+						item->setText(query2.value(rozdzCol).toString());
 					
 
 				}
 			}
-			table = 0;
-			errmsg = 0;
+			
 
 			//Wydania
-			result = sqlite3_get_table(db,"select id, id_m, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd from lbcp where id_m=" + QString(cur_id).toAscii(),
-				&table,&rows,&cols,&errmsg);
-			if (result == SQLITE_OK)
-			{
-				this->ui.tableWidget_Wydania->setRowCount(rows);
-				for (int x = 0; x < rows; x++)
+			QSqlQuery query3(db);
+				query3.exec("select id, id_m, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd from lbcp where id_m=" + QString(cur_id).toAscii());
+				QSqlRecord qrec3 = query3.record();
+			int idCol = qrec3.indexOf("id");
+			int idmCol = qrec3.indexOf("id_m");
+			int datawydCol = qrec3.indexOf("data_wyd");
+			int wydCol = qrec3.indexOf("wydawnictwo");
+			int langCol = qrec3.indexOf("jezyk");
+			int pubnoCol = qrec3.indexOf("numer_wyd");
+			int krajwydCol = qrec3.indexOf("kraj_wyd");
+				this->ui.tableWidget_Wydania->setRowCount(query3.size());
+				for (int x = 0; x < query3.size(); x++)
 				{
-					for (int y = 0; y < cols; y++) //columns
-					{
-						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,y);
-						item->setText(QString(table[((x + 1) * cols) + y]));
+						query3.next();
+						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,0);
+						item->setText(query3.value(idCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,1);
+						item->setText(query3.value(idmCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,2);
+						item->setText(query3.value(datawydCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,3);
+						item->setText(query3.value(wydCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,4);
+						item->setText(query3.value(langCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,5);
+						item->setText(query3.value(pubnoCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,6);
+						item->setText(query3.value(krajwydCol).toString());
 						
-					}
+					
 
 
 				}
 			}
-			table = 0;
-			errmsg = 0;
-
+			
 			// BIBLIO
-			result = sqlite3_get_table(db,"select id, id_m, osoba, data_wyp, data_odd, "
-				"stan_wyp, stan_odd from lbcb where id_m=" + QString(cur_id).toAscii(),
-				&table,&rows,&cols,&errmsg);
-			if (result == SQLITE_OK)
-			{
-				this->ui.tableWidget_BIBLIO_WypoIN->setRowCount(rows);
-				for (int x = 0; x < rows; x++)
+			QSqlQuery query4(db);
+				query4.exec("select id, id_m, osoba, data_wyp, data_odd, "
+				"stan_wyp, stan_odd from lbcb where id_m=" + QString(cur_id).toAscii());
+			QSqlRecord qrec4 = query4.record();
+			int idCol = qrec4.indexOf("id");
+			int idmCol = qrec4.indexOf("id_m");
+			int osobaCol = qrec4.indexOf("osoba");
+			int dwypCol = qrec4.indexOf("data_wyp");
+			int doddCol = qrec4.indexOf("data_odd");
+			int swypCol = qrec4.indexOf("stan_wyp");
+			int soddCol = qrec4.indexOf("stan_odd");
+				this->ui.tableWidget_BIBLIO_WypoIN->setRowCount(query4.size());
+				for (int x = 0; x < query4.size(); x++)
 				{				
-					for (int y = 0; y < cols; y++) //columns
-					{
-						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,y);
-						item->setText(QString(table[((x + 1) * cols) + y]));
-					}
+					
+						query4.next();
+						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,0);
+						item->setText(query4.value(idCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,1);
+						item->setText(query4.value(idmCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,2);
+						item->setText(query4.value(osobaCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,3);
+						item->setText(query4.value(dwypCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,4);
+						item->setText(query4.value(doddCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,5);
+						item->setText(query4.value(swypCol).toString());
+						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,6);
+						item->setText(query4.value(soddCol).toString());
+					
 				
 				}
 			}
 			CalcRecInfo();
 		}
-		sqlite3_free_table(table);
-		sqlite3_free(errmsg);
-		sqlite3_close(db);
+		
 	}
 	
 
@@ -261,12 +305,13 @@ void LBooksCatalogue::ReadSettings()
 
 void LBooksCatalogue::SaveRec(int id)
 {
-	sqlite3 *db;
-	int result;
-	char *errmsg = 0;
-	if (sqlite3_open("lbcmain.db",&db) == SQLITE_OK)
-	{
-			QString qstrqry("update lbcmain set tytul=" + this->ui.lineEdit_Tytul->text() + ", tytul_oryg=" +
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
+			QSqlQuery query(db);
+				query.exec("update lbcmain set tytul=" + this->ui.lineEdit_Tytul->text() + ", tytul_oryg=" +
 				this->ui.lineEdit_TytulOryg->text() + ", gatunek=" + this->ui.lineEdit_Gatunek->text() + 
 				", ilosc=" + this->ui.lineEdit_Count->text() + ", rok_wyd=" + this->ui.lineEdit_DatePub->text() + 
 				", wydawnictwo=" + this->ui.lineEdit_Publisher->text() + ", jezyk_wydania=" + this->ui.lineEdit_PubLang->text() +
@@ -277,26 +322,20 @@ void LBooksCatalogue::SaveRec(int id)
 				", INFO_IloscStr=" + this->ui.lineEdit_INFO_PageCount->text() + ", INFO_Format=" +
 				this->ui.lineEdit_INFO_Format->text() + ", INFO_Oprawa=" + this->ui.lineEdit_INFO_Oprawa->text() + 
 				", INFO_Cena=" + this->ui.lineEdit_INFO_Cena->text() + " where id=" + QString(cur_id));
-				QByteArray qry(qstrqry.toAscii());
-			result = sqlite3_exec(db,qry.data(),NULL,NULL,&errmsg);
+			
 
-			if (result == SQLITE_OK)
-			{
+			
 				
 				UpdateDB(cur_id); // update-uj tabele podrzêdne
 				
 			}
 			else
 			{	
-				QByteArray errormesg(errmsg);
-				QString qstrerrmesg(errormesg);
-				QMessageBox qmsg(QMessageBox::Critical,QString("Error"),qstrerrmesg,QMessageBox::Ok);
-				qmsg.exec();
+				
 
 			}
 	}
-	sqlite3_free(errmsg);
-	sqlite3_close(db);
+	
 
 }
 
@@ -374,35 +413,36 @@ if(db.open())
 
 void LBooksCatalogue::ReadStartRec()
 {
-	sqlite3 *db;
-	int result;
-	char *errmsg = 0;
-	char *table = 0;
-	int rows;
-	int cols;
-	if (sqlite3_open("lbcmain.db",&db) == SQLITE_OK)
-	{
-		result = sqlite3_get_table(db,"select id from mkbcmain",&&table,&rows,&cols,&errmsg);
-		if (result == 0)
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
+		QSqlQuery query(db);
+				query.exec("select id from mkbcmain");
+		if (query.size()> 0)
 		{
-			cur_id = QString(table[cols]).toInt(0);
+			QSqlRecord qrec = query.record();
+			int idCol = qrec.indexOf("id");
+			
+			cur_id = QString(query.value(idCol).toInt());
 			ReadRec(0,0);
 		}
-	}
-	sqlite3_free_table(&table);
-	sqlite3_free(errmsg);
-	sqlite3_close(db);
+	
+	
 }
 
 
 
 void LBooksCatalogue::AddNewRec(int id)
 {
-	sqlite3 *db;
-	char *errmsg = 0;
-	if (sqlite3_open("lbcmain.db",&db) == 0)
-	{
-		QString qstrquery("INSERT INTO main.lbcmain "
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
+		QSqlQuery query(db);
+				query.exec("INSERT INTO main.lbcmain "
 			" VALUES (" + this->ui.lineEdit_Tytul->text() + " , " + this->ui.lineEdit_TytulOryg->text() + " , " +
 			this->ui.lineEdit_Gatunek->text() + " , " + this->ui.lineEdit_Count->text() + " , " + 
 			this->ui.lineEdit_DatePub->text() + " , " + this->ui.lineEdit_Publisher->text() + " , " +
@@ -412,66 +452,68 @@ void LBooksCatalogue::AddNewRec(int id)
 			this->ui.lineEdit__MZ_Adres->text() + " , " + this->ui.lineEdit_MZ_WWW->text() + " , " +
 			this->ui.lineEdit_INFO_PageCount->text() + " , " + this->ui.lineEdit_INFO_Format->text() + " , " +
 			this->ui.lineEdit_INFO_Oprawa->text() + " , " + this->ui.lineEdit_INFO_Cena->text() + " )");
-		QByteArray query(qstrquery.toAscii());
-
-		if (sqlite3_exec(db,query.data(),NULL,NULL,&errmsg) != 0)
-			
-		{
-			QByteArray errormesg(errmsg);
-			QString qstrerrmesg(errormesg);
-			QMessageBox qmsg(QMessageBox::Critical,QString("Error"),qstrerrmesg,QMessageBox::Ok);
-			qmsg.exec();
-			return;
-		}
-			
 		
-			InsertDB(GetLastId(0),db);
+		InsertDB(GetLastId(0),db);
 		
-		sqlite3_free(errmsg);
-		sqlite3_close(db);
-	}
+		
+	
 }
 
 int LBooksCatalogue::GetLastId(int db)
 {
-	sqlite3 *db;
-	char *errmsg = 0;
-	int rows;
-	int cols;
-	int ret = 0;
-	char *table = 0;
-	if (sqlite3_open("lbcmain.db",&db) == 0)
-	{
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
 		switch (db)
 		{
 		case 0: // MAIN
 			
-			if (sqlite3_get_table(db,"select id from lbcmain",&&table,&rows,&cols,&errmsg) == 0)
-			{
-				ret = QString(table[rows + cols]).toInt(0);
-			}
+				QSqlQuery query(db);
+				query.exec("select id from lbcmain");
+				if (query.size()> 0)
+				{
+					QSqlRecord qrec = query.record();
+					int idCol = qrec.indexOf("id");
+			
+					ret = QString(query.value(idCol).toInt());
+				}
 			break;
 		case 1: 
 			// Authors
-			if (sqlite3_get_table(db,"select id from lbca",&&table,&rows,&cols,&errmsg) == 0)
-			{
-				ret = QString(table[rows + cols]).toInt(0);
-			}
+				QSqlQuery query(db);
+				query.exec("select id from lbca");
+				if (query.size()> 0)
+				{
+					QSqlRecord qrec = query.record();
+					int idCol = qrec.indexOf("id");
+				
+					ret = QString(query.value(idCol).toInt());
+				}
 			break;
 			
 
 		case 2: // Wydania
-			if (sqlite3_get_table(db,"select id from lbcp",&&table,&rows,&cols,&errmsg) == 0)
-			{
-				ret = QString(table[rows + cols]).toInt(0);
+				QSqlQuery query(db);
+				query.exec("select id from lbcp");
+				if (query.size()> 0)
+				{
+					QSqlRecord qrec = query.record();
+					int idCol = qrec.indexOf("id");
+				ret = QString(query.value(idCol).toInt());
 			}
 			break;
 
 		case 3:  // BIBLIO
-			if (sqlite3_get_table(db,"select id from lbcb",&&table,&rows,&cols,&errmsg) == 0)
-			{
-				ret = QString(table[rows + cols]).toInt(0);
-			}
+				QSqlQuery query(db);
+				query.exec("select id from lbcb");
+				if (query.size()> 0)
+				{
+					QSqlRecord qrec = query.record();
+					int idCol = qrec.indexOf("id");
+					ret = QString(query.value(idCol).toInt());
+				}
 			break;
 
 		default:
@@ -481,9 +523,6 @@ int LBooksCatalogue::GetLastId(int db)
 		}
 		
 	}
-	sqlite3_free(errmsg);
-	sqlite3_free_table(&table);
-	sqlite3_close(db);
 	return ret;
 
 }
