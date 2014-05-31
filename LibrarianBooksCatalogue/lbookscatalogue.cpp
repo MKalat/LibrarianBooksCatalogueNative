@@ -123,28 +123,28 @@ void LBooksCatalogue::CreateDB()
 if(db.open())
 {
 		QSqlQuery query(db);
-			bool ok = query.exec("CREATE TABLE lbcmain (id integer primary key autoincrement, tytul TEXT, tytul_oryg TEXT, "
-			"gatunek TEXT, ilosc TEXT, rok_wyd TEXT, wydawnictwo TEXT, jezyk_wydania TEXT, opis TEXT, WL_ImieNazw TEXT, "
-			"WL_Adres TEXT, MZ_Nazwa TEXT, MZ_Adres TEXT, MZ_WWW TEXT, INFO_IloscStr TEXT, INFO_Format TEXT,  "
-			"INFO_Oprawa TEXT, INFO_Ocena TEXT)");
+			bool ok = query.exec("CREATE TABLE lbcmain (id integer primary key autoincrement, tytul varchar (1024), tytul_oryg varchar (1024), "
+			"gatunek varchar (1024), ilosc varchar (1024), rok_wyd varchar (1024), wydawnictwo varchar (1024), jezyk_wydania varchar (1024), opis varchar (1024), WL_ImieNazw varchar (1024), "
+			"WL_Adres varchar (1024), MZ_Nazwa varchar (1024), MZ_Adres varchar (1024), MZ_WWW varchar (1024), INFO_IloscStr varchar (1024), INFO_Format varchar (1024),  "
+			"INFO_Oprawa varchar (1024), INFO_Ocena varchar (1024))");
 		if( !ok )
 		QMessageBox::information(this, "Fail", query.lastError().text());
 
 		QSqlQuery query2(db);
 		ok = query2.exec("CREATE TABLE lbca (id integer primary key autoincrement, id_m integer, "
-			"imie_nazw TEXT, narod TEXT, spec TEXT, rozdz TEXT)");
+			"imie_nazw varchar (1024), narod varchar (1024), spec varchar (1024), rozdz varchar (1024))");
 		if( !ok )
 		QMessageBox::information(this, "Fail", query2.lastError().text());
 		
 		QSqlQuery query3(db);
 				ok = query3.exec("CREATE TABLE lbcp (id integer primary key autoincrement, id_m integer, "
-			"data_wyd TEXT, wyd TEXT, jezyk TEXT, numer_wyd TEXT, kraj_wyd TEXT)");
+			"data_wyd varchar (1024), wyd varchar (1024), jezyk varchar (1024), numer_wyd varchar (1024), kraj_wyd varchar (1024))");
 		if( !ok )
 		QMessageBox::information(this, "Fail", query3.lastError().text());
 		
 		QSqlQuery query4(db);
 				ok = query4.exec("CREATE TABLE lbcb (id integer primary key autoincrement, id_m integer, "
-			"osoba TEXT, data_wyp TEXT, data_odd TEXT, stan_wyp TEXT, stan_odd TEXT)");
+			"osoba varchar (1024), data_wyp varchar (1024), data_odd varchar (1024), stan_wyp varchar (1024), stan_odd varchar (1024))");
 		if( !ok )
 		QMessageBox::information(this, "Fail", query4.lastError().text());
 		db.close();
@@ -441,21 +441,25 @@ void LBooksCatalogue::ReadStartRec()
 if(db.open())
 {
 		QSqlQuery query(db);
-				query.exec("select MIN(id) as min_id from lbcmain");
-		if (query.size() > 0)
-		{
-			QSqlRecord qrec = query.record();
-			int idCol = qrec.indexOf("min_id");
-			
-			cur_id = query.value(idCol).toInt();
-			ReadRec(0,0);
-		}
-		else
-		{
-			QMessageBox::information(this,"FAIL read start rec", "Fail query size 0");
-		}
-		db.close();
+			bool ok = query.exec("SELECT * FROM lbcmain");
+			if (ok)
+			{
+				QSqlRecord qrec = query.record();
+				int idCol = qrec.indexOf("id");
+				query.seek(0);
+				cur_id = query.value(idCol).toInt();
+				ReadRec(0,0);
+			}
+			else
+			{
+				QMessageBox::information(this,"FAIL read start rec", query.lastError().text());
+			}
+			db.close();
 	
+}
+else
+{
+	QMessageBox::information(this,"FAIL read start rec", "Fail cant open db");
 }
 }
 
@@ -468,7 +472,7 @@ void LBooksCatalogue::AddNewRec(int id)
 if(db.open())
 {
 		QSqlQuery query(db);
-				bool ok = query.exec("INSERT INTO lbcmain (tytul , tytul_oryg , gatunek , ilosc , rok_wyd , wydawnictwo , jezyk_wydania , opis , WL_ImieNazw , WL_Adres , MZ_Nazwa , MZ_Adres , MZ_WWW , INFO_IloscStr , INFO_Format , INFO_Oprawa , INFO_Ocena )  VALUES ( \" " + this->ui.lineEdit_Tytul->text() + " \" , \" " + this->ui.lineEdit_TytulOryg->text() + " \" , \" " +
+		bool ok = query.exec("INSERT INTO lbcmain (tytul , tytul_oryg , gatunek , ilosc , rok_wyd , wydawnictwo , jezyk_wydania , opis , WL_ImieNazw , WL_Adres , MZ_Nazwa , MZ_Adres , MZ_WWW , INFO_IloscStr , INFO_Format , INFO_Oprawa , INFO_Ocena )  VALUES (\"" + this->ui.lineEdit_Tytul->text() + " \" , \" " + this->ui.lineEdit_TytulOryg->text() + " \" , \" " +
 			this->ui.lineEdit_Gatunek->text() + " \" , \" " + this->ui.lineEdit_Count->text() + " \" , \" " + 
 			this->ui.lineEdit_DatePub->text() + " \" , \" " + this->ui.lineEdit_Publisher->text() + " \" , \" " +
 			this->ui.lineEdit_PubLang->text() + " \" , \" " + this->ui.textEdit_Opis->toPlainText() + " \" , \" " +
