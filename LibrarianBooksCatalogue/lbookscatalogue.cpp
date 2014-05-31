@@ -119,16 +119,16 @@ if(db.open())
 				query.exec("CREATE TABLE lbcmain (id int primary key asc autoincrement, tytul TEXT, tytul_oryg TEXT, "
 			"gatunek TEXT, ilosc TEXT, rok_wyd TEXT, wydawnictwo TEXT, jezyk_wydania TEXT, opis TEXT, WL_ImieNazw TEXT, "
 			"WL_Adres TEXT, MZ_Nazwa TEXT, MZ_Adres TEXT, MZ_WWW TEXT, INFO_IloscStr TEXT, INFO_Format TEXT,  "
-			"INFO_Oprawa TEXT, INFO_Ocena TEXT");
+			"INFO_Oprawa TEXT, INFO_Ocena TEXT)");
 		QSqlQuery query2(db);
 				query2.exec("CREATE TABLE lbca (id int primaty key asc autoincrement, id_m int, "
-			"imie_nazw TEXT, narod TEXT, spec TEXT, rozdz TEXT");
+			"imie_nazw TEXT, narod TEXT, spec TEXT, rozdz TEXT)");
 		QSqlQuery query3(db);
 				query3.exec("CREATE TABLE lbcp (id int primary key asc autoincrement, id_m int, "
-			"data_wyd TEXT, wyd TEXT, jezyk TEXT, numer_wyd TEXT, kraj_wyd TEXT");
+			"data_wyd TEXT, wyd TEXT, jezyk TEXT, numer_wyd TEXT, kraj_wyd TEXT)");
 		QSqlQuery query4(db);
 				query4.exec("CREATE TABLE lbcb (id int primary key asc autoincrement, id_m int, "
-			"osoba TEXT, data_wyp TEXT, data_odd TEXT, stan_wyp TEXT, stan_odd TEXT");
+			"osoba TEXT, data_wyp TEXT, data_odd TEXT, stan_wyp TEXT, stan_odd TEXT)");
 		
 
 	}
@@ -430,7 +430,7 @@ if(db.open())
 	
 	
 }
-
+}
 
 
 void LBooksCatalogue::AddNewRec(int id)
@@ -462,14 +462,16 @@ int LBooksCatalogue::GetLastId(int table)
 {
 	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 	db.setDatabaseName("lbcmain.db");
+	int ret = 0;
 
 if(db.open())
 {
+		QSqlQuery query(db);
 		switch (table)
 		{
 		case 0: // MAIN
 			
-				QSqlQuery query(db);
+				
 				query.exec("select MAX(id) as max_id from lbcmain");
 				if (query.size()> 0)
 				{
@@ -477,42 +479,42 @@ if(db.open())
 					
 					int idCol = qrec.indexOf("max_id");
 			
-					ret = QString(query.value(idCol).toInt());
+					ret = query.value(idCol).toInt();
 				}
 			break;
 		case 1: 
 			// Authors
-				QSqlQuery query(db);
+				
 				query.exec("select MAX(id) as max_id from lbca");
 				if (query.size()> 0)
 				{
-					QSqlRecord qrec = query.record();
-					int idCol = qrec.indexOf("max_id");
+					QSqlRecord qrec2 = query.record();
+					int idCol = qrec2.indexOf("max_id");
 				
-					ret = QString(query.value(idCol).toInt());
+					ret = query.value(idCol).toInt();
 				}
 			break;
 			
 
 		case 2: // Wydania
-				QSqlQuery query(db);
+				
 				query.exec("select MAX(id) as max_id from lbcp");
 				if (query.size()> 0)
 				{
-					QSqlRecord qrec = query.record();
-					int idCol = qrec.indexOf("max");
-				ret = QString(query.value(idCol).toInt());
+					QSqlRecord qrec3 = query.record();
+					int idCol = qrec3.indexOf("max");
+				ret = query.value(idCol).toInt();
 			}
 			break;
 
 		case 3:  // BIBLIO
-				QSqlQuery query(db);
+				
 				query.exec("select MAX(id) as max_id from lbcb");
 				if (query.size()> 0)
 				{
-					QSqlRecord qrec = query.record();
-					int idCol = qrec.indexOf("max_id");
-					ret = QString(query.value(idCol).toInt());
+					QSqlRecord qrec4 = query.record();
+					int idCol = qrec4.indexOf("max_id");
+					ret = query.value(idCol).toInt();
 				}
 			break;
 
@@ -622,7 +624,7 @@ if(db.open())
 		}
 
 
-		CloseDB(db);
+		
 	}
 
 }
@@ -732,12 +734,14 @@ void LBooksCatalogue::CreateDefConf()
 
 void LBooksCatalogue::DelRec(int id)
 {
-	QSqlDatabase db = OpenDB();
-	if (db.isValid())
-	{
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
 		QSqlQuery query(db);
 		query.exec("delete from lbcmain where id=" + QString(cur_id));
-		CloseDB(db);
+		
 	}
 	ReadStartRec();
 }
@@ -745,9 +749,11 @@ void LBooksCatalogue::DelRec(int id)
 void LBooksCatalogue::DelRecDB(int id, int table)
 {
 	
-	QSqlDatabase db = OpenDB();
-	if (db.isValid())
-	{
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
 		if (table == 0) // Authors
 		{
 			QList<QTableWidgetItem*> item = this->ui.tableWidget_Autorzy->selectedItems();
@@ -768,17 +774,32 @@ void LBooksCatalogue::DelRecDB(int id, int table)
 			query.exec("delete from lbcb where id=" + item[0]->text());
 
 		}
-		CloseDB(db);
-	}
+		
+}
 }
 
 void LBooksCatalogue::CalcRecInfo()
 {
-	if (db.isValid())
-	{
-		if (query.isActive())
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
+		QSqlQuery query(db);
+				query.exec("SELECT id from lbcmain");
+				QSqlRecord qrec = query.record();
+		int idCol = qrec.indexOf("id");
+		if (query.size() > 0)
 		{
-			this->ui.lineEdit__RecNo->setText(QString(query.at()));
+			for (int x = 0; x < query.size(); x++)
+			{
+				if (cur_id == query.value(idCol).toInt())
+				{
+					this->ui.lineEdit__RecNo->setText(QString(x));
+				}
+				
+
+			}
 			this->ui.lineEdit_RecCount->setText(QString(query.size()));
 
 		}
@@ -804,15 +825,41 @@ if(db.open())
 		int idCol = qrec.indexOf("id");
 		for (int x = 0; x < query.size(); x++)
 		{
-			
+			if (cur_id == query.value(idCol).toInt())
+			{
+				query.next();
+				return query.value(idCol).toInt();
+			}
+			query.next();
 
 		}
-
+}
 
 }
 
 int LBooksCatalogue::FindPrevId()
 {
-	//TODO: napisac znajdowanie id poprzedniego rekordu
+	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
+		QSqlQuery query(db);
+				query.exec("SELECT id from lbcmain");
+				QSqlRecord qrec = query.record();
+		int idCol = qrec.indexOf("id");
+		for (int x = 0; x < query.size(); x++)
+		{
+			if (cur_id == query.value(idCol).toInt())
+			{
+				query.previous();
+				return query.value(idCol).toInt();
+			}
+			query.next();
+
+		}
+
+
+}
 
 }
