@@ -26,6 +26,7 @@ void LBooksCatalogue::BTN_FIRST_CLICKED()
 	{
 		SaveRec(0);
 		ReadStartRec();
+		CalcRecInfo();
 	}
 
 }
@@ -36,6 +37,7 @@ void LBooksCatalogue::BTN_NEXT_CLICKED()
 		SaveRec(0);
 		cur_id = FindNextId();
 		ReadRec(0,0);
+		CalcRecInfo();
 	}
 	
 
@@ -47,6 +49,7 @@ void LBooksCatalogue::BTN_PREV_CLICKED()
 		SaveRec(0);
 		cur_id = FindPrevId();
 		ReadRec(0,0);
+		CalcRecInfo();
 	}
 }
 
@@ -57,6 +60,7 @@ void LBooksCatalogue::BTN_LAST_CLICKED()
 		SaveRec(0);
 		cur_id = GetLastId(0);
 		ReadRec(0,0);
+		CalcRecInfo();
 	}
 
 }
@@ -82,6 +86,8 @@ void LBooksCatalogue::BTN_SAVE_CLICKED()
 	{
 		SaveRec(cur_id);
 	}
+	ReadRec(0,0);
+	CalcRecInfo();
 
 }
 
@@ -91,6 +97,7 @@ void LBooksCatalogue::BTN_DEL_CLICKED()
 	{
 		SaveRec(0);
 		DelRec(0);
+		CalcRecInfo();
 	}
 
 }
@@ -116,22 +123,37 @@ void LBooksCatalogue::CreateDB()
 if(db.open())
 {
 		QSqlQuery query(db);
-				query.exec("CREATE TABLE lbcmain (id int primary key asc autoincrement, tytul TEXT, tytul_oryg TEXT, "
+			bool ok = query.exec("CREATE TABLE lbcmain (id integer primary key autoincrement, tytul TEXT, tytul_oryg TEXT, "
 			"gatunek TEXT, ilosc TEXT, rok_wyd TEXT, wydawnictwo TEXT, jezyk_wydania TEXT, opis TEXT, WL_ImieNazw TEXT, "
 			"WL_Adres TEXT, MZ_Nazwa TEXT, MZ_Adres TEXT, MZ_WWW TEXT, INFO_IloscStr TEXT, INFO_Format TEXT,  "
 			"INFO_Oprawa TEXT, INFO_Ocena TEXT)");
+		if( !ok )
+		QMessageBox::information(this, "Fail", query.lastError().text());
+
 		QSqlQuery query2(db);
-				query2.exec("CREATE TABLE lbca (id int primaty key asc autoincrement, id_m int, "
+		ok = query2.exec("CREATE TABLE lbca (id integer primary key autoincrement, id_m integer, "
 			"imie_nazw TEXT, narod TEXT, spec TEXT, rozdz TEXT)");
-		QSqlQuery query3(db);
-				query3.exec("CREATE TABLE lbcp (id int primary key asc autoincrement, id_m int, "
-			"data_wyd TEXT, wyd TEXT, jezyk TEXT, numer_wyd TEXT, kraj_wyd TEXT)");
-		QSqlQuery query4(db);
-				query4.exec("CREATE TABLE lbcb (id int primary key asc autoincrement, id_m int, "
-			"osoba TEXT, data_wyp TEXT, data_odd TEXT, stan_wyp TEXT, stan_odd TEXT)");
+		if( !ok )
+		QMessageBox::information(this, "Fail", query2.lastError().text());
 		
+		QSqlQuery query3(db);
+				ok = query3.exec("CREATE TABLE lbcp (id integer primary key autoincrement, id_m integer, "
+			"data_wyd TEXT, wyd TEXT, jezyk TEXT, numer_wyd TEXT, kraj_wyd TEXT)");
+		if( !ok )
+		QMessageBox::information(this, "Fail", query3.lastError().text());
+		
+		QSqlQuery query4(db);
+				ok = query4.exec("CREATE TABLE lbcb (id integer primary key autoincrement, id_m integer, "
+			"osoba TEXT, data_wyp TEXT, data_odd TEXT, stan_wyp TEXT, stan_odd TEXT)");
+		if( !ok )
+		QMessageBox::information(this, "Fail", query4.lastError().text());
+		db.close();
 
 	}
+else
+{
+	QMessageBox::information(this,"FAIL", "Fail conn not established");
+}
 }
 
 void LBooksCatalogue::ReadRec(int id, int dir)
@@ -166,7 +188,7 @@ if(db.open())
 		int INFO_Oprawa_Col = qrec.indexOf("INFO_Oprawa");
 		int INFO_Ocena_Col = qrec.indexOf("INFO_Ocena");
 
-		query.next();
+		
 
 			this->ui.lineEdit_Tytul->setText(QString(query.value(titleCol).toString()));
 			this->ui.lineEdit_TytulOryg->setText(QString(query.value(title_origCol).toString()));
@@ -290,7 +312,7 @@ if(db.open())
 				
 				}
 			CalcRecInfo();
-		
+		db.close();
 		
 	}
 	
@@ -323,7 +345,7 @@ if(db.open())
 				this->ui.lineEdit_INFO_Format->text() + ", INFO_Oprawa=" + this->ui.lineEdit_INFO_Oprawa->text() + 
 				", INFO_Cena=" + this->ui.lineEdit_INFO_Cena->text() + " where id=" + QString(cur_id));
 			
-
+			db.close();
 			
 				
 				UpdateDB(cur_id); // update-uj tabele podrzêdne
@@ -405,6 +427,7 @@ if(db.open())
 				
 			}
 		}
+		db.close();
 	}
 	
 
@@ -419,7 +442,7 @@ if(db.open())
 {
 		QSqlQuery query(db);
 				query.exec("select MIN(id) as min_id from lbcmain");
-		if (query.size()> 0)
+		if (query.size() > 0)
 		{
 			QSqlRecord qrec = query.record();
 			int idCol = qrec.indexOf("min_id");
@@ -427,7 +450,11 @@ if(db.open())
 			cur_id = query.value(idCol).toInt();
 			ReadRec(0,0);
 		}
-	
+		else
+		{
+			QMessageBox::information(this,"FAIL read start rec", "Fail query size 0");
+		}
+		db.close();
 	
 }
 }
@@ -441,20 +468,27 @@ void LBooksCatalogue::AddNewRec(int id)
 if(db.open())
 {
 		QSqlQuery query(db);
-				query.exec("INSERT INTO main.lbcmain "
-			" VALUES (" + this->ui.lineEdit_Tytul->text() + " , " + this->ui.lineEdit_TytulOryg->text() + " , " +
-			this->ui.lineEdit_Gatunek->text() + " , " + this->ui.lineEdit_Count->text() + " , " + 
-			this->ui.lineEdit_DatePub->text() + " , " + this->ui.lineEdit_Publisher->text() + " , " +
-			this->ui.lineEdit_PubLang->text() + " , " + this->ui.textEdit_Opis->toPlainText() + " , " +
-			this->ui.lineEdit_WL_Imienazw->text() + " , " + this->ui.lineEdit_WL_Adres->text() + " , " +
-			this->ui.lineEdit_MZ_Nazwa->text() + " , " +
-			this->ui.lineEdit__MZ_Adres->text() + " , " + this->ui.lineEdit_MZ_WWW->text() + " , " +
-			this->ui.lineEdit_INFO_PageCount->text() + " , " + this->ui.lineEdit_INFO_Format->text() + " , " +
-			this->ui.lineEdit_INFO_Oprawa->text() + " , " + this->ui.lineEdit_INFO_Cena->text() + " )");
-		
+				bool ok = query.exec("INSERT INTO lbcmain (tytul , tytul_oryg , gatunek , ilosc , rok_wyd , wydawnictwo , jezyk_wydania , opis , WL_ImieNazw , WL_Adres , MZ_Nazwa , MZ_Adres , MZ_WWW , INFO_IloscStr , INFO_Format , INFO_Oprawa , INFO_Ocena )  VALUES ( \" " + this->ui.lineEdit_Tytul->text() + " \" , \" " + this->ui.lineEdit_TytulOryg->text() + " \" , \" " +
+			this->ui.lineEdit_Gatunek->text() + " \" , \" " + this->ui.lineEdit_Count->text() + " \" , \" " + 
+			this->ui.lineEdit_DatePub->text() + " \" , \" " + this->ui.lineEdit_Publisher->text() + " \" , \" " +
+			this->ui.lineEdit_PubLang->text() + " \" , \" " + this->ui.textEdit_Opis->toPlainText() + " \" , \" " +
+			this->ui.lineEdit_WL_Imienazw->text() + " \" , \" " + this->ui.lineEdit_WL_Adres->text() + " \" ,\" " +
+			this->ui.lineEdit_MZ_Nazwa->text() + " \" , \" " +
+			this->ui.lineEdit__MZ_Adres->text() + " \" , \" " + this->ui.lineEdit_MZ_WWW->text() + " \" , \" " +
+			this->ui.lineEdit_INFO_PageCount->text() + " \" , \" " + this->ui.lineEdit_INFO_Format->text() + " \" , \" " +
+			this->ui.lineEdit_INFO_Oprawa->text() + " \" , \" " + this->ui.lineEdit_INFO_Cena->text() + " \" )");
+
+		if( !ok )
+		QMessageBox::information(this, "Fail Add new rec", query.lastError().text());
+		db.close();
 		InsertDB(GetLastId(0));
+
 		
 		
+}
+else
+{
+	QMessageBox::information(this, "Fail Add new rec","Cant open db" );
 }
 }
 
@@ -523,7 +557,7 @@ if(db.open())
 			break;
 
 		}
-		
+		db.close();
 	}
 	return ret;
 
@@ -548,8 +582,10 @@ if(db.open())
 					qsl << item->text();
 				}
 				QSqlQuery query(db);
-				query.exec("insert into lbca(id_m, imie_nazw, narod, spec, rozdz)"
+				bool ok = query.exec("insert into lbca(id_m, imie_nazw, narod, spec, rozdz)"
 					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ")");
+				if( !ok )
+				QMessageBox::information(this, "Fail lbca", query.lastError().text());
 			}
 
 		}
@@ -565,8 +601,10 @@ if(db.open())
 					qsl << item->text();
 				}
 				QSqlQuery query(db);
-				query.exec("insert into lbcp(id_m int, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd)"
+				bool ok = query.exec("insert into lbcp(id_m int, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd)"
 					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ", " + qsl[4] + ")");
+				if( !ok )
+				QMessageBox::information(this, "Fail lbcp", query.lastError().text());
 			}
 		}
 
@@ -581,11 +619,14 @@ if(db.open())
 					qsl << item->text();
 				}
 				QSqlQuery query(db);
-				query.exec("insert into lbcb(id_m, osoba, data_wyp, data_odd, stan_wyp, stan_odd"
+				bool ok = query.exec("insert into lbcb(id_m, osoba, data_wyp, data_odd, stan_wyp, stan_odd"
 					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ", " + qsl[4] + ")");
+				if( !ok )
+				QMessageBox::information(this, "Fail lbcb", query.lastError().text());
 			}
 
 		}
+		db.close();
 	}
 
 }
@@ -623,7 +664,7 @@ if(db.open())
 			
 		}
 
-
+	db.close();
 		
 	}
 
@@ -741,8 +782,9 @@ if(db.open())
 {
 		QSqlQuery query(db);
 		query.exec("delete from lbcmain where id=" + QString(cur_id));
-		
-	}
+		db.close();
+}
+	
 	ReadStartRec();
 }
 
@@ -774,7 +816,7 @@ if(db.open())
 			query.exec("delete from lbcb where id=" + item[0]->text());
 
 		}
-		
+		db.close();
 }
 }
 
@@ -809,6 +851,7 @@ if(db.open())
 			this->ui.lineEdit_RecCount->setText("0");
 
 		}
+		db.close();
 	}
 }
 
@@ -833,6 +876,7 @@ if(db.open())
 			query.next();
 
 		}
+		db.close();
 }
 
 }
@@ -858,6 +902,7 @@ if(db.open())
 			query.next();
 
 		}
+		db.close();
 
 
 }
