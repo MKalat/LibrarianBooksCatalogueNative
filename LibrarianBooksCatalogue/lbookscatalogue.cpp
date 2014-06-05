@@ -942,7 +942,16 @@ if(db.open())
 				if (cur_id == query.value(idCol).toInt())
 				{
 					query.next();
-					return query.value(idCol).toInt();
+					int ret = query.value(idCol).toInt();
+					if (ret != 0)
+					{
+						return ret;
+					}
+					else
+					{
+						query.first();
+						return query.value(idCol).toInt();
+					}
 				}
 				
 			}
@@ -965,13 +974,22 @@ if(db.open())
 		{
 			QSqlRecord qrec = query.record();
 			int idCol = qrec.indexOf("id");
-			query.last();
-			while (query.previous())
+			//query.last();
+			while (query.next())
 			{
 				if (cur_id == query.value(idCol).toInt())
 				{
 					query.previous();
-					return query.value(idCol).toInt();
+					int ret = query.value(idCol).toInt();
+					if (ret != 0)
+					{
+						return ret;
+					}
+					else
+					{
+						query.first();
+						return query.value(idCol).toInt();
+					}
 				}
 				
 
