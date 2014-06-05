@@ -86,6 +86,7 @@ void LBooksCatalogue::BTN_SAVE_CLICKED()
 	{
 		SaveRec(cur_id);
 	}
+	cur_id = GetLastId(0);
 	ReadRec(0,0);
 	CalcRecInfo();
 
@@ -193,8 +194,8 @@ if(db.open())
 		if (ok)
 		{
 		query.next();
-			QMessageBox::information(this,"cur_id VALUE ",cur_id_str);
-			QMessageBox::information(this,"TITLE VALUE ", query.value(titleCol).toString());
+			//QMessageBox::information(this,"cur_id VALUE ",cur_id_str);
+			//QMessageBox::information(this,"TITLE VALUE ", query.value(titleCol).toString());
 			this->ui.lineEdit_Tytul->setText(QString(query.value(titleCol).toString()));
 			this->ui.lineEdit_TytulOryg->setText(QString(query.value(title_origCol).toString()));
 			this->ui.lineEdit_Gatunek->setText(QString(query.value(genreCol).toString()));
@@ -232,6 +233,7 @@ if(db.open())
 				{
 						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,0);
 						item->setText(query2.value(idCol).toString());
+						QMessageBox::information(this,"LBCA ID VALUE ", query.value(idCol).toString());
 						QTableWidgetItem *item2 = this->ui.tableWidget_Autorzy->item(x,1);
 						item2->setText(query2.value(idmCol).toString());
 						QTableWidgetItem *item3 = this->ui.tableWidget_Autorzy->item(x,2);
@@ -370,18 +372,23 @@ if(db.open())
 			QString cur_id_str;
 			cur_id_str.setNum(cur_id);
 			QSqlQuery query(db);
-				query.exec("update lbcmain set tytul=" + this->ui.lineEdit_Tytul->text() + ", tytul_oryg=" +
-				this->ui.lineEdit_TytulOryg->text() + ", gatunek=" + this->ui.lineEdit_Gatunek->text() + 
-				", ilosc=" + this->ui.lineEdit_Count->text() + ", rok_wyd=" + this->ui.lineEdit_DatePub->text() + 
-				", wydawnictwo=" + this->ui.lineEdit_Publisher->text() + ", jezyk_wydania=" + this->ui.lineEdit_PubLang->text() +
-				", opis=" + this->ui.textEdit_Opis->toPlainText() + ", WL_ImieNazw=" + this->ui.lineEdit_WL_Imienazw->text() +
-				", WL_Adres=" + this->ui.lineEdit_WL_Adres->text() + 
-				", MZ_Nazwa=" + this->ui.lineEdit_MZ_Nazwa->text()+ ", MZ_Adres=" + this->ui.lineEdit__MZ_Adres->text() + 
-				", MZ_WWW=" + this->ui.lineEdit_MZ_WWW->text() +  
-				", INFO_IloscStr=" + this->ui.lineEdit_INFO_PageCount->text() + ", INFO_Format=" +
-				this->ui.lineEdit_INFO_Format->text() + ", INFO_Oprawa=" + this->ui.lineEdit_INFO_Oprawa->text() + 
-				", INFO_Cena=" + this->ui.lineEdit_INFO_Cena->text() + " where id = '" + cur_id_str + "'");
-			
+			bool ok = query.exec("update lbcmain set tytul = '" + this->ui.lineEdit_Tytul->text() + "', tytul_oryg = '" +
+				this->ui.lineEdit_TytulOryg->text() + "', gatunek = '" + this->ui.lineEdit_Gatunek->text() + 
+				"', ilosc = '" + this->ui.lineEdit_Count->text() + "', rok_wyd = '" + this->ui.lineEdit_DatePub->text() + 
+				"', wydawnictwo = '" + this->ui.lineEdit_Publisher->text() + "', jezyk_wydania = '" + this->ui.lineEdit_PubLang->text() +
+				"', opis = '" + this->ui.textEdit_Opis->toPlainText() + "', WL_ImieNazw = '" + this->ui.lineEdit_WL_Imienazw->text() +
+				"', WL_Adres = '" + this->ui.lineEdit_WL_Adres->text() + 
+				"', MZ_Nazwa = '" + this->ui.lineEdit_MZ_Nazwa->text()+ "', MZ_Adres = '" + this->ui.lineEdit__MZ_Adres->text() + 
+				"', MZ_WWW = '" + this->ui.lineEdit_MZ_WWW->text() +  
+				"', INFO_IloscStr = '" + this->ui.lineEdit_INFO_PageCount->text() + "', INFO_Format = '" +
+				this->ui.lineEdit_INFO_Format->text() + "', INFO_Oprawa = '" + this->ui.lineEdit_INFO_Oprawa->text() + 
+				"', INFO_OCena = '" + this->ui.lineEdit_INFO_Cena->text() + "' where id = '" + cur_id_str + "'");
+			if (!ok)
+			{
+				QMessageBox::information(this, "Fail REC lbcmain SAVE", query.lastError().text());
+			}
+
+
 			db.close();
 			
 				
@@ -423,8 +430,8 @@ if(db.open())
 					qsl << item->text();
 				}
 				QSqlQuery query(db);
-				query.exec("update lbca set imie_nazw=" + qsl[2] + ", narod=" + qsl[3] + 
-					", spec=" + qsl[4] + ", rozdz=" + qsl[5] + "where id = '" + qsl[0] + "'");
+				query.exec("update lbca set imie_nazw = '" + qsl[2] + "', narod = '" + qsl[3] + 
+					"', spec = '" + qsl[4] + "', rozdz = '" + qsl[5] + "' where id = '" + qsl[0] + "'");
 				
 			}
 
@@ -442,8 +449,8 @@ if(db.open())
 					qsl << item->text();
 				}
 				QSqlQuery query(db);
-				query.exec("update lbcp set data_wyd=" + qsl[2] + ", wydawnictwo=" + qsl[3] +
-					", jezyk=" + qsl[4] + ", numer_wyd=" + qsl[5] + ", kraj_wyd=" + qsl[6] + " where id = '" + qsl[0] + "'");
+				query.exec("update lbcp set data_wyd = '" + qsl[2] + "', wydawnictwo = '" + qsl[3] +
+					"', jezyk = '" + qsl[4] + "', numer_wyd = '" + qsl[5] + "', kraj_wyd = '" + qsl[6] + "' where id = '" + qsl[0] + "'");
 				
 			}
 		}
@@ -459,8 +466,8 @@ if(db.open())
 					qsl << item->text();
 				}
 				QSqlQuery query(db);
-				query.exec("update lbcb set osoba=" + qsl[2] + ", data_wyp=" + qsl[3] + 
-					", data_odd=" + qsl[4] + ", stan_wyp=" + qsl[5] + ", stan_odd=" + qsl[6] + " where id = '" + qsl[0] + "'");
+				query.exec("update lbcb set osoba = '" + qsl[2] + "', data_wyp = '" + qsl[3] + 
+					"', data_odd = '" + qsl[4] + "', stan_wyp = '" + qsl[5] + "', stan_odd = '" + qsl[6] + "' where id = '" + qsl[0] + "'");
 				
 			}
 		}
@@ -530,7 +537,7 @@ if(db.open())
 		if( !ok )
 		QMessageBox::information(this, "Fail Add new rec", query.lastError().text());
 		db.close();
-		InsertDB(GetLastId(0));
+		//InsertDB(GetLastId(0));
 
 		
 		
@@ -703,27 +710,42 @@ if(db.open())
 {
 		if (table == 0) // Authors
 		{	
-			
+				QString id_m_str;
+				id_m_str.setNum(id);
 				QSqlQuery query(db);
-				query.exec("insert into lbca(id_m, imie_nazw, narod, spec, rozdz)"
-					"VALUES(" + QString(id) + ", " ", " ", " ", " ")");
+				bool ok = query.exec("insert into lbca (id_m, imie_nazw, narod, spec, rozdz)"
+					"VALUES(" + id_m_str + ",' ',' ',' ' , ' ')");
+				if (!ok)
+				{
+					QMessageBox::information(this, "Fail new rec lbca", query.lastError().text());
+				}
 			
 
 		}
 		else if (table == 1) // PUB
 		{
-			
+				QString id_m_str;
+				id_m_str.setNum(id);
 				QSqlQuery query(db);
-				query.exec("insert into lbcp(id_m int, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd)"
-					"VALUES(" + QString(id) + ", " ", " ", " ", " ", " ")");
+				bool ok = query.exec("insert into lbcp (id_m , data_wyd, wyd, jezyk, numer_wyd, kraj_wyd)"
+					"VALUES(" + id_m_str + ",' ',' ',' ' , ' ' ,' ' )");
+				if (!ok)
+				{
+					QMessageBox::information(this, "Fail new rec lbcp", query.lastError().text());
+				}
 			
 		}
 		else if (table == 2) // BIBLIO
 		{
-			
+				QString id_m_str;
+				id_m_str.setNum(id);
 				QSqlQuery query(db);
-				query.exec("insert into lbcb(id_m, osoba, data_wyp, data_odd, stan_wyp, stan_odd"
-					"VALUES(" + QString(id) + ", " ", " ", " ", " ", " ")");
+				bool ok = query.exec("insert into lbcb (id_m, osoba, data_wyp, data_odd, stan_wyp, stan_odd)"
+					"VALUES(" + id_m_str + ",' ',' ',' ' , ' ' ,' ' )");
+				if (!ok)
+				{
+					QMessageBox::information(this, "Fail new rec lbcb", query.lastError().text());
+				}
 			
 		}
 
@@ -781,7 +803,7 @@ void LBooksCatalogue::BTN_A_DEL_CLICKED()
 
 void LBooksCatalogue::BTN_A_SAVE_CLICKED()
 {
-
+	UpdateDB(cur_id);
 
 }
 
@@ -798,7 +820,7 @@ void LBooksCatalogue::BTN_B_DEL_CLICKED()
 
 void LBooksCatalogue::BTN_B_SAVE_CLICKED()
 {
-
+	UpdateDB(cur_id);
 }
 
 void LBooksCatalogue::BTN_W_NEW_CLICKED()
@@ -816,7 +838,7 @@ void LBooksCatalogue::BTN_W_DEL_CLICKED()
 
 void LBooksCatalogue::BTN_W_SAVE_CLICKED()
 {
-
+	UpdateDB(cur_id);
 
 }
 
