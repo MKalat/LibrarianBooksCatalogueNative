@@ -206,7 +206,7 @@
      <locale language="English" country="UnitedStates"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="TAB_OPIS">
      <attribute name="title">
@@ -322,8 +322,8 @@
      <widget class="QPushButton" name="pushButton_AUT_NOWY">
       <property name="geometry">
        <rect>
-        <x>6</x>
-        <y>306</y>
+        <x>8</x>
+        <y>308</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -411,8 +411,8 @@
      <widget class="QPushButton" name="pushButton_WYD_NOWY">
       <property name="geometry">
        <rect>
-        <x>6</x>
-        <y>510</y>
+        <x>8</x>
+        <y>512</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -432,6 +432,32 @@
       </property>
       <property name="text">
        <string>Delete</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>84</x>
+        <y>308</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_PUB_SAVE">
+      <property name="geometry">
+       <rect>
+        <x>84</x>
+        <y>512</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save</string>
       </property>
      </widget>
     </widget>
@@ -775,8 +801,8 @@
      <widget class="QPushButton" name="pushButton_BIBLIO_Nowy">
       <property name="geometry">
        <rect>
-        <x>6</x>
-        <y>510</y>
+        <x>8</x>
+        <y>512</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -796,6 +822,19 @@
       </property>
       <property name="text">
        <string>Delete</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_B_SAVE">
+      <property name="geometry">
+       <rect>
+        <x>84</x>
+        <y>512</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save</string>
       </property>
      </widget>
     </widget>
@@ -1290,6 +1329,54 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>LibrarianBooksCatalogue</receiver>
+   <slot>BTN_A_SAVE_CLICKED()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>144</x>
+     <y>441</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>377</x>
+     <y>65</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_PUB_SAVE</sender>
+   <signal>clicked()</signal>
+   <receiver>LibrarianBooksCatalogue</receiver>
+   <slot>BTN_W_SAVE_CLICKED()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>651</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>422</x>
+     <y>32</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_B_SAVE</sender>
+   <signal>clicked()</signal>
+   <receiver>LibrarianBooksCatalogue</receiver>
+   <slot>BTN_B_SAVE_CLICKED()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>652</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>409</x>
+     <y>46</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>BTN_FIRST_CLICKED()</slot>
@@ -1305,5 +1392,8 @@
   <slot>BTN_W_DEL_CLICKED()</slot>
   <slot>BTN_B_NEW_CLICKED()</slot>
   <slot>BTN_B_DEL_CLICKED()</slot>
+  <slot>BTN_A_SAVE_CLICKED()</slot>
+  <slot>BTN_W_SAVE_CLICKED()</slot>
+  <slot>BTN_B_SAVE_CLICKED()</slot>
  </slots>
 </ui>

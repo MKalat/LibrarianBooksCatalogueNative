@@ -769,17 +769,8 @@ void LBooksCatalogue::ClearCtrls()
 
 void LBooksCatalogue::BTN_A_NEW_CLICKED()
 {
-	AddAutor a_form(this);
-	if (a_form.exec() == QDialog::Accepted)
-	{
-		// data entered - prepere for copy string list with params
-		InsertRecDB(cur_id,0);
-	}
-	else
-	{
-		// discard changes  do nothing
-	}
-
+	InsertRecDB(cur_id,0);
+	
 }
 
 void LBooksCatalogue::BTN_A_DEL_CLICKED()
@@ -788,18 +779,15 @@ void LBooksCatalogue::BTN_A_DEL_CLICKED()
 
 }
 
+void LBooksCatalogue::BTN_A_SAVE_CLICKED()
+{
+
+
+}
+
 void LBooksCatalogue::BTN_B_NEW_CLICKED()
 {
-	AddBiblio b_form(this);
-	if (b_form.exec() == QDialog::Accepted)
-	{
-		// data entered - prepere for copy string list with params
 	InsertRecDB(cur_id,2);
-	}
-	else
-	{
-		// discard changes  do nothing
-	}
 }
 
 void LBooksCatalogue::BTN_B_DEL_CLICKED()
@@ -808,18 +796,16 @@ void LBooksCatalogue::BTN_B_DEL_CLICKED()
 
 }
 
+void LBooksCatalogue::BTN_B_SAVE_CLICKED()
+{
+
+}
+
 void LBooksCatalogue::BTN_W_NEW_CLICKED()
 {
-	AddPub p_form(this);
-	if (p_form.exec() == QDialog::Accepted)
-	{
-		// data entered - prepere for copy string list with params
-		InsertRecDB(cur_id,1);
-	}
-	else
-	{
-		// discard changes  do nothing
-	}
+	
+	InsertRecDB(cur_id,1);
+	
 
 }
 
@@ -828,7 +814,11 @@ void LBooksCatalogue::BTN_W_DEL_CLICKED()
 	DelRecDB(0,1);
 }
 
+void LBooksCatalogue::BTN_W_SAVE_CLICKED()
+{
 
+
+}
 
 void LBooksCatalogue::CreateDefConf()
 {
@@ -843,8 +833,16 @@ void LBooksCatalogue::DelRec(int id)
 
 if(db.open())
 {
+		QString id_str;
+		id_str.setNum(cur_id);
 		QSqlQuery query(db);
-		query.exec("delete from lbcmain where id=" + QString(cur_id));
+		query.exec("delete from lbcmain where id = '" + id_str + "'");
+		QSqlQuery query2(db);
+		query2.exec("delete from lbca where id_m = '" + id_str + "'");
+		QSqlQuery query3(db);
+		query3.exec("delete from lbcp where id_m = '" + id_str + "'");
+		QSqlQuery query4(db);
+		query4.exec("delete from lbcb where id_m = '" + id_str + "'");
 		db.close();
 }
 	
@@ -863,20 +861,20 @@ if(db.open())
 		{
 			QList<QTableWidgetItem*> item = this->ui.tableWidget_Autorzy->selectedItems();
 			QSqlQuery query(db);
-			query.exec("delete from lbca where id=" + item[0]->text());
+			query.exec("delete from lbca where id = '" + item[0]->text() + "'");
 			
 		}
 		else if (table == 1) // Pub
 		{
 			QList<QTableWidgetItem*> item = this->ui.tableWidget_Wydania->selectedItems();
 			QSqlQuery query(db);
-			query.exec("delete from lbcp where id=" + item[0]->text());
+			query.exec("delete from lbcp where id = '" + item[0]->text() + "'");
 		}
 		else if (table == 2) // Biblio
 		{
 			QList<QTableWidgetItem*> item = this->ui.tableWidget_BIBLIO_WypoIN->selectedItems();
 			QSqlQuery query(db);
-			query.exec("delete from lbcb where id=" + item[0]->text());
+			query.exec("delete from lbcb where id = '" + item[0]->text() + "'");
 
 		}
 		db.close();

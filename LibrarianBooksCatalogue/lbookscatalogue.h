@@ -7,9 +7,6 @@
 #include <QMessageBox>
 #include <QFile>
 #include "ui_lbookscatalogue.h"
-#include "AddAutor.h"
-#include "AddBiblio.h"
-#include "AddPub.h"
 #include "Wyszukaj.h"
 #include <stdio.h>
 #include <iostream>
@@ -65,10 +62,13 @@ public slots :;
 
 	void BTN_A_NEW_CLICKED();
 	void BTN_A_DEL_CLICKED();
+	void BTN_A_SAVE_CLICKED();
 	void BTN_W_NEW_CLICKED();
 	void BTN_W_DEL_CLICKED();
+	void BTN_W_SAVE_CLICKED();
 	void BTN_B_NEW_CLICKED();
 	void BTN_B_DEL_CLICKED();
+	void BTN_B_SAVE_CLICKED();
 private:
 	Ui::LibrarianBooksCatalogue ui;
 	
