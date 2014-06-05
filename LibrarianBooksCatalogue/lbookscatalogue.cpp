@@ -164,11 +164,13 @@ void LBooksCatalogue::ReadRec(int id, int dir)
 
 if(db.open())
 {
+		QString cur_id_str;
+		cur_id_str.setNum(cur_id);
 		QSqlQuery query(db);
-				query.exec("SELECT id, tytul, tytul_oryg, "
+				bool ok = query.exec("SELECT id, tytul, tytul_oryg, "
 			"gatunek, ilosc, rok_wyd, wydawnictwo, jezyk_wydania, opis, WL_ImieNazw, "
 			"WL_Adres, MZ_Nazwa, MZ_Adres, MZ_WWW, INFO_IloscStr, INFO_Format,  "
-			"INFO_Oprawa, INFO_Ocena FROM lbcmain WHERE id=" + QString(cur_id).toAscii());
+			"INFO_Oprawa, INFO_Ocena FROM lbcmain WHERE id = '" + cur_id_str + "'");
 		QSqlRecord qrec = query.record();
 		int titleCol = qrec.indexOf("tytul");
 		int title_origCol = qrec.indexOf("tytul_oryg");
@@ -187,9 +189,12 @@ if(db.open())
 		int INFO_Format_Col = qrec.indexOf("INFO_Format");
 		int INFO_Oprawa_Col = qrec.indexOf("INFO_Oprawa");
 		int INFO_Ocena_Col = qrec.indexOf("INFO_Ocena");
-
 		
-
+		if (ok)
+		{
+		query.next();
+			QMessageBox::information(this,"cur_id VALUE ",cur_id_str);
+			QMessageBox::information(this,"TITLE VALUE ", query.value(titleCol).toString());
 			this->ui.lineEdit_Tytul->setText(QString(query.value(titleCol).toString()));
 			this->ui.lineEdit_TytulOryg->setText(QString(query.value(title_origCol).toString()));
 			this->ui.lineEdit_Gatunek->setText(QString(query.value(genreCol).toString()));
@@ -211,18 +216,20 @@ if(db.open())
 		
 			//Authors
 			QSqlQuery query2(db);
-				query2.exec("select id, id_m, imie_nazw, narod, spec, rozdz from lbca where id_m=" + QString(cur_id).toAscii());
-			QSqlRecord qrec2 = query2.record();
-			int idCol = qrec2.indexOf("id");
-			int idmCol = qrec2.indexOf("id_m");
-			int imienazwCol = qrec2.indexOf("imie_nazw");
-			int narodCol = qrec2.indexOf("narod");
-			int specCol = qrec2.indexOf("spec");
-			int rozdzCol = qrec2.indexOf("rozdz");
+			ok = query2.exec("select id, id_m, imie_nazw, narod, spec, rozdz from lbca where id_m = '" + cur_id_str + "'");
+			if (ok) 
+			{
+				QSqlRecord qrec2 = query2.record();
+				int idCol = qrec2.indexOf("id");
+				int idmCol = qrec2.indexOf("id_m");
+				int imienazwCol = qrec2.indexOf("imie_nazw");
+				int narodCol = qrec2.indexOf("narod");
+				int specCol = qrec2.indexOf("spec");
+				int rozdzCol = qrec2.indexOf("rozdz");
+				int x = 0;
 				this->ui.tableWidget_Autorzy->setRowCount(query2.size());
-				for (int x = 0; x < query2.size(); x++)
+				while (query2.next())
 				{
-						query2.next();
 						QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,0);
 						item->setText(query2.value(idCol).toString());
 						QTableWidgetItem *item2 = this->ui.tableWidget_Autorzy->item(x,1);
@@ -235,27 +242,34 @@ if(db.open())
 						item5->setText(query2.value(specCol).toString());
 						QTableWidgetItem *item6 = this->ui.tableWidget_Autorzy->item(x,5);
 						item6->setText(query2.value(rozdzCol).toString());
-					
+						x++;
 
 				}
-			
+			}
+			else
+			{
+				QMessageBox::information(this,"FAIL read rec lbca qry ", "query to lbca failed");
+			}
 			
 
 			//Wydania
 			QSqlQuery query3(db);
-				query3.exec("select id, id_m, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd from lbcp where id_m=" + QString(cur_id).toAscii());
+			ok = query3.exec("select id, id_m, data_wyd, wyd, jezyk, numer_wyd, kraj_wyd from lbcp where id_m = '" + cur_id_str + "'");
+			if (ok)
+			{
 				QSqlRecord qrec3 = query3.record();
-			int idwCol = qrec3.indexOf("id");
-			int idwmCol = qrec3.indexOf("id_m");
-			int datawydCol = qrec3.indexOf("data_wyd");
-			int wydCol = qrec3.indexOf("wydawnictwo");
-			int langCol = qrec3.indexOf("jezyk");
-			int pubnoCol = qrec3.indexOf("numer_wyd");
-			int krajwydCol = qrec3.indexOf("kraj_wyd");
+				int idwCol = qrec3.indexOf("id");
+				int idwmCol = qrec3.indexOf("id_m");
+				int datawydCol = qrec3.indexOf("data_wyd");
+				int wydCol = qrec3.indexOf("wyd");
+				int langCol = qrec3.indexOf("jezyk");
+				int pubnoCol = qrec3.indexOf("numer_wyd");
+				int krajwydCol = qrec3.indexOf("kraj_wyd");
+				int x = 0;
 				this->ui.tableWidget_Wydania->setRowCount(query3.size());
-				for (int x = 0; x < query3.size(); x++)
+				while (query3.next())
 				{
-						query3.next();
+						
 						QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,0);
 						item->setText(query3.value(idwCol).toString());
 						QTableWidgetItem *item2 = this->ui.tableWidget_Wydania->item(x,1);
@@ -270,30 +284,37 @@ if(db.open())
 						item6->setText(query3.value(pubnoCol).toString());
 						QTableWidgetItem *item7 = this->ui.tableWidget_Wydania->item(x,6);
 						item7->setText(query3.value(krajwydCol).toString());
-						
+						x++;
 					
 
 
 				}
-			
+			}
+			else
+			{
+				QMessageBox::information(this,"FAIL read rec lbcp qry ", "query to lbcp failed");
+			}
 			
 			// BIBLIO
 			QSqlQuery query4(db);
-				query4.exec("select id, id_m, osoba, data_wyp, data_odd, "
-				"stan_wyp, stan_odd from lbcb where id_m=" + QString(cur_id).toAscii());
-			QSqlRecord qrec4 = query4.record();
-			int idbCol = qrec4.indexOf("id");
-			int idbmCol = qrec4.indexOf("id_m");
-			int osobaCol = qrec4.indexOf("osoba");
-			int dwypCol = qrec4.indexOf("data_wyp");
-			int doddCol = qrec4.indexOf("data_odd");
-			int swypCol = qrec4.indexOf("stan_wyp");
-			int soddCol = qrec4.indexOf("stan_odd");
+			ok = query4.exec("select id, id_m, osoba, data_wyp, data_odd, "
+				"stan_wyp, stan_odd from lbcb where id_m = '" + cur_id_str + "'");
+			if (ok)
+			{
+				QSqlRecord qrec4 = query4.record();
+				int idbCol = qrec4.indexOf("id");
+				int idbmCol = qrec4.indexOf("id_m");
+				int osobaCol = qrec4.indexOf("osoba");
+				int dwypCol = qrec4.indexOf("data_wyp");
+				int doddCol = qrec4.indexOf("data_odd");
+				int swypCol = qrec4.indexOf("stan_wyp");
+				int soddCol = qrec4.indexOf("stan_odd");
+				int x = 0;
 				this->ui.tableWidget_BIBLIO_WypoIN->setRowCount(query4.size());
-				for (int x = 0; x < query4.size(); x++)
+				while (query4.next())
 				{				
 					
-						query4.next();
+						
 						QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,0);
 						item->setText(query4.value(idbCol).toString());
 						QTableWidgetItem *item2 = this->ui.tableWidget_BIBLIO_WypoIN->item(x,1);
@@ -308,14 +329,27 @@ if(db.open())
 						item6->setText(query4.value(swypCol).toString());
 						QTableWidgetItem *item7 = this->ui.tableWidget_BIBLIO_WypoIN->item(x,6);
 						item7->setText(query4.value(soddCol).toString());
-					
+						x++;
 				
 				}
-			CalcRecInfo();
-		db.close();
+			}
+			else
+			{
+				QMessageBox::information(this,"FAIL read rec lbcb qry ", "query to lbcb failed");
+			}
+				db.close();
+				CalcRecInfo();
+		}
+		else
+		{
+			QMessageBox::information(this,"FAIL read rec lbcmain qry ", "query to lbcmain failed");
+		}
 		
 	}
-	
+	else
+	{
+		QMessageBox::information(this,"FAIL read rec", "DB OPEN FAILED");
+	}
 
 }
 
@@ -332,6 +366,9 @@ void LBooksCatalogue::SaveRec(int id)
 
 if(db.open())
 {
+			
+			QString cur_id_str;
+			cur_id_str.setNum(cur_id);
 			QSqlQuery query(db);
 				query.exec("update lbcmain set tytul=" + this->ui.lineEdit_Tytul->text() + ", tytul_oryg=" +
 				this->ui.lineEdit_TytulOryg->text() + ", gatunek=" + this->ui.lineEdit_Gatunek->text() + 
@@ -343,7 +380,7 @@ if(db.open())
 				", MZ_WWW=" + this->ui.lineEdit_MZ_WWW->text() +  
 				", INFO_IloscStr=" + this->ui.lineEdit_INFO_PageCount->text() + ", INFO_Format=" +
 				this->ui.lineEdit_INFO_Format->text() + ", INFO_Oprawa=" + this->ui.lineEdit_INFO_Oprawa->text() + 
-				", INFO_Cena=" + this->ui.lineEdit_INFO_Cena->text() + " where id=" + QString(cur_id));
+				", INFO_Cena=" + this->ui.lineEdit_INFO_Cena->text() + " where id = '" + cur_id_str + "'");
 			
 			db.close();
 			
@@ -387,7 +424,7 @@ if(db.open())
 				}
 				QSqlQuery query(db);
 				query.exec("update lbca set imie_nazw=" + qsl[2] + ", narod=" + qsl[3] + 
-					", spec=" + qsl[4] + ", rozdz=" + qsl[5] + "where id=" + qsl[0]);
+					", spec=" + qsl[4] + ", rozdz=" + qsl[5] + "where id = '" + qsl[0] + "'");
 				
 			}
 
@@ -406,7 +443,7 @@ if(db.open())
 				}
 				QSqlQuery query(db);
 				query.exec("update lbcp set data_wyd=" + qsl[2] + ", wydawnictwo=" + qsl[3] +
-					", jezyk=" + qsl[4] + ", numer_wyd=" + qsl[5] + ", kraj_wyd=" + qsl[6] + " where id=" + qsl[0]);
+					", jezyk=" + qsl[4] + ", numer_wyd=" + qsl[5] + ", kraj_wyd=" + qsl[6] + " where id = '" + qsl[0] + "'");
 				
 			}
 		}
@@ -423,7 +460,7 @@ if(db.open())
 				}
 				QSqlQuery query(db);
 				query.exec("update lbcb set osoba=" + qsl[2] + ", data_wyp=" + qsl[3] + 
-					", data_odd=" + qsl[4] + ", stan_wyp=" + qsl[5] + ", stan_odd=" + qsl[6] + " where id=" + qsl[0]);
+					", data_odd=" + qsl[4] + ", stan_wyp=" + qsl[5] + ", stan_odd=" + qsl[6] + " where id = '" + qsl[0] + "'");
 				
 			}
 		}
@@ -444,11 +481,19 @@ if(db.open())
 			bool ok = query.exec("SELECT * FROM lbcmain");
 			if (ok)
 			{
+				query.next();
 				QSqlRecord qrec = query.record();
 				int idCol = qrec.indexOf("id");
-				query.seek(0);
-				cur_id = query.value(idCol).toInt();
-				ReadRec(0,0);
+				bool seek_ok = query.seek(0);
+				if (seek_ok)
+				{
+					cur_id = query.value(idCol).toInt();
+					ReadRec(0,0);
+				}
+				else
+				{
+					QMessageBox::information(this,"FAIL read start rec", "SEEK FAILED");
+				}
 			}
 			else
 			{
@@ -501,6 +546,7 @@ int LBooksCatalogue::GetLastId(int table)
 	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 	db.setDatabaseName("lbcmain.db");
 	int ret = 0;
+	bool ok = false;
 
 if(db.open())
 {
@@ -510,12 +556,13 @@ if(db.open())
 		case 0: // MAIN
 			
 				
-				query.exec("select MAX(id) as max_id from lbcmain");
-				if (query.size()> 0)
+				ok = query.exec("select id from lbcmain");
+				if (ok)
 				{
+					query.next();
 					QSqlRecord qrec = query.record();
-					
-					int idCol = qrec.indexOf("max_id");
+					query.last();
+					int idCol = qrec.indexOf("id");
 			
 					ret = query.value(idCol).toInt();
 				}
@@ -523,11 +570,13 @@ if(db.open())
 		case 1: 
 			// Authors
 				
-				query.exec("select MAX(id) as max_id from lbca");
-				if (query.size()> 0)
+				ok = query.exec("select id from lbca");
+				if (ok)
 				{
+					query.next();
 					QSqlRecord qrec2 = query.record();
-					int idCol = qrec2.indexOf("max_id");
+					query.last();
+					int idCol = qrec2.indexOf("id");
 				
 					ret = query.value(idCol).toInt();
 				}
@@ -536,22 +585,26 @@ if(db.open())
 
 		case 2: // Wydania
 				
-				query.exec("select MAX(id) as max_id from lbcp");
-				if (query.size()> 0)
+				ok = query.exec("select id from lbcp");
+				if (ok)
 				{
+					query.next();
 					QSqlRecord qrec3 = query.record();
-					int idCol = qrec3.indexOf("max");
-				ret = query.value(idCol).toInt();
-			}
+					query.last();
+					int idCol = qrec3.indexOf("id");
+					ret = query.value(idCol).toInt();
+				}
 			break;
 
 		case 3:  // BIBLIO
 				
-				query.exec("select MAX(id) as max_id from lbcb");
-				if (query.size()> 0)
+				ok = query.exec("select id from lbcb");
+				if (ok)
 				{
+					query.next();
 					QSqlRecord qrec4 = query.record();
-					int idCol = qrec4.indexOf("max_id");
+					query.last();
+					int idCol = qrec4.indexOf("id");
 					ret = query.value(idCol).toInt();
 				}
 			break;
@@ -585,9 +638,11 @@ if(db.open())
 					QTableWidgetItem *item = this->ui.tableWidget_Autorzy->item(x,y);
 					qsl << item->text();
 				}
+				QString id_m_str;
+				id_m_str.setNum(id);
 				QSqlQuery query(db);
 				bool ok = query.exec("insert into lbca(id_m, imie_nazw, narod, spec, rozdz)"
-					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ")");
+					"VALUES(" + id_m_str + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ")");
 				if( !ok )
 				QMessageBox::information(this, "Fail lbca", query.lastError().text());
 			}
@@ -604,9 +659,11 @@ if(db.open())
 					QTableWidgetItem *item = this->ui.tableWidget_Wydania->item(x,y);
 					qsl << item->text();
 				}
+				QString id_m_str;
+				id_m_str.setNum(id);
 				QSqlQuery query(db);
 				bool ok = query.exec("insert into lbcp(id_m int, data_wyd, wydawnictwo, jezyk, numer_wyd, kraj_wyd)"
-					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ", " + qsl[4] + ")");
+					"VALUES(" + id_m_str + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ", " + qsl[4] + ")");
 				if( !ok )
 				QMessageBox::information(this, "Fail lbcp", query.lastError().text());
 			}
@@ -622,9 +679,11 @@ if(db.open())
 					QTableWidgetItem *item = this->ui.tableWidget_BIBLIO_WypoIN->item(x,y);
 					qsl << item->text();
 				}
+				QString id_m_str;
+				id_m_str.setNum(id);
 				QSqlQuery query(db);
 				bool ok = query.exec("insert into lbcb(id_m, osoba, data_wyp, data_odd, stan_wyp, stan_odd"
-					"VALUES(" + QString(id) + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ", " + qsl[4] + ")");
+					"VALUES(" + id_m_str + ", " + qsl[0] + ", " + qsl[1] + ", " + qsl[2] + ", " + qsl[3] + ", " + qsl[4] + ")");
 				if( !ok )
 				QMessageBox::information(this, "Fail lbcb", query.lastError().text());
 			}
@@ -832,21 +891,27 @@ void LBooksCatalogue::CalcRecInfo()
 if(db.open())
 {
 		QSqlQuery query(db);
-				query.exec("SELECT id from lbcmain");
-				QSqlRecord qrec = query.record();
-		int idCol = qrec.indexOf("id");
-		if (query.size() > 0)
+		bool ok = query.exec("SELECT id from lbcmain");
+		if (ok)
 		{
-			for (int x = 0; x < query.size(); x++)
+			QSqlRecord qrec = query.record();
+			int idCol = qrec.indexOf("id");
+			int x = 0;
+			while (query.next())
 			{
+				x++;
 				if (cur_id == query.value(idCol).toInt())
 				{
-					this->ui.lineEdit__RecNo->setText(QString(x));
+					QString rec_no_str;
+					rec_no_str.setNum(x);
+					this->ui.lineEdit__RecNo->setText(rec_no_str);
 				}
 				
 
 			}
-			this->ui.lineEdit_RecCount->setText(QString(query.size()));
+			QString rec_count_str;
+			rec_count_str.setNum(x);
+			this->ui.lineEdit_RecCount->setText(rec_count_str);
 
 		}
 		else
@@ -867,20 +932,22 @@ int LBooksCatalogue::FindNextId()
 if(db.open())
 {
 		QSqlQuery query(db);
-				query.exec("SELECT id from lbcmain");
-				QSqlRecord qrec = query.record();
-		int idCol = qrec.indexOf("id");
-		for (int x = 0; x < query.size(); x++)
+		bool ok = query.exec("SELECT id from lbcmain");
+		if (ok)
 		{
-			if (cur_id == query.value(idCol).toInt())
+			QSqlRecord qrec = query.record();
+			int idCol = qrec.indexOf("id");
+			while (query.next())
 			{
-				query.next();
-				return query.value(idCol).toInt();
+				if (cur_id == query.value(idCol).toInt())
+				{
+					query.next();
+					return query.value(idCol).toInt();
+				}
+				
 			}
-			query.next();
-
+			db.close();
 		}
-		db.close();
 }
 
 }
@@ -893,20 +960,24 @@ int LBooksCatalogue::FindPrevId()
 if(db.open())
 {
 		QSqlQuery query(db);
-				query.exec("SELECT id from lbcmain");
-				QSqlRecord qrec = query.record();
-		int idCol = qrec.indexOf("id");
-		for (int x = 0; x < query.size(); x++)
+		bool ok = query.exec("SELECT id from lbcmain");
+		if (ok)
 		{
-			if (cur_id == query.value(idCol).toInt())
+			QSqlRecord qrec = query.record();
+			int idCol = qrec.indexOf("id");
+			query.last();
+			while (query.previous())
 			{
-				query.previous();
-				return query.value(idCol).toInt();
-			}
-			query.next();
+				if (cur_id == query.value(idCol).toInt())
+				{
+					query.previous();
+					return query.value(idCol).toInt();
+				}
+				
 
+			}
+			db.close();
 		}
-		db.close();
 
 
 }
