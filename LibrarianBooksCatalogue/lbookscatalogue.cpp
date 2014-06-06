@@ -81,12 +81,13 @@ void LBooksCatalogue::BTN_SAVE_CLICKED()
 		AddNewRec(0);
 		new_rec_adding = false; // po zakoñczonych dodaniach wyczyœæ status dodawania nowego rekordu
 		this->ui.pushButton_NEW->setEnabled(true);
+		cur_id = GetLastId(0);
 	}
 	else // program w trybie update
 	{
 		SaveRec(cur_id);
 	}
-	cur_id = GetLastId(0);
+	
 	ReadRec(0,0);
 	CalcRecInfo();
 
@@ -228,7 +229,8 @@ if(db.open())
 				int specCol = qrec2.indexOf("spec");
 				int rozdzCol = qrec2.indexOf("rozdz");
 				int x = 0;
-				this->ui.tableWidget_Autorzy->clearContents();
+				this->ui.tableWidget_Autorzy->setRowCount(0);
+				
 				while (query2.next())
 				{
 						this->ui.tableWidget_Autorzy->insertRow(x);
@@ -279,7 +281,7 @@ if(db.open())
 				int pubnoCol = qrec3.indexOf("numer_wyd");
 				int krajwydCol = qrec3.indexOf("kraj_wyd");
 				int x = 0;
-				this->ui.tableWidget_Wydania->clearContents();
+				this->ui.tableWidget_Wydania->setRowCount(0);
 				
 				while (query3.next())
 				{
@@ -323,8 +325,8 @@ if(db.open())
 				int swypCol = qrec4.indexOf("stan_wyp");
 				int soddCol = qrec4.indexOf("stan_odd");
 				int x = 0;
-				this->ui.tableWidget_BIBLIO_WypoIN->clearContents();
-							
+				this->ui.tableWidget_BIBLIO_WypoIN->setRowCount(0);
+						
 				while (query4.next())
 				{				
 				
@@ -405,7 +407,7 @@ if(db.open())
 			db.close();
 			
 				
-				UpdateDB(cur_id); // update-uj tabele podrzêdne
+				//UpdateDB(cur_id); // update-uj tabele podrzêdne
 				
 			}
 			else
@@ -469,7 +471,7 @@ if(db.open())
 					}
 				}
 				QSqlQuery query(db);
-				bool ok = query.exec("update lbcp set data_wyd = '" + qsl[2] + "', wydawnictwo = '" + qsl[3] +
+				bool ok = query.exec("update lbcp set data_wyd = '" + qsl[2] + "', wyd = '" + qsl[3] +
 					"', jezyk = '" + qsl[4] + "', numer_wyd = '" + qsl[5] + "', kraj_wyd = '" + qsl[6] + "' where id = '" + qsl[0] + "'");
 				if( !ok )
 				QMessageBox::information(this, "Fail lbcp update", query.lastError().text());
@@ -818,7 +820,7 @@ void LBooksCatalogue::ClearCtrls()
 void LBooksCatalogue::BTN_A_NEW_CLICKED()
 {
 	InsertRecDB(cur_id,0);
-	SaveRec(0);
+	UpdateDB(cur_id);
 	ReadRec(0,0);
 	
 }
@@ -826,7 +828,7 @@ void LBooksCatalogue::BTN_A_NEW_CLICKED()
 void LBooksCatalogue::BTN_A_DEL_CLICKED()
 {
 	DelRecDB(0,0);
-	SaveRec(0);
+	UpdateDB(cur_id);
 	ReadRec(0,0);
 
 }
@@ -834,7 +836,7 @@ void LBooksCatalogue::BTN_A_DEL_CLICKED()
 void LBooksCatalogue::BTN_A_SAVE_CLICKED()
 {
 	UpdateDB(cur_id);
-	SaveRec(0);
+	
 	ReadRec(0,0);
 
 }
@@ -842,14 +844,14 @@ void LBooksCatalogue::BTN_A_SAVE_CLICKED()
 void LBooksCatalogue::BTN_B_NEW_CLICKED()
 {
 	InsertRecDB(cur_id,2);
-	SaveRec(0);
+	UpdateDB(cur_id);
 	ReadRec(0,0);
 }
 
 void LBooksCatalogue::BTN_B_DEL_CLICKED()
 {
 	DelRecDB(0,2);
-	SaveRec(0);
+	UpdateDB(cur_id);
 	ReadRec(0,0);
 
 }
@@ -857,7 +859,7 @@ void LBooksCatalogue::BTN_B_DEL_CLICKED()
 void LBooksCatalogue::BTN_B_SAVE_CLICKED()
 {
 	UpdateDB(cur_id);
-	SaveRec(0);
+	
 	ReadRec(0,0);
 }
 
@@ -865,7 +867,7 @@ void LBooksCatalogue::BTN_W_NEW_CLICKED()
 {
 	
 	InsertRecDB(cur_id,1);
-	SaveRec(0);
+	UpdateDB(cur_id);
 	ReadRec(0,0);
 	
 
@@ -874,14 +876,14 @@ void LBooksCatalogue::BTN_W_NEW_CLICKED()
 void LBooksCatalogue::BTN_W_DEL_CLICKED()
 {
 	DelRecDB(0,1);
-	SaveRec(0);
+	UpdateDB(cur_id);
 	ReadRec(0,0);
 }
 
 void LBooksCatalogue::BTN_W_SAVE_CLICKED()
 {
 	UpdateDB(cur_id);
-	SaveRec(0);
+	
 	ReadRec(0,0);
 
 }
