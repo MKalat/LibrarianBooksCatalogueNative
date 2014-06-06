@@ -69,6 +69,14 @@ public slots :;
 	void BTN_B_NEW_CLICKED();
 	void BTN_B_DEL_CLICKED();
 	void BTN_B_SAVE_CLICKED();
+
+	void ActionKoniec();
+	void ActionSettings();
+	void ActionExport();
+	void ActionSearch();
+	void ActionPrint();
+	void ActionHelp();
+	void ActionAbout();
 private:
 	Ui::LibrarianBooksCatalogue ui;
 	

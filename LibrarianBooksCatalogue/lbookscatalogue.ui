@@ -206,7 +206,7 @@
      <locale language="English" country="UnitedStates"/>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="TAB_OPIS">
      <attribute name="title">
@@ -1377,6 +1377,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionKoniec</sender>
+   <signal>triggered()</signal>
+   <receiver>LibrarianBooksCatalogue</receiver>
+   <slot>ActionKoniec()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>28</x>
+     <y>14</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>668</x>
+     <y>25</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>BTN_FIRST_CLICKED()</slot>
@@ -1395,5 +1411,6 @@
   <slot>BTN_A_SAVE_CLICKED()</slot>
   <slot>BTN_W_SAVE_CLICKED()</slot>
   <slot>BTN_B_SAVE_CLICKED()</slot>
+  <slot>ActionKoniec()</slot>
  </slots>
 </ui>

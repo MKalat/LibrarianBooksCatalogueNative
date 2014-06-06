@@ -1065,5 +1065,39 @@ if(db.open())
 
 
 }
+}
+void LBooksCatalogue::ActionKoniec()
+{
+	this->close();
+}
+
+void LBooksCatalogue::ActionPrint()
+{
 
 }
+
+void LBooksCatalogue::ActionSearch()
+{
+
+}
+
+void LBooksCatalogue::ActionExport()
+{
+
+}
+
+void LBooksCatalogue::ActionHelp()
+{
+
+}
+
+void LBooksCatalogue::ActionAbout()
+{
+
+}
+
+void LBooksCatalogue::ActionSettings()
+{
+
+}
+

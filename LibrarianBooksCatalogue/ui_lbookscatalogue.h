@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'lbookscatalogueHp2192.ui'
+** Form generated from reading UI file 'lbookscatalogueHp1296.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LBOOKSCATALOGUEHP2192_H
-#define LBOOKSCATALOGUEHP2192_H
+#ifndef LBOOKSCATALOGUEHP1296_H
+#define LBOOKSCATALOGUEHP1296_H
 
 #include <QtCore/QLocale>
 #include <QtCore/QVariant>
@@ -466,8 +466,9 @@ public:
         QObject::connect(pushButton, SIGNAL(clicked()), LibrarianBooksCatalogue, SLOT(BTN_A_SAVE_CLICKED()));
         QObject::connect(pushButton_PUB_SAVE, SIGNAL(clicked()), LibrarianBooksCatalogue, SLOT(BTN_W_SAVE_CLICKED()));
         QObject::connect(pushButton_B_SAVE, SIGNAL(clicked()), LibrarianBooksCatalogue, SLOT(BTN_B_SAVE_CLICKED()));
+        QObject::connect(actionKoniec, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionKoniec()));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(LibrarianBooksCatalogue);
@@ -577,4 +578,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LBOOKSCATALOGUEHP2192_H
+#endif // LBOOKSCATALOGUEHP1296_H
