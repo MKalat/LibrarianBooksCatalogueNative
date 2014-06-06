@@ -206,7 +206,7 @@
      <locale language="English" country="UnitedStates"/>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="TAB_OPIS">
      <attribute name="title">
@@ -667,7 +667,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>Oprawa</string>
+        <string>Binding</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_INFO_PageCount">

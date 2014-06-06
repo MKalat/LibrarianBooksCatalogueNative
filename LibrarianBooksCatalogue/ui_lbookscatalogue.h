@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'lbookscataloguegq3772.ui'
+** Form generated from reading UI file 'lbookscatalogueHp2192.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LBOOKSCATALOGUEGQ3772_H
-#define LBOOKSCATALOGUEGQ3772_H
+#ifndef LBOOKSCATALOGUEHP2192_H
+#define LBOOKSCATALOGUEHP2192_H
 
 #include <QtCore/QLocale>
 #include <QtCore/QVariant>
@@ -467,7 +467,7 @@ public:
         QObject::connect(pushButton_PUB_SAVE, SIGNAL(clicked()), LibrarianBooksCatalogue, SLOT(BTN_W_SAVE_CLICKED()));
         QObject::connect(pushButton_B_SAVE, SIGNAL(clicked()), LibrarianBooksCatalogue, SLOT(BTN_B_SAVE_CLICKED()));
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(LibrarianBooksCatalogue);
@@ -535,7 +535,7 @@ public:
         label_22->setText(QApplication::translate("LibrarianBooksCatalogue", "Price", 0, QApplication::UnicodeUTF8));
         label_25->setText(QApplication::translate("LibrarianBooksCatalogue", "Pages count", 0, QApplication::UnicodeUTF8));
         label_26->setText(QApplication::translate("LibrarianBooksCatalogue", "Format", 0, QApplication::UnicodeUTF8));
-        label_27->setText(QApplication::translate("LibrarianBooksCatalogue", "Oprawa", 0, QApplication::UnicodeUTF8));
+        label_27->setText(QApplication::translate("LibrarianBooksCatalogue", "Binding", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(TAB_INFO), QApplication::translate("LibrarianBooksCatalogue", "Info", 0, QApplication::UnicodeUTF8));
         label_29->setText(QApplication::translate("LibrarianBooksCatalogue", "Borrows", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem13 = tableWidget_BIBLIO_WypoIN->horizontalHeaderItem(0);
@@ -577,4 +577,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LBOOKSCATALOGUEGQ3772_H
+#endif // LBOOKSCATALOGUEHP2192_H
