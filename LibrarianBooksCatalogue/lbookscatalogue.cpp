@@ -240,7 +240,7 @@ if(db.open())
 						QTableWidgetItem *item = new QTableWidgetItem(id_col_str);
 						this->ui.tableWidget_Autorzy->setItem(x,0,item);
 						
-						QMessageBox::information(this,"LBCA ID VALUE ", id_col_str);
+						//QMessageBox::information(this,"LBCA ID VALUE ", id_col_str);
 						
 						id_col_str.setNum(query2.value(idmCol).toInt());
 						QTableWidgetItem *item2 = new QTableWidgetItem(id_col_str);
@@ -1078,7 +1078,8 @@ void LBooksCatalogue::ActionPrint()
 
 void LBooksCatalogue::ActionSearch()
 {
-
+	Wyszukaj *wysz = new Wyszukaj();
+    wysz->show();
 }
 
 void LBooksCatalogue::ActionExport()
@@ -1100,4 +1101,10 @@ void LBooksCatalogue::ActionSettings()
 {
 
 }
+void LBooksCatalogue::SetRecAkt(QString id)
+{
+	cur_id = id.toInt();
+	ReadRec(0,0);
+	CalcRecInfo();
 
+}

@@ -303,42 +303,118 @@
         <translation>Szukaj</translation>
     </message>
     <message>
-        <location filename="Wyszukaj.ui" line="71"/>
+        <location filename="Wyszukaj.ui" line="67"/>
+        <source>Original Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="77"/>
+        <source>Count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="82"/>
+        <source>Date Published</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="87"/>
+        <source>Publisher</source>
+        <translation type="unfinished">Wydawca</translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="92"/>
+        <source>Published in Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="97"/>
+        <source>Description</source>
+        <translation type="unfinished">Opis</translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="102"/>
+        <source>Owner - Name &amp; Lastname</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="107"/>
+        <source>Owner - Adress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="112"/>
+        <source>Shop - Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="117"/>
+        <source>Shop - Adress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="122"/>
+        <source>Shop - WWW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="127"/>
+        <source>Pages Count</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="132"/>
+        <source>Format</source>
+        <translation type="unfinished">Format</translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="137"/>
+        <source>Binding</source>
+        <translation type="unfinished">Oprawa</translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="142"/>
+        <source>Price</source>
+        <translation type="unfinished">Cena</translation>
+    </message>
+    <message>
+        <location filename="Wyszukaj.ui" line="156"/>
         <source>Search in field</source>
         <translation>Szukaj w polu</translation>
     </message>
     <message>
-        <location filename="Wyszukaj.ui" line="91"/>
+        <location filename="Wyszukaj.ui" line="62"/>
+        <location filename="Wyszukaj.ui" line="176"/>
         <source>Title</source>
         <translation>Tytuł</translation>
     </message>
     <message>
-        <location filename="Wyszukaj.ui" line="96"/>
+        <location filename="Wyszukaj.ui" line="181"/>
         <source>Orig. Title</source>
         <translation>Tytuł oryginału</translation>
     </message>
     <message>
-        <location filename="Wyszukaj.ui" line="101"/>
+        <location filename="Wyszukaj.ui" line="72"/>
+        <location filename="Wyszukaj.ui" line="186"/>
         <source>Genre</source>
         <translation>Gatunek</translation>
     </message>
     <message>
-        <location filename="Wyszukaj.ui" line="106"/>
+        <location filename="Wyszukaj.ui" line="191"/>
         <source>Date Pub.</source>
         <translation>Data Wydania</translation>
     </message>
     <message>
-        <location filename="Wyszukaj.ui" line="111"/>
         <source>Authors</source>
-        <translation>Autorzy</translation>
+        <translation type="obsolete">Autorzy</translation>
     </message>
     <message>
-        <location filename="Wyszukaj.ui" line="131"/>
+        <location filename="Wyszukaj.ui" line="211"/>
         <source>S E A R C H</source>
         <translation>S Z U K A J</translation>
     </message>
     <message>
-        <location filename="Wyszukaj.ui" line="144"/>
+        <location filename="Wyszukaj.ui" line="224"/>
         <source>Results</source>
         <translation>Wyniki</translation>
     </message>

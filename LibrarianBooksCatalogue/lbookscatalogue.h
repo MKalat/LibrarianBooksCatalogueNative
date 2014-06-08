@@ -77,6 +77,8 @@ public slots :;
 	void ActionPrint();
 	void ActionHelp();
 	void ActionAbout();
+
+    void SetRecAkt(QString id);
 private:
 	Ui::LibrarianBooksCatalogue ui;
 	

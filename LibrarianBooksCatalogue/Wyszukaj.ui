@@ -57,6 +57,91 @@
      <height>19</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>Title</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Original Title</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Genre</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Count</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Date Published</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Publisher</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Published in Language</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Description</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Owner - Name &amp; Lastname</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Owner - Adress</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Shop - Name</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Shop - Adress</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Shop - WWW</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Pages Count</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Format</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Binding</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Price</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
@@ -106,11 +191,6 @@
      <string>Date Pub.</string>
     </property>
    </column>
-   <column>
-    <property name="text">
-     <string>Authors</string>
-    </property>
-   </column>
   </widget>
   <widget class="QPushButton" name="pushButton_Search">
    <property name="geometry">
@@ -146,5 +226,43 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>tableWidget_Wyniki</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>Wyszukaj</receiver>
+   <slot>ITEM_CLICKED(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>209</x>
+     <y>193</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>259</x>
+     <y>74</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Search</sender>
+   <signal>clicked()</signal>
+   <receiver>Wyszukaj</receiver>
+   <slot>BTN_SEARCH_CLICKED()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>383</x>
+     <y>68</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>402</x>
+     <y>36</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <signal>ustaw_rec(QString)</signal>
+  <slot>ITEM_CLICKED(int,int)</slot>
+  <slot>BTN_SEARCH_CLICKED()</slot>
+ </slots>
 </ui>

@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'lbookscatalogueHp1296.ui'
+** Form generated from reading UI file 'lbookscatalogueHp1124.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LBOOKSCATALOGUEHP1296_H
-#define LBOOKSCATALOGUEHP1296_H
+#ifndef LBOOKSCATALOGUEHP1124_H
+#define LBOOKSCATALOGUEHP1124_H
 
 #include <QtCore/QLocale>
 #include <QtCore/QVariant>
@@ -467,6 +467,11 @@ public:
         QObject::connect(pushButton_PUB_SAVE, SIGNAL(clicked()), LibrarianBooksCatalogue, SLOT(BTN_W_SAVE_CLICKED()));
         QObject::connect(pushButton_B_SAVE, SIGNAL(clicked()), LibrarianBooksCatalogue, SLOT(BTN_B_SAVE_CLICKED()));
         QObject::connect(actionKoniec, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionKoniec()));
+        QObject::connect(actionWyszukaj, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionSearch()));
+        QObject::connect(actionO_programie, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionAbout()));
+        QObject::connect(actionUstawienia, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionSettings()));
+        QObject::connect(actionPomoc, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionHelp()));
+        QObject::connect(LibrarianBooksCatalogue, SIGNAL(ustaw_rec(QString)), LibrarianBooksCatalogue, SLOT(SetRecAkt(QString)));
 
         tabWidget->setCurrentIndex(0);
 
@@ -578,4 +583,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LBOOKSCATALOGUEHP1296_H
+#endif // LBOOKSCATALOGUEHP1124_H

@@ -1384,12 +1384,76 @@
    <slot>ActionKoniec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>28</x>
-     <y>14</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
     <hint type="destinationlabel">
      <x>668</x>
      <y>25</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionWyszukaj</sender>
+   <signal>triggered()</signal>
+   <receiver>LibrarianBooksCatalogue</receiver>
+   <slot>ActionSearch()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>383</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionO_programie</sender>
+   <signal>triggered()</signal>
+   <receiver>LibrarianBooksCatalogue</receiver>
+   <slot>ActionAbout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>383</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionUstawienia</sender>
+   <signal>triggered()</signal>
+   <receiver>LibrarianBooksCatalogue</receiver>
+   <slot>ActionSettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>383</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionPomoc</sender>
+   <signal>triggered()</signal>
+   <receiver>LibrarianBooksCatalogue</receiver>
+   <slot>ActionHelp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>383</x>
+     <y>382</y>
     </hint>
    </hints>
   </connection>
@@ -1412,5 +1476,12 @@
   <slot>BTN_W_SAVE_CLICKED()</slot>
   <slot>BTN_B_SAVE_CLICKED()</slot>
   <slot>ActionKoniec()</slot>
+  <slot>SetRecAkt(QString)</slot>
+  <slot>ActionSettings()</slot>
+  <slot>ActionPrint()</slot>
+  <slot>ActionHelp()</slot>
+  <slot>ActionAbout()</slot>
+  <slot>ActionSearch()</slot>
+  <slot>ActionExport()</slot>
  </slots>
 </ui>
