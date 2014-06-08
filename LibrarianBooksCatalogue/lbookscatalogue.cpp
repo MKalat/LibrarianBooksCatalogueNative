@@ -1079,6 +1079,7 @@ void LBooksCatalogue::ActionPrint()
 void LBooksCatalogue::ActionSearch()
 {
 	Wyszukaj *wysz = new Wyszukaj();
+	QObject::connect(wysz, SIGNAL(ustaw_rec(QString)), this, SLOT(SetRecAkt(QString)));
     wysz->show();
 }
 
