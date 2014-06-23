@@ -259,33 +259,38 @@
         <translation>&gt;|</translation>
     </message>
     <message>
-        <location filename="lbookscatalogue.ui" line="1072"/>
+        <location filename="lbookscatalogue.ui" line="1080"/>
+        <source>ISBN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="lbookscatalogue.ui" line="1095"/>
         <source>File</source>
         <translation>Plik</translation>
     </message>
     <message>
-        <location filename="lbookscatalogue.ui" line="1080"/>
-        <location filename="lbookscatalogue.ui" line="1118"/>
+        <location filename="lbookscatalogue.ui" line="1103"/>
+        <location filename="lbookscatalogue.ui" line="1141"/>
         <source>Help</source>
         <translation>Pomoc</translation>
     </message>
     <message>
-        <location filename="lbookscatalogue.ui" line="1098"/>
+        <location filename="lbookscatalogue.ui" line="1121"/>
         <source>Search</source>
         <translation>Szukaj</translation>
     </message>
     <message>
-        <location filename="lbookscatalogue.ui" line="1103"/>
+        <location filename="lbookscatalogue.ui" line="1126"/>
         <source>Settings</source>
         <translation>Ustawienia</translation>
     </message>
     <message>
-        <location filename="lbookscatalogue.ui" line="1108"/>
+        <location filename="lbookscatalogue.ui" line="1131"/>
         <source>Exit</source>
         <translation>Koniec</translation>
     </message>
     <message>
-        <location filename="lbookscatalogue.ui" line="1113"/>
+        <location filename="lbookscatalogue.ui" line="1136"/>
         <source>About</source>
         <translation>O Programie</translation>
     </message>

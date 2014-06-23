@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'lbookscatalogueHp1124.ui'
+** Form generated from reading UI file 'lbookscatalogueqH1444.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LBOOKSCATALOGUEHP1124_H
-#define LBOOKSCATALOGUEHP1124_H
+#ifndef LBOOKSCATALOGUEQH1444_H
+#define LBOOKSCATALOGUEQH1444_H
 
 #include <QtCore/QLocale>
 #include <QtCore/QVariant>
@@ -106,6 +106,8 @@ public:
     QPushButton *pushButton_NEW;
     QPushButton *pushButton_SAVE;
     QPushButton *pushButton_DEL;
+    QLineEdit *lineEdit_ISBN;
+    QLabel *label_13;
     QMenuBar *menubar;
     QMenu *menuPlik;
     QMenu *menuPomoc;
@@ -165,19 +167,19 @@ public:
         label_10->setGeometry(QRect(450, 6, 73, 16));
         lineEdit_DatePub = new QLineEdit(centralwidget);
         lineEdit_DatePub->setObjectName(QString::fromUtf8("lineEdit_DatePub"));
-        lineEdit_DatePub->setGeometry(QRect(522, 6, 79, 16));
+        lineEdit_DatePub->setGeometry(QRect(524, 6, 77, 16));
         label_20 = new QLabel(centralwidget);
         label_20->setObjectName(QString::fromUtf8("label_20"));
         label_20->setGeometry(QRect(450, 24, 73, 16));
         lineEdit_Publisher = new QLineEdit(centralwidget);
         lineEdit_Publisher->setObjectName(QString::fromUtf8("lineEdit_Publisher"));
-        lineEdit_Publisher->setGeometry(QRect(522, 24, 211, 16));
+        lineEdit_Publisher->setGeometry(QRect(524, 24, 209, 16));
         label_21 = new QLabel(centralwidget);
         label_21->setObjectName(QString::fromUtf8("label_21"));
         label_21->setGeometry(QRect(450, 42, 79, 16));
         lineEdit_PubLang = new QLineEdit(centralwidget);
         lineEdit_PubLang->setObjectName(QString::fromUtf8("lineEdit_PubLang"));
-        lineEdit_PubLang->setGeometry(QRect(522, 42, 211, 16));
+        lineEdit_PubLang->setGeometry(QRect(524, 42, 209, 16));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setGeometry(QRect(6, 84, 751, 577));
@@ -426,6 +428,12 @@ public:
         pushButton_DEL->setGeometry(QRect(432, 684, 79, 31));
         pushButton_DEL->setFont(font);
         pushButton_DEL->setStyleSheet(QString::fromUtf8(""));
+        lineEdit_ISBN = new QLineEdit(centralwidget);
+        lineEdit_ISBN->setObjectName(QString::fromUtf8("lineEdit_ISBN"));
+        lineEdit_ISBN->setGeometry(QRect(524, 60, 209, 16));
+        label_13 = new QLabel(centralwidget);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+        label_13->setGeometry(QRect(452, 60, 46, 13));
         LibrarianBooksCatalogue->setCentralWidget(centralwidget);
         menubar = new QMenuBar(LibrarianBooksCatalogue);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -471,7 +479,6 @@ public:
         QObject::connect(actionO_programie, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionAbout()));
         QObject::connect(actionUstawienia, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionSettings()));
         QObject::connect(actionPomoc, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionHelp()));
-        QObject::connect(LibrarianBooksCatalogue, SIGNAL(ustaw_rec(QString)), LibrarianBooksCatalogue, SLOT(SetRecAkt(QString)));
 
         tabWidget->setCurrentIndex(0);
 
@@ -571,6 +578,7 @@ public:
         pushButton_NEW->setText(QApplication::translate("LibrarianBooksCatalogue", "New", 0, QApplication::UnicodeUTF8));
         pushButton_SAVE->setText(QApplication::translate("LibrarianBooksCatalogue", "Save", 0, QApplication::UnicodeUTF8));
         pushButton_DEL->setText(QApplication::translate("LibrarianBooksCatalogue", "Delete", 0, QApplication::UnicodeUTF8));
+        label_13->setText(QApplication::translate("LibrarianBooksCatalogue", "ISBN", 0, QApplication::UnicodeUTF8));
         menuPlik->setTitle(QApplication::translate("LibrarianBooksCatalogue", "File", 0, QApplication::UnicodeUTF8));
         menuPomoc->setTitle(QApplication::translate("LibrarianBooksCatalogue", "Help", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
@@ -583,4 +591,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LBOOKSCATALOGUEHP1124_H
+#endif // LBOOKSCATALOGUEQH1444_H

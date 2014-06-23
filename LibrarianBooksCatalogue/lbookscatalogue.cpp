@@ -128,7 +128,7 @@ if(db.open())
 			bool ok = query.exec("CREATE TABLE lbcmain (id integer primary key autoincrement, tytul varchar (1024), tytul_oryg varchar (1024), "
 			"gatunek varchar (1024), ilosc varchar (1024), rok_wyd varchar (1024), wydawnictwo varchar (1024), jezyk_wydania varchar (1024), opis varchar (1024), WL_ImieNazw varchar (1024), "
 			"WL_Adres varchar (1024), MZ_Nazwa varchar (1024), MZ_Adres varchar (1024), MZ_WWW varchar (1024), INFO_IloscStr varchar (1024), INFO_Format varchar (1024),  "
-			"INFO_Oprawa varchar (1024), INFO_Ocena varchar (1024))");
+			"INFO_Oprawa varchar (1024), INFO_Ocena varchar (1024), ISBN varchar(1024))");
 		if( !ok )
 		QMessageBox::information(this, "Fail", query.lastError().text());
 
@@ -172,7 +172,7 @@ if(db.open())
 				bool ok = query.exec("SELECT id, tytul, tytul_oryg, "
 			"gatunek, ilosc, rok_wyd, wydawnictwo, jezyk_wydania, opis, WL_ImieNazw, "
 			"WL_Adres, MZ_Nazwa, MZ_Adres, MZ_WWW, INFO_IloscStr, INFO_Format,  "
-			"INFO_Oprawa, INFO_Ocena FROM lbcmain WHERE id = '" + cur_id_str + "'");
+			"INFO_Oprawa, INFO_Ocena, ISBN FROM lbcmain WHERE id = '" + cur_id_str + "'");
 		QSqlRecord qrec = query.record();
 		int titleCol = qrec.indexOf("tytul");
 		int title_origCol = qrec.indexOf("tytul_oryg");
@@ -191,6 +191,7 @@ if(db.open())
 		int INFO_Format_Col = qrec.indexOf("INFO_Format");
 		int INFO_Oprawa_Col = qrec.indexOf("INFO_Oprawa");
 		int INFO_Ocena_Col = qrec.indexOf("INFO_Ocena");
+		int ISBN_Col = qrec.indexOf("ISBN");
 		
 		if (ok)
 		{
@@ -214,6 +215,7 @@ if(db.open())
 			this->ui.lineEdit_INFO_Format->setText(QString(query.value(INFO_Format_Col).toString()));
 			this->ui.lineEdit_INFO_Oprawa->setText(QString(query.value(INFO_Oprawa_Col).toString()));
 			this->ui.lineEdit_INFO_Cena->setText(QString(query.value(INFO_Ocena_Col).toString()));
+			this->ui.lineEdit_ISBN->setText(QString(query.value(ISBN_Col).toString()));
 			
 		
 			//Authors
@@ -397,7 +399,7 @@ if(db.open())
 				"', MZ_WWW = '" + this->ui.lineEdit_MZ_WWW->text() +  
 				"', INFO_IloscStr = '" + this->ui.lineEdit_INFO_PageCount->text() + "', INFO_Format = '" +
 				this->ui.lineEdit_INFO_Format->text() + "', INFO_Oprawa = '" + this->ui.lineEdit_INFO_Oprawa->text() + 
-				"', INFO_OCena = '" + this->ui.lineEdit_INFO_Cena->text() + "' where id = '" + cur_id_str + "'");
+				"', INFO_OCena = '" + this->ui.lineEdit_INFO_Cena->text() + "', ISBN = '" + this->ui.lineEdit_ISBN->text() + "' where id = '" + cur_id_str + "'");
 			if (!ok)
 			{
 				QMessageBox::information(this, "Fail REC lbcmain SAVE", query.lastError().text());
