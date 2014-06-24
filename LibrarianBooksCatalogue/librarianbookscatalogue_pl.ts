@@ -261,7 +261,7 @@
     <message>
         <location filename="lbookscatalogue.ui" line="1080"/>
         <source>ISBN</source>
-        <translation type="unfinished"></translation>
+        <translation>ISBN</translation>
     </message>
     <message>
         <location filename="lbookscatalogue.ui" line="1095"/>
@@ -310,77 +310,77 @@
     <message>
         <location filename="Wyszukaj.ui" line="67"/>
         <source>Original Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Tytuł Oryginału </translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="77"/>
         <source>Count</source>
-        <translation type="unfinished"></translation>
+        <translation>Liczba ezgemplarzy</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="82"/>
         <source>Date Published</source>
-        <translation type="unfinished"></translation>
+        <translation>Data wydania</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="87"/>
         <source>Publisher</source>
-        <translation type="unfinished">Wydawca</translation>
+        <translation>Wydawca</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="92"/>
         <source>Published in Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Język wydania</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="97"/>
         <source>Description</source>
-        <translation type="unfinished">Opis</translation>
+        <translation>Opis</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="102"/>
         <source>Owner - Name &amp; Lastname</source>
-        <translation type="unfinished"></translation>
+        <translation>Właściciel - Imię i Nazwisko</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="107"/>
         <source>Owner - Adress</source>
-        <translation type="unfinished"></translation>
+        <translation>Właściciel - Adres</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="112"/>
         <source>Shop - Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Sklep - Nazwa</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="117"/>
         <source>Shop - Adress</source>
-        <translation type="unfinished"></translation>
+        <translation>Sklep - Adres</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="122"/>
         <source>Shop - WWW</source>
-        <translation type="unfinished"></translation>
+        <translation>Sklep - WWW</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="127"/>
         <source>Pages Count</source>
-        <translation type="unfinished"></translation>
+        <translation>Liczba Stron</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="132"/>
         <source>Format</source>
-        <translation type="unfinished">Format</translation>
+        <translation>Format</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="137"/>
         <source>Binding</source>
-        <translation type="unfinished">Oprawa</translation>
+        <translation>Oprawa</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="142"/>
         <source>Price</source>
-        <translation type="unfinished">Cena</translation>
+        <translation>Cena</translation>
     </message>
     <message>
         <location filename="Wyszukaj.ui" line="156"/>
