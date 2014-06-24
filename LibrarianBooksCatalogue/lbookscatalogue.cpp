@@ -529,7 +529,7 @@ if(db.open())
 				}
 				else
 				{
-					QMessageBox::information(this,"FAIL read start rec", "SEEK FAILED");
+					//QMessageBox::information(this,"FAIL read start rec", "SEEK FAILED");
 				}
 			}
 			else
