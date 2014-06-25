@@ -554,15 +554,15 @@ void LBooksCatalogue::AddNewRec(int id)
 if(db.open())
 {
 		QSqlQuery query(db);
-		bool ok = query.exec("INSERT INTO lbcmain (tytul , tytul_oryg , gatunek , ilosc , rok_wyd , wydawnictwo , jezyk_wydania , opis , WL_ImieNazw , WL_Adres , MZ_Nazwa , MZ_Adres , MZ_WWW , INFO_IloscStr , INFO_Format , INFO_Oprawa , INFO_Ocena )  VALUES (\"" + this->ui.lineEdit_Tytul->text() + " \" , \" " + this->ui.lineEdit_TytulOryg->text() + " \" , \" " +
-			this->ui.lineEdit_Gatunek->text() + " \" , \" " + this->ui.lineEdit_Count->text() + " \" , \" " + 
-			this->ui.lineEdit_DatePub->text() + " \" , \" " + this->ui.lineEdit_Publisher->text() + " \" , \" " +
-			this->ui.lineEdit_PubLang->text() + " \" , \" " + this->ui.textEdit_Opis->toPlainText() + " \" , \" " +
-			this->ui.lineEdit_WL_Imienazw->text() + " \" , \" " + this->ui.lineEdit_WL_Adres->text() + " \" ,\" " +
-			this->ui.lineEdit_MZ_Nazwa->text() + " \" , \" " +
-			this->ui.lineEdit__MZ_Adres->text() + " \" , \" " + this->ui.lineEdit_MZ_WWW->text() + " \" , \" " +
-			this->ui.lineEdit_INFO_PageCount->text() + " \" , \" " + this->ui.lineEdit_INFO_Format->text() + " \" , \" " +
-			this->ui.lineEdit_INFO_Oprawa->text() + " \" , \" " + this->ui.lineEdit_INFO_Cena->text() + " \" )");
+		bool ok = query.exec("INSERT INTO lbcmain (tytul , tytul_oryg , gatunek , ilosc , rok_wyd , wydawnictwo , jezyk_wydania , opis , WL_ImieNazw , WL_Adres , MZ_Nazwa , MZ_Adres , MZ_WWW , INFO_IloscStr , INFO_Format , INFO_Oprawa , INFO_Ocena, ISBN )  VALUES (\"" + this->ui.lineEdit_Tytul->text() + "\" , \"" + this->ui.lineEdit_TytulOryg->text() + "\" , \"" +
+			this->ui.lineEdit_Gatunek->text() + "\" , \"" + this->ui.lineEdit_Count->text() + "\" , \"" + 
+			this->ui.lineEdit_DatePub->text() + "\" , \"" + this->ui.lineEdit_Publisher->text() + "\" , \"" +
+			this->ui.lineEdit_PubLang->text() + "\" , \"" + this->ui.textEdit_Opis->toPlainText() + "\" , \"" +
+			this->ui.lineEdit_WL_Imienazw->text() + "\" , \"" + this->ui.lineEdit_WL_Adres->text() + "\" ,\"" +
+			this->ui.lineEdit_MZ_Nazwa->text() + "\" , \"" +
+			this->ui.lineEdit__MZ_Adres->text() + "\" , \"" + this->ui.lineEdit_MZ_WWW->text() + "\" , \"" +
+			this->ui.lineEdit_INFO_PageCount->text() + "\" , \"" + this->ui.lineEdit_INFO_Format->text() + "\" , \"" +
+			this->ui.lineEdit_INFO_Oprawa->text() + "\" , \"" + this->ui.lineEdit_INFO_Cena->text() + "\" , \"" + this->ui.lineEdit_ISBN->text() + "\" )");
 
 		if( !ok )
 		QMessageBox::information(this, "Fail Add new rec", query.lastError().text());
