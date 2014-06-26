@@ -1097,7 +1097,8 @@ void LBooksCatalogue::ActionHelp()
 
 void LBooksCatalogue::ActionAbout()
 {
-
+	About *abt = new About();
+	abt->show();
 }
 
 void LBooksCatalogue::ActionSettings()

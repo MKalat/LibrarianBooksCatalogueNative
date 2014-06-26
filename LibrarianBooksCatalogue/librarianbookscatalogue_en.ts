@@ -2,6 +2,39 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="en" sourcelanguage="en">
 <context>
+    <name>About</name>
+    <message>
+        <location filename="About.ui" line="14"/>
+        <source>LBC - About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="About.ui" line="30"/>
+        <source>Librarian Books Catalogue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="About.ui" line="43"/>
+        <source>(C) Copyright by Marcin Kałat 2012 - 2014</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="About.ui" line="56"/>
+        <source>This program uses Qt 4.8.6 Library licensed under terms of GNU LGPL 2.1 License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="About.ui" line="72"/>
+        <source>http://mkalat.pl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="About.ui" line="85"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LibrarianBooksCatalogue</name>
     <message>
         <location filename="lbookscatalogue.ui" line="29"/>
