@@ -35,6 +35,64 @@
     </message>
 </context>
 <context>
+    <name>Drukuj</name>
+    <message>
+        <location filename="Drukuj.ui" line="14"/>
+        <source>LBC - Drukuj</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Drukuj.ui" line="26"/>
+        <source>Select how many book records to print</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Drukuj.ui" line="38"/>
+        <source>All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Drukuj.ui" line="51"/>
+        <source>Current record</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Drukuj.ui" line="65"/>
+        <source>Select what data to print</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Drukuj.ui" line="77"/>
+        <source>Basic information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Drukuj.ui" line="90"/>
+        <source>Borrows register</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Drukuj.ui" line="103"/>
+        <source>Authors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Drukuj.ui" line="116"/>
+        <source>Publishings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Drukuj.ui" line="130"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Drukuj.ui" line="149"/>
+        <source>Print</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LibrarianBooksCatalogue</name>
     <message>
         <location filename="lbookscatalogue.ui" line="29"/>
