@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'DrukujGg3268.ui'
+** Form generated from reading UI file 'DrukujHp2516.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef DRUKUJGG3268_H
-#define DRUKUJGG3268_H
+#ifndef DRUKUJHP2516_H
+#define DRUKUJHP2516_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -77,6 +77,8 @@ public:
         pushButton_PRINT->setFont(font);
 
         retranslateUi(Drukuj);
+        QObject::connect(pushButton_PRINT, SIGNAL(clicked()), Drukuj, SLOT(BTN_PRINT_CLICKED()));
+        QObject::connect(pushButton_CANCEL, SIGNAL(clicked()), Drukuj, SLOT(BTN_CANCEL_CLICKED()));
 
         QMetaObject::connectSlotsByName(Drukuj);
     } // setupUi
@@ -104,4 +106,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // DRUKUJGG3268_H
+#endif // DRUKUJHP2516_H

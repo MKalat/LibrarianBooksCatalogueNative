@@ -151,5 +151,42 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_PRINT</sender>
+   <signal>clicked()</signal>
+   <receiver>Drukuj</receiver>
+   <slot>BTN_PRINT_CLICKED()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>290</x>
+     <y>232</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>234</x>
+     <y>7</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_CANCEL</sender>
+   <signal>clicked()</signal>
+   <receiver>Drukuj</receiver>
+   <slot>BTN_CANCEL_CLICKED()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>362</x>
+     <y>229</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>363</x>
+     <y>8</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>BTN_PRINT_CLICKED()</slot>
+  <slot>BTN_CANCEL_CLICKED()</slot>
+ </slots>
 </ui>

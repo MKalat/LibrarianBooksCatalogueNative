@@ -93,189 +93,189 @@
     </message>
     <message>
         <location filename="Drukuj.cpp" line="32"/>
-        <location filename="Drukuj.cpp" line="271"/>
+        <location filename="Drukuj.cpp" line="278"/>
         <source>Librarian Books Catalogue Printing from database - http://mkalat.pl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="78"/>
-        <location filename="Drukuj.cpp" line="318"/>
+        <location filename="Drukuj.cpp" line="325"/>
         <source>Oryginalny tytu³</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="81"/>
-        <location filename="Drukuj.cpp" line="321"/>
+        <location filename="Drukuj.cpp" line="328"/>
         <source>Gatunek</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="84"/>
-        <location filename="Drukuj.cpp" line="324"/>
+        <location filename="Drukuj.cpp" line="331"/>
         <source>Iloæ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="87"/>
-        <location filename="Drukuj.cpp" line="327"/>
+        <location filename="Drukuj.cpp" line="334"/>
         <source>Rok wydania</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="90"/>
-        <location filename="Drukuj.cpp" line="330"/>
+        <location filename="Drukuj.cpp" line="337"/>
         <source>Wydawnictwo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="93"/>
-        <location filename="Drukuj.cpp" line="192"/>
-        <location filename="Drukuj.cpp" line="333"/>
-        <location filename="Drukuj.cpp" line="431"/>
+        <location filename="Drukuj.cpp" line="196"/>
+        <location filename="Drukuj.cpp" line="340"/>
+        <location filename="Drukuj.cpp" line="441"/>
         <source>Jêzyk wydania</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="96"/>
-        <location filename="Drukuj.cpp" line="336"/>
+        <location filename="Drukuj.cpp" line="343"/>
         <source>Opis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="99"/>
-        <location filename="Drukuj.cpp" line="339"/>
+        <location filename="Drukuj.cpp" line="346"/>
         <source>W³aciciel - Imiê i nazwisko</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="102"/>
-        <location filename="Drukuj.cpp" line="342"/>
+        <location filename="Drukuj.cpp" line="349"/>
         <source>W³aciciel - Adres</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="105"/>
-        <location filename="Drukuj.cpp" line="345"/>
+        <location filename="Drukuj.cpp" line="352"/>
         <source>Miejsce zakupu - Nazwa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="108"/>
-        <location filename="Drukuj.cpp" line="348"/>
+        <location filename="Drukuj.cpp" line="355"/>
         <source>Miejsce zakupu - Adres</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="111"/>
-        <location filename="Drukuj.cpp" line="351"/>
+        <location filename="Drukuj.cpp" line="358"/>
         <source>Miejsce zakupu - WWW</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="114"/>
-        <location filename="Drukuj.cpp" line="354"/>
+        <location filename="Drukuj.cpp" line="361"/>
         <source>Iloæ stron</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="117"/>
-        <location filename="Drukuj.cpp" line="357"/>
+        <location filename="Drukuj.cpp" line="364"/>
         <source>Format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="120"/>
-        <location filename="Drukuj.cpp" line="360"/>
+        <location filename="Drukuj.cpp" line="367"/>
         <source>Oprawa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="123"/>
-        <location filename="Drukuj.cpp" line="363"/>
+        <location filename="Drukuj.cpp" line="370"/>
         <source>Ocena ksi¹¿ki</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Drukuj.cpp" line="126"/>
-        <location filename="Drukuj.cpp" line="366"/>
+        <location filename="Drukuj.cpp" line="373"/>
         <source>ISBN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="149"/>
-        <location filename="Drukuj.cpp" line="388"/>
+        <location filename="Drukuj.cpp" line="151"/>
+        <location filename="Drukuj.cpp" line="396"/>
         <source>Imie i Nazwisko</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="152"/>
-        <location filename="Drukuj.cpp" line="391"/>
+        <location filename="Drukuj.cpp" line="154"/>
+        <location filename="Drukuj.cpp" line="399"/>
         <source>Narodowoæ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="155"/>
-        <location filename="Drukuj.cpp" line="394"/>
+        <location filename="Drukuj.cpp" line="157"/>
+        <location filename="Drukuj.cpp" line="402"/>
         <source>Specjalnoæ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="158"/>
-        <location filename="Drukuj.cpp" line="397"/>
+        <location filename="Drukuj.cpp" line="160"/>
+        <location filename="Drukuj.cpp" line="405"/>
         <source>Napisane rozdzia³y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="186"/>
-        <location filename="Drukuj.cpp" line="425"/>
+        <location filename="Drukuj.cpp" line="190"/>
+        <location filename="Drukuj.cpp" line="435"/>
         <source>Data Wydania</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="189"/>
-        <location filename="Drukuj.cpp" line="428"/>
+        <location filename="Drukuj.cpp" line="193"/>
+        <location filename="Drukuj.cpp" line="438"/>
         <source>Wydawca</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="195"/>
-        <location filename="Drukuj.cpp" line="434"/>
+        <location filename="Drukuj.cpp" line="199"/>
+        <location filename="Drukuj.cpp" line="444"/>
         <source>Numer Wydania</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="198"/>
-        <location filename="Drukuj.cpp" line="437"/>
+        <location filename="Drukuj.cpp" line="202"/>
+        <location filename="Drukuj.cpp" line="447"/>
         <source>Kraj Wydania</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="226"/>
-        <location filename="Drukuj.cpp" line="465"/>
+        <location filename="Drukuj.cpp" line="232"/>
+        <location filename="Drukuj.cpp" line="477"/>
         <source>Osoba wypo¿yczaj¹ca</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="229"/>
-        <location filename="Drukuj.cpp" line="468"/>
+        <location filename="Drukuj.cpp" line="235"/>
+        <location filename="Drukuj.cpp" line="480"/>
         <source>Data wypo¿yczenia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="232"/>
-        <location filename="Drukuj.cpp" line="471"/>
+        <location filename="Drukuj.cpp" line="238"/>
+        <location filename="Drukuj.cpp" line="483"/>
         <source>Data oddania</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="235"/>
-        <location filename="Drukuj.cpp" line="474"/>
+        <location filename="Drukuj.cpp" line="241"/>
+        <location filename="Drukuj.cpp" line="486"/>
         <source>Stan przed wypo¿yczeniem</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Drukuj.cpp" line="238"/>
-        <location filename="Drukuj.cpp" line="477"/>
+        <location filename="Drukuj.cpp" line="244"/>
+        <location filename="Drukuj.cpp" line="489"/>
         <source>Stan po oddaniu</source>
         <translation type="unfinished"></translation>
     </message>
@@ -548,30 +548,35 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="lbookscatalogue.ui" line="1103"/>
-        <location filename="lbookscatalogue.ui" line="1141"/>
+        <location filename="lbookscatalogue.ui" line="1104"/>
+        <location filename="lbookscatalogue.ui" line="1142"/>
         <source>Help</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="lbookscatalogue.ui" line="1121"/>
+        <location filename="lbookscatalogue.ui" line="1122"/>
         <source>Search</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="lbookscatalogue.ui" line="1126"/>
+        <location filename="lbookscatalogue.ui" line="1127"/>
         <source>Settings</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="lbookscatalogue.ui" line="1131"/>
+        <location filename="lbookscatalogue.ui" line="1132"/>
         <source>Exit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="lbookscatalogue.ui" line="1136"/>
+        <location filename="lbookscatalogue.ui" line="1137"/>
         <source>About</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="lbookscatalogue.ui" line="1147"/>
+        <source>Print</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
