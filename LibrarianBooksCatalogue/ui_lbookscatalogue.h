@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'lbookscatalogueqH1444.ui'
+** Form generated from reading UI file 'lbookscatalogueHp8204.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LBOOKSCATALOGUEQH1444_H
-#define LBOOKSCATALOGUEQH1444_H
+#ifndef LBOOKSCATALOGUEHP8204_H
+#define LBOOKSCATALOGUEHP8204_H
 
 #include <QtCore/QLocale>
 #include <QtCore/QVariant>
@@ -38,6 +38,7 @@ public:
     QAction *actionKoniec;
     QAction *actionO_programie;
     QAction *actionPomoc;
+    QAction *actionDrukuj;
     QWidget *centralwidget;
     QLabel *label;
     QLineEdit *lineEdit_Tytul;
@@ -136,6 +137,8 @@ public:
         actionO_programie->setObjectName(QString::fromUtf8("actionO_programie"));
         actionPomoc = new QAction(LibrarianBooksCatalogue);
         actionPomoc->setObjectName(QString::fromUtf8("actionPomoc"));
+        actionDrukuj = new QAction(LibrarianBooksCatalogue);
+        actionDrukuj->setObjectName(QString::fromUtf8("actionDrukuj"));
         centralwidget = new QWidget(LibrarianBooksCatalogue);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label = new QLabel(centralwidget);
@@ -453,6 +456,7 @@ public:
         menubar->addAction(menuPomoc->menuAction());
         menuPlik->addAction(actionWyszukaj);
         menuPlik->addAction(actionUstawienia);
+        menuPlik->addAction(actionDrukuj);
         menuPlik->addAction(actionKoniec);
         menuPomoc->addAction(actionO_programie);
         menuPomoc->addAction(actionPomoc);
@@ -479,6 +483,7 @@ public:
         QObject::connect(actionO_programie, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionAbout()));
         QObject::connect(actionUstawienia, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionSettings()));
         QObject::connect(actionPomoc, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionHelp()));
+        QObject::connect(actionDrukuj, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionPrint()));
 
         tabWidget->setCurrentIndex(0);
 
@@ -494,6 +499,7 @@ public:
         actionKoniec->setText(QApplication::translate("LibrarianBooksCatalogue", "Exit", 0, QApplication::UnicodeUTF8));
         actionO_programie->setText(QApplication::translate("LibrarianBooksCatalogue", "About", 0, QApplication::UnicodeUTF8));
         actionPomoc->setText(QApplication::translate("LibrarianBooksCatalogue", "Help", 0, QApplication::UnicodeUTF8));
+        actionDrukuj->setText(QApplication::translate("LibrarianBooksCatalogue", "Print", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("LibrarianBooksCatalogue", "Title", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("LibrarianBooksCatalogue", "Orig. title", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("LibrarianBooksCatalogue", "Genre", 0, QApplication::UnicodeUTF8));
@@ -591,4 +597,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LBOOKSCATALOGUEQH1444_H
+#endif // LBOOKSCATALOGUEHP8204_H

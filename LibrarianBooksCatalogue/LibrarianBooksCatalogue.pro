@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 TEMPLATE = app
+VERSION = 1.2.3
 TARGET = LibrarianBooksCatalogue
 DESTDIR = ../Release
 QT += core gui sql

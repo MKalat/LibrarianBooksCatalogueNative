@@ -1096,6 +1096,7 @@
     </property>
     <addaction name="actionWyszukaj"/>
     <addaction name="actionUstawienia"/>
+    <addaction name="actionDrukuj"/>
     <addaction name="actionKoniec"/>
    </widget>
    <widget class="QMenu" name="menuPomoc">
@@ -1139,6 +1140,11 @@
   <action name="actionPomoc">
    <property name="text">
     <string>Help</string>
+   </property>
+  </action>
+  <action name="actionDrukuj">
+   <property name="text">
+    <string>Print</string>
    </property>
   </action>
  </widget>
@@ -1469,6 +1475,22 @@
    <signal>triggered()</signal>
    <receiver>LibrarianBooksCatalogue</receiver>
    <slot>ActionHelp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>383</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDrukuj</sender>
+   <signal>triggered()</signal>
+   <receiver>LibrarianBooksCatalogue</receiver>
+   <slot>ActionPrint()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
