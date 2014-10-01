@@ -128,107 +128,118 @@ void Drukuj::BTN_PRINT_CLICKED()
                     fnout << QString::fromWCharArray(L"</td></tr>");
                     fnout << QString::fromWCharArray(L"</table >");
 
-					QSqlQuery query2(db);
-					ok = query2.exec("select id, id_m, imie_nazw, narod, spec, rozdz from lbca where id_m = '" + cur_id_str + "'");
-					if (ok) 
+					if (ui.checkBox_AUTHORS->isChecked())
 					{
-						QSqlRecord qrec2 = query2.record();
-						int idCol = qrec2.indexOf("id");
-						int idmCol = qrec2.indexOf("id_m");
-						int imienazwCol = qrec2.indexOf("imie_nazw");
-						int narodCol = qrec2.indexOf("narod");
-						int specCol = qrec2.indexOf("spec");
-						int rozdzCol = qrec2.indexOf("rozdz");
-						while (query2.next())
-						{
-							fnout << QString::fromWCharArray(L"<h1>Autorzy");
-							fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
-							fnout << tr("Imie i Nazwisko") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(imienazwCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-							fnout << tr("Narodowoœæ") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(narodCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-							fnout << tr("Specjalnoœæ") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(specCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-							fnout << tr("Napisane rozdzia³y") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(rozdzCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr>");
-							fnout << QString::fromWCharArray(L"</table>");
-						}
 
-					}
-					QSqlQuery query3(db);
-					ok = query3.exec("select id, id_m, data_wyd, wyd, jezyk, numer_wyd, kraj_wyd from lbcp where id_m = '" + cur_id_str + "'");
-					if (ok)
-					{
-						QSqlRecord qrec3 = query3.record();
-						int idwCol = qrec3.indexOf("id");
-						int idwmCol = qrec3.indexOf("id_m");
-						int datawydCol = qrec3.indexOf("data_wyd");
-						int wydCol = qrec3.indexOf("wyd");
-						int langCol = qrec3.indexOf("jezyk");
-						int pubnoCol = qrec3.indexOf("numer_wyd");
-						int krajwydCol = qrec3.indexOf("kraj_wyd");
-												
-						while (query3.next())
+						QSqlQuery query2(db);
+						ok = query2.exec("select id, id_m, imie_nazw, narod, spec, rozdz from lbca where id_m = '" + cur_id_str + "'");
+						if (ok) 
 						{
-							fnout << QString::fromWCharArray(L"<h1>Wydawcy");
-							fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
-							fnout << tr("Data Wydania") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(datawydCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-							fnout << tr("Wydawca") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(wydCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-							fnout << tr("Jêzyk wydania") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(langCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-							fnout << tr("Numer Wydania") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(pubnoCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-							fnout << tr("Kraj Wydania") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(krajwydCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr>");
-							fnout << QString::fromWCharArray(L"</table>");
+							QSqlRecord qrec2 = query2.record();
+							int idCol = qrec2.indexOf("id");
+							int idmCol = qrec2.indexOf("id_m");
+							int imienazwCol = qrec2.indexOf("imie_nazw");
+							int narodCol = qrec2.indexOf("narod");
+							int specCol = qrec2.indexOf("spec");
+							int rozdzCol = qrec2.indexOf("rozdz");
+							while (query2.next())
+							{
+								fnout << QString::fromWCharArray(L"<h1>Autorzy");
+								fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
+								fnout << tr("Imie i Nazwisko") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(imienazwCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+								fnout << tr("Narodowoœæ") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(narodCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+								fnout << tr("Specjalnoœæ") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(specCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+								fnout << tr("Napisane rozdzia³y") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(rozdzCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr>");
+								fnout << QString::fromWCharArray(L"</table>");
+							}
+
 						}
 					}
 
-					QSqlQuery query4(db);
-					ok = query4.exec("select id, id_m, osoba, data_wyp, data_odd, "
-						"stan_wyp, stan_odd from lbcb where id_m = '" + cur_id_str + "'");
-					if (ok)
+					if (ui.checkBox_PUBS->isChecked())
 					{
-						QSqlRecord qrec4 = query4.record();
-						int idbCol = qrec4.indexOf("id");
-						int idbmCol = qrec4.indexOf("id_m");
-						int osobaCol = qrec4.indexOf("osoba");
-						int dwypCol = qrec4.indexOf("data_wyp");
-						int doddCol = qrec4.indexOf("data_odd");
-						int swypCol = qrec4.indexOf("stan_wyp");
-						int soddCol = qrec4.indexOf("stan_odd");
-						
-						while (query4.next())
-						{		
-							fnout << QString::fromWCharArray(L"<h1>Bibliotekarz");
-							fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
-							fnout << tr("Osoba wypo¿yczaj¹ca") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(osobaCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-							fnout << tr("Data wypo¿yczenia") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(dwypCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-							fnout << tr("Data oddania") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(doddCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-							fnout << tr("Stan przed wypo¿yczeniem") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(swypCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-							fnout << tr("Stan po oddaniu") << QString::fromWCharArray(L"</p></td><td>");
-							fnout << QString(query.value(soddCol).toString());
-							fnout << QString::fromWCharArray(L"</td></tr>");
-							fnout << QString::fromWCharArray(L"</table>");
+						QSqlQuery query3(db);
+						ok = query3.exec("select id, id_m, data_wyd, wyd, jezyk, numer_wyd, kraj_wyd from lbcp where id_m = '" + cur_id_str + "'");
+						if (ok)
+						{
+							QSqlRecord qrec3 = query3.record();
+							int idwCol = qrec3.indexOf("id");
+							int idwmCol = qrec3.indexOf("id_m");
+							int datawydCol = qrec3.indexOf("data_wyd");
+							int wydCol = qrec3.indexOf("wyd");
+							int langCol = qrec3.indexOf("jezyk");
+							int pubnoCol = qrec3.indexOf("numer_wyd");
+							int krajwydCol = qrec3.indexOf("kraj_wyd");
+													
+							while (query3.next())
+							{
+								fnout << QString::fromWCharArray(L"<h1>Wydawcy");
+								fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
+								fnout << tr("Data Wydania") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(datawydCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+								fnout << tr("Wydawca") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(wydCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+								fnout << tr("Jêzyk wydania") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(langCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+								fnout << tr("Numer Wydania") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(pubnoCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+								fnout << tr("Kraj Wydania") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(krajwydCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr>");
+								fnout << QString::fromWCharArray(L"</table>");
+							}
+						}
+					}
+
+					if (ui.checkBox_BORROWS->isChecked())
+					{
+						QSqlQuery query4(db);
+						ok = query4.exec("select id, id_m, osoba, data_wyp, data_odd, "
+							"stan_wyp, stan_odd from lbcb where id_m = '" + cur_id_str + "'");
+						if (ok)
+						{
+							QSqlRecord qrec4 = query4.record();
+							int idbCol = qrec4.indexOf("id");
+							int idbmCol = qrec4.indexOf("id_m");
+							int osobaCol = qrec4.indexOf("osoba");
+							int dwypCol = qrec4.indexOf("data_wyp");
+							int doddCol = qrec4.indexOf("data_odd");
+							int swypCol = qrec4.indexOf("stan_wyp");
+							int soddCol = qrec4.indexOf("stan_odd");
+							
+							while (query4.next())
+							{		
+								fnout << QString::fromWCharArray(L"<h1>Bibliotekarz");
+								fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
+								fnout << tr("Osoba wypo¿yczaj¹ca") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(osobaCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+								fnout << tr("Data wypo¿yczenia") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(dwypCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+								fnout << tr("Data oddania") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(doddCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+								fnout << tr("Stan przed wypo¿yczeniem") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(swypCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+								fnout << tr("Stan po oddaniu") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << QString(query.value(soddCol).toString());
+								fnout << QString::fromWCharArray(L"</td></tr>");
+								fnout << QString::fromWCharArray(L"</table>");
+							}
 						}
 					}
 
@@ -357,107 +368,117 @@ void Drukuj::BTN_PRINT_CLICKED()
 						fnout << QString::fromWCharArray(L"</td></tr>");
 						fnout << QString::fromWCharArray(L"</table >");
 
-						QSqlQuery query2(db);
-						ok = query2.exec("select id, id_m, imie_nazw, narod, spec, rozdz from lbca where id_m = '" + cur_id_str + "'");
-						if (ok) 
+						if (ui.checkBox_AUTHORS->isChecked())
 						{
-							QSqlRecord qrec2 = query2.record();
-							int idCol = qrec2.indexOf("id");
-							int idmCol = qrec2.indexOf("id_m");
-							int imienazwCol = qrec2.indexOf("imie_nazw");
-							int narodCol = qrec2.indexOf("narod");
-							int specCol = qrec2.indexOf("spec");
-							int rozdzCol = qrec2.indexOf("rozdz");
-							while (query2.next())
+							QSqlQuery query2(db);
+							ok = query2.exec("select id, id_m, imie_nazw, narod, spec, rozdz from lbca where id_m = '" + cur_id_str + "'");
+							if (ok) 
 							{
-								fnout << QString::fromWCharArray(L"<h1>Autorzy");
-								fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
-								fnout << tr("Imie i Nazwisko") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(imienazwCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Narodowoœæ") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(narodCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Specjalnoœæ") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(specCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Napisane rozdzia³y") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(rozdzCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr>");
-								fnout << QString::fromWCharArray(L"</table>");
-							}
+								QSqlRecord qrec2 = query2.record();
+								int idCol = qrec2.indexOf("id");
+								int idmCol = qrec2.indexOf("id_m");
+								int imienazwCol = qrec2.indexOf("imie_nazw");
+								int narodCol = qrec2.indexOf("narod");
+								int specCol = qrec2.indexOf("spec");
+								int rozdzCol = qrec2.indexOf("rozdz");
+								while (query2.next())
+								{
+									fnout << QString::fromWCharArray(L"<h1>Autorzy");
+									fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
+									fnout << tr("Imie i Nazwisko") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(imienazwCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+									fnout << tr("Narodowoœæ") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(narodCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+									fnout << tr("Specjalnoœæ") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(specCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+									fnout << tr("Napisane rozdzia³y") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(rozdzCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr>");
+									fnout << QString::fromWCharArray(L"</table>");
+								}
 
-						}
-						QSqlQuery query3(db);
-						ok = query3.exec("select id, id_m, data_wyd, wyd, jezyk, numer_wyd, kraj_wyd from lbcp where id_m = '" + cur_id_str + "'");
-						if (ok)
-						{
-							QSqlRecord qrec3 = query3.record();
-							int idwCol = qrec3.indexOf("id");
-							int idwmCol = qrec3.indexOf("id_m");
-							int datawydCol = qrec3.indexOf("data_wyd");
-							int wydCol = qrec3.indexOf("wyd");
-							int langCol = qrec3.indexOf("jezyk");
-							int pubnoCol = qrec3.indexOf("numer_wyd");
-							int krajwydCol = qrec3.indexOf("kraj_wyd");
-													
-							while (query3.next())
-							{
-								fnout << QString::fromWCharArray(L"<h1>Wydawcy");
-								fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
-								fnout << tr("Data Wydania") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(datawydCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Wydawca") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(wydCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Jêzyk wydania") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(langCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Numer Wydania") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(pubnoCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Kraj Wydania") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(krajwydCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr>");
-								fnout << QString::fromWCharArray(L"</table>");
 							}
 						}
 
-						QSqlQuery query4(db);
-						ok = query4.exec("select id, id_m, osoba, data_wyp, data_odd, "
-							"stan_wyp, stan_odd from lbcb where id_m = '" + cur_id_str + "'");
-						if (ok)
+						if (ui.checkBox_PUBS->isChecked())
+						{	
+							QSqlQuery query3(db);
+							ok = query3.exec("select id, id_m, data_wyd, wyd, jezyk, numer_wyd, kraj_wyd from lbcp where id_m = '" + cur_id_str + "'");
+							if (ok)
+							{
+								QSqlRecord qrec3 = query3.record();
+								int idwCol = qrec3.indexOf("id");
+								int idwmCol = qrec3.indexOf("id_m");
+								int datawydCol = qrec3.indexOf("data_wyd");
+								int wydCol = qrec3.indexOf("wyd");
+								int langCol = qrec3.indexOf("jezyk");
+								int pubnoCol = qrec3.indexOf("numer_wyd");
+								int krajwydCol = qrec3.indexOf("kraj_wyd");
+														
+								while (query3.next())
+								{
+									fnout << QString::fromWCharArray(L"<h1>Wydawcy");
+									fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
+									fnout << tr("Data Wydania") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(datawydCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+									fnout << tr("Wydawca") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(wydCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+									fnout << tr("Jêzyk wydania") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(langCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+									fnout << tr("Numer Wydania") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(pubnoCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+									fnout << tr("Kraj Wydania") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(krajwydCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr>");
+									fnout << QString::fromWCharArray(L"</table>");
+								}
+							}
+						}
+
+						if (ui.checkBox_BORROWS->isChecked())
 						{
-							QSqlRecord qrec4 = query4.record();
-							int idbCol = qrec4.indexOf("id");
-							int idbmCol = qrec4.indexOf("id_m");
-							int osobaCol = qrec4.indexOf("osoba");
-							int dwypCol = qrec4.indexOf("data_wyp");
-							int doddCol = qrec4.indexOf("data_odd");
-							int swypCol = qrec4.indexOf("stan_wyp");
-							int soddCol = qrec4.indexOf("stan_odd");
-							
-							while (query4.next())
-							{		
-								fnout << QString::fromWCharArray(L"<h1>Bibliotekarz");
-								fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
-								fnout << tr("Osoba wypo¿yczaj¹ca") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(osobaCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Data wypo¿yczenia") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(dwypCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Data oddania") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(doddCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Stan przed wypo¿yczeniem") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(swypCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Stan po oddaniu") << QString::fromWCharArray(L"</p></td><td>");
-								fnout << QString(query.value(soddCol).toString());
-								fnout << QString::fromWCharArray(L"</td></tr>");
-								fnout << QString::fromWCharArray(L"</table>");
+							QSqlQuery query4(db);
+							ok = query4.exec("select id, id_m, osoba, data_wyp, data_odd, "
+								"stan_wyp, stan_odd from lbcb where id_m = '" + cur_id_str + "'");
+							if (ok)
+							{
+								QSqlRecord qrec4 = query4.record();
+								int idbCol = qrec4.indexOf("id");
+								int idbmCol = qrec4.indexOf("id_m");
+								int osobaCol = qrec4.indexOf("osoba");
+								int dwypCol = qrec4.indexOf("data_wyp");
+								int doddCol = qrec4.indexOf("data_odd");
+								int swypCol = qrec4.indexOf("stan_wyp");
+								int soddCol = qrec4.indexOf("stan_odd");
+								
+								while (query4.next())
+								{		
+									fnout << QString::fromWCharArray(L"<h1>Bibliotekarz");
+									fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
+									fnout << tr("Osoba wypo¿yczaj¹ca") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(osobaCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+									fnout << tr("Data wypo¿yczenia") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(dwypCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+									fnout << tr("Data oddania") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(doddCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+									fnout << tr("Stan przed wypo¿yczeniem") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(swypCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
+									fnout << tr("Stan po oddaniu") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << QString(query.value(soddCol).toString());
+									fnout << QString::fromWCharArray(L"</td></tr>");
+									fnout << QString::fromWCharArray(L"</table>");
+								}
 							}
 						}
 						
