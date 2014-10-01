@@ -1075,7 +1075,8 @@ void LBooksCatalogue::ActionKoniec()
 
 void LBooksCatalogue::ActionPrint()
 {
-
+	Drukuj *druk = new Drukuj(0,0,cur_id);
+	druk->show();
 }
 
 void LBooksCatalogue::ActionSearch()

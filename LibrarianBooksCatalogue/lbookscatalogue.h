@@ -9,6 +9,7 @@
 #include "ui_lbookscatalogue.h"
 #include "Wyszukaj.h"
 #include "About.h"
+#include "Drukuj.h"
 #include <stdio.h>
 #include <iostream>
 #include <QSqlDatabase>

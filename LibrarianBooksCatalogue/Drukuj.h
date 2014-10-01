@@ -18,6 +18,7 @@ public:
     Drukuj(QWidget *parent = 0, Qt::WFlags flags = 0, int id_act = 0);
 	~Drukuj();
 	int id;
+    void print_doc();
 
 	
 
