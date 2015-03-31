@@ -1,0 +1,34 @@
+0000000000000000000000000000000000000000 fd503a8e9a74e5a49429ce673ac70918118294e5 Marcin Kałat <support@mkalat.pl> 1369448866 +0200	commit: poprawki
+fd503a8e9a74e5a49429ce673ac70918118294e5 0d4f6e55bff3d71fb25c08e76c8c7554be846a25 MarcinKałat <fixer44@wp.pl> 1401422698 +0200	commit: poprawki w kwestii sqllite
+0d4f6e55bff3d71fb25c08e76c8c7554be846a25 de354465da3dcb773908cf8302455f043dedd9be MarcinKałat <fixer44@wp.pl> 1401425296 +0200	commit: poprawki dostosowanie do qsql zamiast natywne sqlite
+de354465da3dcb773908cf8302455f043dedd9be 900f6c0effc2fb533bec0b63a0df8cf6426f238c MarcinKałat <fixer44@wp.pl> 1401429893 +0200	commit: poprawki bledow kompilacji
+900f6c0effc2fb533bec0b63a0df8cf6426f238c a401adf2f388b2721721f248c6db0591d475fed5 MarcinKałat <fixer44@wp.pl> 1401510806 +0200	commit: kompiluje się - poprawione funkcje tworzace baze danych oraz zliczajace rekordy itp
+a401adf2f388b2721721f248c6db0591d475fed5 44ef2aad28186ea76fb033b6e500995e18c9ca4e MarcinKałat <fixer44@wp.pl> 1401516724 +0200	commit: poprawki kwerend + dodane zamykanie db po każdej operacji
+44ef2aad28186ea76fb033b6e500995e18c9ca4e 6e36dfe5285a80c5375a4cf358a023d80a660ac6 MarcinKałat <fixer44@wp.pl> 1401520315 +0200	commit: poprawki kwerend
+6e36dfe5285a80c5375a4cf358a023d80a660ac6 111727c0194954675fb1d88c6c59dd9cee980d6f MarcinKałat <fixer44@wp.pl> 1401522740 +0200	commit: initial github
+111727c0194954675fb1d88c6c59dd9cee980d6f 79c2a9102f49bdd544c71a26f2e16cd036d1d0dc MarcinKałat <fixer44@wp.pl> 1401965285 +0200	commit: poprawione kwerendy, dodane komunikaty o błedach, dodane komunikaty debug, poprawnie zapisuje i odczytuje rekordy main, przewijanie do tyłu jeszcze nie działa prawidłowo
+79c2a9102f49bdd544c71a26f2e16cd036d1d0dc 01e53062e915a7909878899c8401db2053d7cf73 MarcinKałat <fixer44@wp.pl> 1401966965 +0200	commit: poprawione kwestie licencyjne
+01e53062e915a7909878899c8401db2053d7cf73 105f8c77fa4a2f25ee62cb80a6a43fe60196d2f1 MarcinKałat <fixer44@wp.pl> 1402006097 +0200	commit: poprawione przewijanie do tyłu oraz dodany kod sprawdzajacy czy przewijnie nie wchodzi na rekord o id = 0 (invalid record)
+105f8c77fa4a2f25ee62cb80a6a43fe60196d2f1 d412b469e1d86b4e63d6e97c71d4af8ef3d622b3 MarcinKałat <fixer44@wp.pl> 1402009984 +0200	commit: zmiana koncepcji jak zrealizowac dodawnai zachowywanie i usuwanie rekordów w tabelach
+d412b469e1d86b4e63d6e97c71d4af8ef3d622b3 545fda4bc57652ddeaf663828ef082b2a832bbc2 MarcinKałat <fixer44@wp.pl> 1402012041 +0200	commit: poprawki diodawania rekordow w tabelach (dalej nie działa), po dodaniu nowego rekordu lbcmain teraz przewija do niego
+545fda4bc57652ddeaf663828ef082b2a832bbc2 09e2ce70405488cf1bce0ea7e280e063bd82108d MarcinKałat <fixer44@wp.pl> 1402019914 +0200	commit: poprawki przewijania + wynikajace z tego przebudowy algorytmow twaorzacych wiersze w tablewidgets a takze wypelaniajacych table widgets danymi, oraz poprawki algorytmow updateowania rekordów w table widgets
+09e2ce70405488cf1bce0ea7e280e063bd82108d b3842f544a81674970a55f52b0f83838cc6eaf1d MarcinKałat <fixer44@wp.pl> 1402035329 +0200	commit: poprawione kwerendy updateujace rekordy - przrwijanie przy obecnych rekordach podrzednych działa, poprawione czyszczenie tabel po kazdym rozpoczeciu readrec(0,0)
+b3842f544a81674970a55f52b0f83838cc6eaf1d e662d4c948963537344d0b2f7ae600f73b7f530b MarcinKałat <fixer44@wp.pl> 1402040788 +0200	commit: poprawka tłumaczenia "oprawa" na "binding" na mainform
+e662d4c948963537344d0b2f7ae600f73b7f530b fdc7b9fd61aa978f4a22106a393dac73f46f84be MarcinKałat <fixer44@wp.pl> 1402042440 +0200	commit: dodana obsługa akcji koniec (menu plik)
+fdc7b9fd61aa978f4a22106a393dac73f46f84be cb966d79a28727517bedba82c5d2d75eedd3b5ff MarcinKałat <fixer44@wp.pl> 1402044391 +0200	commit: dodane tłumaczenia
+cb966d79a28727517bedba82c5d2d75eedd3b5ff 91d43ae51b69b477ff6489956da0a0b9a22e2543 MarcinKałat <fixer44@wp.pl> 1402194640 +0200	commit: dodane sygnały i obsługa akcji menu, zrobiona wyszukwiarka
+91d43ae51b69b477ff6489956da0a0b9a22e2543 6d62fa62151529a5646e8a81b71c71fddbf69574 MarcinKałat <fixer44@wp.pl> 1402230145 +0200	commit: podlaczylem via kod sygnal z wyszukiwarki do slota w mainwindow okna glownego w procedurze wywolywania wyszukiwarki - działa
+6d62fa62151529a5646e8a81b71c71fddbf69574 cc27c53d5f810bfd747d8ec93229b1a0757c7cba MarcinKałat <fixer44@wp.pl> 1403493309 +0200	commit: dodany isbn do bazy danych i do interfejsu
+cc27c53d5f810bfd747d8ec93229b1a0757c7cba baa3a115300b2d05fab13709413f3b869bc99839 MarcinKałat <fixer44@wp.pl> 1403543555 +0200	commit: dodany translator
+baa3a115300b2d05fab13709413f3b869bc99839 b86184e88889049570a9e285868daa6a6fbdc0f1 MarcinKałat <fixer44@wp.pl> 1403629526 +0200	commit: wywalony komunikat na starcie przy pustej bazie danych
+b86184e88889049570a9e285868daa6a6fbdc0f1 58d77ebf5200acf4e1cfa3a056be34d75ced82b9 MarcinKałat <fixer44@wp.pl> 1403629984 +0200	commit: poprawki tłumzczenia
+58d77ebf5200acf4e1cfa3a056be34d75ced82b9 b638b3dce3eaf320f48d982ca933070cb0194a92 MarcinKałat <fixer44@wp.pl> 1403666661 +0200	commit: naprawione dodawanie spacji przy nowych rekordach oraz nie zapisywanie isbn-a przy dodawaniu nowego rekordu
+b638b3dce3eaf320f48d982ca933070cb0194a92 d10ff5f7d3340d321cf0ae0172bb0d678650216e MarcinKałat <fixer44@wp.pl> 1403773414 +0200	commit: dodane okienko About
+d10ff5f7d3340d321cf0ae0172bb0d678650216e 2531ee9f1b48655726c13c62ded2ddebe3555561 MarcinKałat <fixer44@wp.pl> 1403774354 +0200	commit: dodany form drukowania
+2531ee9f1b48655726c13c62ded2ddebe3555561 2335213bfc35e17e90710919c231baf56e0bc3b7 MarcinKałat <fixer44@wp.pl> 1412090966 +0200	commit: printWiz added code
+2335213bfc35e17e90710919c231baf56e0bc3b7 5a03218d0ce348ab76e21624ac50c15992953adb MarcinKałat <fixer44@wp.pl> 1412155197 +0200	commit: printWiz coded not tested
+5a03218d0ce348ab76e21624ac50c15992953adb 53cdbdb405a813ff0131e2a0ecb726c862a2ff3d MarcinKałat <fixer44@wp.pl> 1412157872 +0200	commit: conditional check added - printWiz
+53cdbdb405a813ff0131e2a0ecb726c862a2ff3d 418b1493ec681b3b4bb7834650fef9a2d0f6a02c MarcinKałat <fixer44@wp.pl> 1412165279 +0200	commit: added print action to menu
+418b1493ec681b3b4bb7834650fef9a2d0f6a02c fbc6e93005580ac64726c033414a14c0536c12e3 MarcinKałat <fixer44@wp.pl> 1412166516 +0200	commit: poprawki literówek ze snippeta
+fbc6e93005580ac64726c033414a14c0536c12e3 8e4a73c8e587af77ef3d41a26675a2970f17de1e MarcinKałat <fixer44@wp.pl> 1412168333 +0200	commit: translation corrected, added
+8e4a73c8e587af77ef3d41a26675a2970f17de1e dcbaf6a16d12beaa6b9781dd57298e349884a20a MarcinKałat <fixer44@wp.pl> 1425222289 +0100	commit: dodana licencja GNU oraz readme
