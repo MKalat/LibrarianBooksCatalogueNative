@@ -808,6 +808,7 @@ void LBooksCatalogue::ClearCtrls()
 	this->ui.lineEdit_TytulOryg->clear();
 	this->ui.lineEdit_WL_Adres->clear();
 	this->ui.lineEdit_WL_Imienazw->clear();
+    this->ui.lineEdit_ISBN->clear();
 	
 	this->ui.textEdit_Opis->clear();
 
