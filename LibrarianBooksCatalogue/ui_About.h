@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'AboutHp3152.ui'
+** Form generated from reading UI file 'AboutHp3572.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef ABOUTHP3152_H
-#define ABOUTHP3152_H
+#ifndef ABOUTHP3572_H
+#define ABOUTHP3572_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -63,7 +63,7 @@ public:
     {
         About->setWindowTitle(QApplication::translate("About", "LBC - About", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("About", "Librarian Books Catalogue", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("About", "(C) Copyright by Marcin Ka\305\202at 2012 - 2014", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("About", "(C) Copyright by Marcin Ka\305\202at 2012 - 2015", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("About", "This program uses Qt 4.8.6 Library licensed under terms of GNU LGPL 2.1 License", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("About", "http://mkalat.pl", 0, QApplication::UnicodeUTF8));
         pushButton_OK->setText(QApplication::translate("About", "OK", 0, QApplication::UnicodeUTF8));
@@ -77,4 +77,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // ABOUTHP3152_H
+#endif // ABOUTHP3572_H

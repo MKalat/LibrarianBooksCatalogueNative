@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'DrukujHp2516.ui'
+** Form generated from reading UI file 'DrukujqHp496.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef DRUKUJHP2516_H
-#define DRUKUJHP2516_H
+#ifndef DRUKUJQHP496_H
+#define DRUKUJQHP496_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -55,7 +55,7 @@ public:
         groupBox_2->setGeometry(QRect(12, 100, 389, 113));
         checkBox_BASIC = new QCheckBox(groupBox_2);
         checkBox_BASIC->setObjectName(QString::fromUtf8("checkBox_BASIC"));
-        checkBox_BASIC->setGeometry(QRect(12, 28, 121, 17));
+        checkBox_BASIC->setGeometry(QRect(12, 28, 317, 17));
         checkBox_BORROWS = new QCheckBox(groupBox_2);
         checkBox_BORROWS->setObjectName(QString::fromUtf8("checkBox_BORROWS"));
         checkBox_BORROWS->setGeometry(QRect(12, 48, 109, 17));
@@ -106,4 +106,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // DRUKUJHP2516_H
+#endif // DRUKUJQHP496_H

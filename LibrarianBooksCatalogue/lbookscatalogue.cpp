@@ -14,6 +14,7 @@ LBooksCatalogue::LBooksCatalogue(QWidget *parent, Qt::WFlags flags)
 		CreateDB();
 	}
 	ReadStartRec();
+    RefreshBooksList();
 }
 
 LBooksCatalogue::~LBooksCatalogue()
@@ -90,6 +91,7 @@ void LBooksCatalogue::BTN_SAVE_CLICKED()
 	
 	ReadRec(0,0);
 	CalcRecInfo();
+    RefreshBooksList();
 
 }
 
@@ -100,6 +102,7 @@ void LBooksCatalogue::BTN_DEL_CLICKED()
 		SaveRec(0);
 		DelRec(0);
 		CalcRecInfo();
+        RefreshBooksList();
 	}
 
 }
@@ -1113,4 +1116,58 @@ void LBooksCatalogue::SetRecAkt(QString id)
 	ReadRec(0,0);
 	CalcRecInfo();
 
+}
+void LBooksCatalogue::BooksListClicked(QTableWidgetItem* item)
+{
+  QString id = "";
+  int row = item->row();
+  int col = item->column();
+  if (col > 0)
+  {
+        QTableWidgetItem* prop_item = this->ui.tableWidget_BooksList->item(row,0);
+        id = prop_item->text();
+  }
+  else
+  {
+      id = item->text();
+  }
+  SetRecAkt(id);
+}
+void LBooksCatalogue::RefreshBooksList()
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("lbcmain.db");
+
+if(db.open())
+{
+        QString cur_id_str;
+        cur_id_str.setNum(cur_id);
+        QSqlQuery query(db);
+                bool ok = query.exec("SELECT id, tytul, "
+            "gatunek, rok_wyd FROM lbcmain ");
+        QSqlRecord qrec = query.record();
+        int idCol = qrec.indexOf("id");
+        int titleCol = qrec.indexOf("tytul");
+        int genreCol = qrec.indexOf("gatunek");
+        int year_pub = qrec.indexOf("rok_wyd");
+        int row = 0;
+        ui.tableWidget_BooksList->setRowCount(0);
+        while(query.next())
+        {
+            ui.tableWidget_BooksList->insertRow(row);
+            QTableWidgetItem* new_item0 = new QTableWidgetItem(query.value(idCol).toString());
+            ui.tableWidget_BooksList->setItem(row,0,new_item0);
+
+            QTableWidgetItem* new_item1 = new QTableWidgetItem(query.value(titleCol).toString());
+            ui.tableWidget_BooksList->setItem(row,1,new_item1);
+
+            QTableWidgetItem* new_item2 = new QTableWidgetItem(query.value(genreCol).toString());
+            ui.tableWidget_BooksList->setItem(row,2,new_item2);
+
+            QTableWidgetItem* new_item3 = new QTableWidgetItem(query.value(year_pub).toString());
+            ui.tableWidget_BooksList->setItem(row,3,new_item3);
+
+            row++;
+        }
+}
 }

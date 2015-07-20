@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'lbookscatalogueHp8204.ui'
+** Form generated from reading UI file 'lbookscatalogueHp3864.ui'
 **
 ** Created by: Qt User Interface Compiler version 4.8.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LBOOKSCATALOGUEHP8204_H
-#define LBOOKSCATALOGUEHP8204_H
+#ifndef LBOOKSCATALOGUEHP3864_H
+#define LBOOKSCATALOGUEHP3864_H
 
 #include <QtCore/QLocale>
 #include <QtCore/QVariant>
@@ -109,6 +109,8 @@ public:
     QPushButton *pushButton_DEL;
     QLineEdit *lineEdit_ISBN;
     QLabel *label_13;
+    QLabel *label_17;
+    QTableWidget *tableWidget_BooksList;
     QMenuBar *menubar;
     QMenu *menuPlik;
     QMenu *menuPomoc;
@@ -118,13 +120,13 @@ public:
     {
         if (LibrarianBooksCatalogue->objectName().isEmpty())
             LibrarianBooksCatalogue->setObjectName(QString::fromUtf8("LibrarianBooksCatalogue"));
-        LibrarianBooksCatalogue->resize(768, 766);
+        LibrarianBooksCatalogue->resize(1037, 673);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(LibrarianBooksCatalogue->sizePolicy().hasHeightForWidth());
         LibrarianBooksCatalogue->setSizePolicy(sizePolicy);
-        LibrarianBooksCatalogue->setMaximumSize(QSize(768, 766));
+        LibrarianBooksCatalogue->setMaximumSize(QSize(1200, 680));
         LibrarianBooksCatalogue->setContextMenuPolicy(Qt::DefaultContextMenu);
         LibrarianBooksCatalogue->setAnimated(false);
         actionWyszukaj = new QAction(LibrarianBooksCatalogue);
@@ -185,7 +187,7 @@ public:
         lineEdit_PubLang->setGeometry(QRect(524, 42, 209, 16));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setGeometry(QRect(6, 84, 751, 577));
+        tabWidget->setGeometry(QRect(6, 84, 751, 489));
         tabWidget->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         TAB_OPIS = new QWidget();
         TAB_OPIS->setObjectName(QString::fromUtf8("TAB_OPIS"));
@@ -214,7 +216,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
         tableWidget_Autorzy->setHorizontalHeaderItem(5, __qtablewidgetitem5);
         tableWidget_Autorzy->setObjectName(QString::fromUtf8("tableWidget_Autorzy"));
-        tableWidget_Autorzy->setGeometry(QRect(6, 156, 733, 151));
+        tableWidget_Autorzy->setGeometry(QRect(6, 156, 733, 121));
         tableWidget_Autorzy->setSelectionBehavior(QAbstractItemView::SelectRows);
         tableWidget_Autorzy->setCornerButtonEnabled(true);
         tableWidget_Autorzy->horizontalHeader()->setDefaultSectionSize(100);
@@ -223,13 +225,13 @@ public:
         label_7->setGeometry(QRect(6, 144, 46, 13));
         pushButton_AUT_USUN = new QPushButton(TAB_OPIS);
         pushButton_AUT_USUN->setObjectName(QString::fromUtf8("pushButton_AUT_USUN"));
-        pushButton_AUT_USUN->setGeometry(QRect(666, 306, 75, 23));
+        pushButton_AUT_USUN->setGeometry(QRect(664, 276, 75, 23));
         pushButton_AUT_NOWY = new QPushButton(TAB_OPIS);
         pushButton_AUT_NOWY->setObjectName(QString::fromUtf8("pushButton_AUT_NOWY"));
-        pushButton_AUT_NOWY->setGeometry(QRect(8, 308, 75, 23));
+        pushButton_AUT_NOWY->setGeometry(QRect(8, 276, 75, 23));
         label_9 = new QLabel(TAB_OPIS);
         label_9->setObjectName(QString::fromUtf8("label_9"));
-        label_9->setGeometry(QRect(6, 330, 46, 13));
+        label_9->setGeometry(QRect(8, 304, 46, 13));
         tableWidget_Wydania = new QTableWidget(TAB_OPIS);
         if (tableWidget_Wydania->columnCount() < 7)
             tableWidget_Wydania->setColumnCount(7);
@@ -248,7 +250,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
         tableWidget_Wydania->setHorizontalHeaderItem(6, __qtablewidgetitem12);
         tableWidget_Wydania->setObjectName(QString::fromUtf8("tableWidget_Wydania"));
-        tableWidget_Wydania->setGeometry(QRect(6, 342, 733, 169));
+        tableWidget_Wydania->setGeometry(QRect(6, 318, 733, 117));
         tableWidget_Wydania->setMinimumSize(QSize(733, 0));
         tableWidget_Wydania->setProperty("showDropIndicator", QVariant(false));
         tableWidget_Wydania->setDragDropOverwriteMode(true);
@@ -256,16 +258,16 @@ public:
         tableWidget_Wydania->horizontalHeader()->setDefaultSectionSize(100);
         pushButton_WYD_NOWY = new QPushButton(TAB_OPIS);
         pushButton_WYD_NOWY->setObjectName(QString::fromUtf8("pushButton_WYD_NOWY"));
-        pushButton_WYD_NOWY->setGeometry(QRect(8, 512, 75, 23));
+        pushButton_WYD_NOWY->setGeometry(QRect(8, 436, 75, 23));
         pushButton_WYD_USUN = new QPushButton(TAB_OPIS);
         pushButton_WYD_USUN->setObjectName(QString::fromUtf8("pushButton_WYD_USUN"));
-        pushButton_WYD_USUN->setGeometry(QRect(666, 510, 75, 23));
+        pushButton_WYD_USUN->setGeometry(QRect(664, 436, 75, 23));
         pushButton = new QPushButton(TAB_OPIS);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(84, 308, 75, 23));
+        pushButton->setGeometry(QRect(88, 276, 75, 23));
         pushButton_PUB_SAVE = new QPushButton(TAB_OPIS);
         pushButton_PUB_SAVE->setObjectName(QString::fromUtf8("pushButton_PUB_SAVE"));
-        pushButton_PUB_SAVE->setGeometry(QRect(84, 512, 75, 23));
+        pushButton_PUB_SAVE->setGeometry(QRect(84, 436, 75, 23));
         tabWidget->addTab(TAB_OPIS, QString());
         TAB_INFO = new QWidget();
         TAB_INFO->setObjectName(QString::fromUtf8("TAB_INFO"));
@@ -356,7 +358,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
         tableWidget_BIBLIO_WypoIN->setHorizontalHeaderItem(6, __qtablewidgetitem19);
         tableWidget_BIBLIO_WypoIN->setObjectName(QString::fromUtf8("tableWidget_BIBLIO_WypoIN"));
-        tableWidget_BIBLIO_WypoIN->setGeometry(QRect(6, 24, 733, 487));
+        tableWidget_BIBLIO_WypoIN->setGeometry(QRect(6, 24, 733, 357));
         sizePolicy.setHeightForWidth(tableWidget_BIBLIO_WypoIN->sizePolicy().hasHeightForWidth());
         tableWidget_BIBLIO_WypoIN->setSizePolicy(sizePolicy);
         tableWidget_BIBLIO_WypoIN->setEditTriggers(QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed);
@@ -367,20 +369,20 @@ public:
         tableWidget_BIBLIO_WypoIN->horizontalHeader()->setDefaultSectionSize(150);
         pushButton_BIBLIO_Nowy = new QPushButton(TAB_BIBLIO);
         pushButton_BIBLIO_Nowy->setObjectName(QString::fromUtf8("pushButton_BIBLIO_Nowy"));
-        pushButton_BIBLIO_Nowy->setGeometry(QRect(8, 512, 75, 23));
+        pushButton_BIBLIO_Nowy->setGeometry(QRect(4, 380, 75, 23));
         pushButton_BIBLIO_USUN = new QPushButton(TAB_BIBLIO);
         pushButton_BIBLIO_USUN->setObjectName(QString::fromUtf8("pushButton_BIBLIO_USUN"));
-        pushButton_BIBLIO_USUN->setGeometry(QRect(666, 510, 75, 23));
+        pushButton_BIBLIO_USUN->setGeometry(QRect(664, 380, 75, 23));
         pushButton_B_SAVE = new QPushButton(TAB_BIBLIO);
         pushButton_B_SAVE->setObjectName(QString::fromUtf8("pushButton_B_SAVE"));
-        pushButton_B_SAVE->setGeometry(QRect(84, 512, 75, 23));
+        pushButton_B_SAVE->setGeometry(QRect(92, 380, 75, 23));
         tabWidget->addTab(TAB_BIBLIO, QString());
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(12, 666, 43, 16));
+        label_4->setGeometry(QRect(8, 580, 43, 16));
         lineEdit__RecNo = new QLineEdit(centralwidget);
         lineEdit__RecNo->setObjectName(QString::fromUtf8("lineEdit__RecNo"));
-        lineEdit__RecNo->setGeometry(QRect(48, 666, 31, 16));
+        lineEdit__RecNo->setGeometry(QRect(44, 576, 31, 16));
         sizePolicy.setHeightForWidth(lineEdit__RecNo->sizePolicy().hasHeightForWidth());
         lineEdit__RecNo->setSizePolicy(sizePolicy);
         lineEdit__RecNo->setContextMenuPolicy(Qt::NoContextMenu);
@@ -388,17 +390,17 @@ public:
         lineEdit__RecNo->setReadOnly(true);
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(84, 666, 16, 16));
+        label_5->setGeometry(QRect(84, 580, 16, 16));
         lineEdit_RecCount = new QLineEdit(centralwidget);
         lineEdit_RecCount->setObjectName(QString::fromUtf8("lineEdit_RecCount"));
-        lineEdit_RecCount->setGeometry(QRect(102, 666, 31, 16));
+        lineEdit_RecCount->setGeometry(QRect(96, 576, 31, 16));
         sizePolicy.setHeightForWidth(lineEdit_RecCount->sizePolicy().hasHeightForWidth());
         lineEdit_RecCount->setSizePolicy(sizePolicy);
         lineEdit_RecCount->setAcceptDrops(false);
         lineEdit_RecCount->setReadOnly(true);
         pushButton_FIRST = new QPushButton(centralwidget);
         pushButton_FIRST->setObjectName(QString::fromUtf8("pushButton_FIRST"));
-        pushButton_FIRST->setGeometry(QRect(6, 684, 55, 31));
+        pushButton_FIRST->setGeometry(QRect(0, 596, 55, 31));
         QFont font;
         font.setBold(true);
         font.setWeight(75);
@@ -408,27 +410,27 @@ public:
         pushButton_FIRST->setFlat(false);
         pushButton_PREV = new QPushButton(centralwidget);
         pushButton_PREV->setObjectName(QString::fromUtf8("pushButton_PREV"));
-        pushButton_PREV->setGeometry(QRect(66, 684, 43, 31));
+        pushButton_PREV->setGeometry(QRect(56, 596, 43, 31));
         pushButton_PREV->setFont(font);
         pushButton_NEXT = new QPushButton(centralwidget);
         pushButton_NEXT->setObjectName(QString::fromUtf8("pushButton_NEXT"));
-        pushButton_NEXT->setGeometry(QRect(114, 684, 43, 31));
+        pushButton_NEXT->setGeometry(QRect(100, 596, 43, 31));
         pushButton_NEXT->setFont(font);
         pushButton_LAST = new QPushButton(centralwidget);
         pushButton_LAST->setObjectName(QString::fromUtf8("pushButton_LAST"));
-        pushButton_LAST->setGeometry(QRect(162, 684, 55, 31));
+        pushButton_LAST->setGeometry(QRect(144, 596, 55, 31));
         pushButton_LAST->setFont(font);
         pushButton_NEW = new QPushButton(centralwidget);
         pushButton_NEW->setObjectName(QString::fromUtf8("pushButton_NEW"));
-        pushButton_NEW->setGeometry(QRect(246, 684, 75, 31));
+        pushButton_NEW->setGeometry(QRect(236, 596, 75, 31));
         pushButton_NEW->setFont(font);
         pushButton_SAVE = new QPushButton(centralwidget);
         pushButton_SAVE->setObjectName(QString::fromUtf8("pushButton_SAVE"));
-        pushButton_SAVE->setGeometry(QRect(330, 684, 75, 31));
+        pushButton_SAVE->setGeometry(QRect(320, 596, 75, 31));
         pushButton_SAVE->setFont(font);
         pushButton_DEL = new QPushButton(centralwidget);
         pushButton_DEL->setObjectName(QString::fromUtf8("pushButton_DEL"));
-        pushButton_DEL->setGeometry(QRect(432, 684, 79, 31));
+        pushButton_DEL->setGeometry(QRect(664, 596, 79, 31));
         pushButton_DEL->setFont(font);
         pushButton_DEL->setStyleSheet(QString::fromUtf8(""));
         lineEdit_ISBN = new QLineEdit(centralwidget);
@@ -437,10 +439,35 @@ public:
         label_13 = new QLabel(centralwidget);
         label_13->setObjectName(QString::fromUtf8("label_13"));
         label_13->setGeometry(QRect(452, 60, 46, 13));
+        label_17 = new QLabel(centralwidget);
+        label_17->setObjectName(QString::fromUtf8("label_17"));
+        label_17->setGeometry(QRect(761, 2, 69, 16));
+        tableWidget_BooksList = new QTableWidget(centralwidget);
+        if (tableWidget_BooksList->columnCount() < 4)
+            tableWidget_BooksList->setColumnCount(4);
+        QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
+        tableWidget_BooksList->setHorizontalHeaderItem(0, __qtablewidgetitem20);
+        QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
+        tableWidget_BooksList->setHorizontalHeaderItem(1, __qtablewidgetitem21);
+        QTableWidgetItem *__qtablewidgetitem22 = new QTableWidgetItem();
+        tableWidget_BooksList->setHorizontalHeaderItem(2, __qtablewidgetitem22);
+        QTableWidgetItem *__qtablewidgetitem23 = new QTableWidgetItem();
+        tableWidget_BooksList->setHorizontalHeaderItem(3, __qtablewidgetitem23);
+        tableWidget_BooksList->setObjectName(QString::fromUtf8("tableWidget_BooksList"));
+        tableWidget_BooksList->setGeometry(QRect(761, 22, 269, 549));
+        tableWidget_BooksList->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        tableWidget_BooksList->setProperty("showDropIndicator", QVariant(false));
+        tableWidget_BooksList->setDragDropOverwriteMode(false);
+        tableWidget_BooksList->setAlternatingRowColors(true);
+        tableWidget_BooksList->setSelectionMode(QAbstractItemView::SingleSelection);
+        tableWidget_BooksList->setSelectionBehavior(QAbstractItemView::SelectRows);
+        tableWidget_BooksList->setSortingEnabled(false);
+        tableWidget_BooksList->setCornerButtonEnabled(false);
+        tableWidget_BooksList->horizontalHeader()->setDefaultSectionSize(65);
         LibrarianBooksCatalogue->setCentralWidget(centralwidget);
         menubar = new QMenuBar(LibrarianBooksCatalogue);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 768, 21));
+        menubar->setGeometry(QRect(0, 0, 1037, 21));
         menuPlik = new QMenu(menubar);
         menuPlik->setObjectName(QString::fromUtf8("menuPlik"));
         menuPomoc = new QMenu(menubar);
@@ -484,6 +511,7 @@ public:
         QObject::connect(actionUstawienia, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionSettings()));
         QObject::connect(actionPomoc, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionHelp()));
         QObject::connect(actionDrukuj, SIGNAL(triggered()), LibrarianBooksCatalogue, SLOT(ActionPrint()));
+        QObject::connect(tableWidget_BooksList, SIGNAL(itemClicked(QTableWidgetItem*)), LibrarianBooksCatalogue, SLOT(BooksListClicked(QTableWidgetItem*)));
 
         tabWidget->setCurrentIndex(0);
 
@@ -585,6 +613,15 @@ public:
         pushButton_SAVE->setText(QApplication::translate("LibrarianBooksCatalogue", "Save", 0, QApplication::UnicodeUTF8));
         pushButton_DEL->setText(QApplication::translate("LibrarianBooksCatalogue", "Delete", 0, QApplication::UnicodeUTF8));
         label_13->setText(QApplication::translate("LibrarianBooksCatalogue", "ISBN", 0, QApplication::UnicodeUTF8));
+        label_17->setText(QApplication::translate("LibrarianBooksCatalogue", "Lista ksi\304\205\305\274ek", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem20 = tableWidget_BooksList->horizontalHeaderItem(0);
+        ___qtablewidgetitem20->setText(QApplication::translate("LibrarianBooksCatalogue", "ID", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem21 = tableWidget_BooksList->horizontalHeaderItem(1);
+        ___qtablewidgetitem21->setText(QApplication::translate("LibrarianBooksCatalogue", "Tytu\305\202", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem22 = tableWidget_BooksList->horizontalHeaderItem(2);
+        ___qtablewidgetitem22->setText(QApplication::translate("LibrarianBooksCatalogue", "Gatunek", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem23 = tableWidget_BooksList->horizontalHeaderItem(3);
+        ___qtablewidgetitem23->setText(QApplication::translate("LibrarianBooksCatalogue", "Premiera", 0, QApplication::UnicodeUTF8));
         menuPlik->setTitle(QApplication::translate("LibrarianBooksCatalogue", "File", 0, QApplication::UnicodeUTF8));
         menuPomoc->setTitle(QApplication::translate("LibrarianBooksCatalogue", "Help", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
@@ -597,4 +634,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LBOOKSCATALOGUEHP8204_H
+#endif // LBOOKSCATALOGUEHP3864_H

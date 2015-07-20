@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>768</width>
-    <height>766</height>
+    <width>1037</width>
+    <height>673</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,8 +18,8 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>768</width>
-    <height>766</height>
+    <width>1200</width>
+    <height>680</height>
    </size>
   </property>
   <property name="contextMenuPolicy">
@@ -199,7 +199,7 @@
       <x>6</x>
       <y>84</y>
       <width>751</width>
-      <height>577</height>
+      <height>489</height>
      </rect>
     </property>
     <property name="locale">
@@ -250,7 +250,7 @@
         <x>6</x>
         <y>156</y>
         <width>733</width>
-        <height>151</height>
+        <height>121</height>
        </rect>
       </property>
       <property name="selectionBehavior">
@@ -309,8 +309,8 @@
      <widget class="QPushButton" name="pushButton_AUT_USUN">
       <property name="geometry">
        <rect>
-        <x>666</x>
-        <y>306</y>
+        <x>664</x>
+        <y>276</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -323,7 +323,7 @@
       <property name="geometry">
        <rect>
         <x>8</x>
-        <y>308</y>
+        <y>276</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -335,8 +335,8 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>6</x>
-        <y>330</y>
+        <x>8</x>
+        <y>304</y>
         <width>46</width>
         <height>13</height>
        </rect>
@@ -349,9 +349,9 @@
       <property name="geometry">
        <rect>
         <x>6</x>
-        <y>342</y>
+        <y>318</y>
         <width>733</width>
-        <height>169</height>
+        <height>117</height>
        </rect>
       </property>
       <property name="minimumSize">
@@ -412,7 +412,7 @@
       <property name="geometry">
        <rect>
         <x>8</x>
-        <y>512</y>
+        <y>436</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -424,8 +424,8 @@
      <widget class="QPushButton" name="pushButton_WYD_USUN">
       <property name="geometry">
        <rect>
-        <x>666</x>
-        <y>510</y>
+        <x>664</x>
+        <y>436</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -437,8 +437,8 @@
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>84</x>
-        <y>308</y>
+        <x>88</x>
+        <y>276</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -451,7 +451,7 @@
       <property name="geometry">
        <rect>
         <x>84</x>
-        <y>512</y>
+        <y>436</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -735,7 +735,7 @@
         <x>6</x>
         <y>24</y>
         <width>733</width>
-        <height>487</height>
+        <height>357</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -801,8 +801,8 @@
      <widget class="QPushButton" name="pushButton_BIBLIO_Nowy">
       <property name="geometry">
        <rect>
-        <x>8</x>
-        <y>512</y>
+        <x>4</x>
+        <y>380</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -814,8 +814,8 @@
      <widget class="QPushButton" name="pushButton_BIBLIO_USUN">
       <property name="geometry">
        <rect>
-        <x>666</x>
-        <y>510</y>
+        <x>664</x>
+        <y>380</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -827,8 +827,8 @@
      <widget class="QPushButton" name="pushButton_B_SAVE">
       <property name="geometry">
        <rect>
-        <x>84</x>
-        <y>512</y>
+        <x>92</x>
+        <y>380</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -842,8 +842,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>12</x>
-      <y>666</y>
+      <x>8</x>
+      <y>580</y>
       <width>43</width>
       <height>16</height>
      </rect>
@@ -855,8 +855,8 @@
    <widget class="QLineEdit" name="lineEdit__RecNo">
     <property name="geometry">
      <rect>
-      <x>48</x>
-      <y>666</y>
+      <x>44</x>
+      <y>576</y>
       <width>31</width>
       <height>16</height>
      </rect>
@@ -881,7 +881,7 @@
     <property name="geometry">
      <rect>
       <x>84</x>
-      <y>666</y>
+      <y>580</y>
       <width>16</width>
       <height>16</height>
      </rect>
@@ -893,8 +893,8 @@
    <widget class="QLineEdit" name="lineEdit_RecCount">
     <property name="geometry">
      <rect>
-      <x>102</x>
-      <y>666</y>
+      <x>96</x>
+      <y>576</y>
       <width>31</width>
       <height>16</height>
      </rect>
@@ -915,8 +915,8 @@
    <widget class="QPushButton" name="pushButton_FIRST">
     <property name="geometry">
      <rect>
-      <x>6</x>
-      <y>684</y>
+      <x>0</x>
+      <y>596</y>
       <width>55</width>
       <height>31</height>
      </rect>
@@ -943,8 +943,8 @@
    <widget class="QPushButton" name="pushButton_PREV">
     <property name="geometry">
      <rect>
-      <x>66</x>
-      <y>684</y>
+      <x>56</x>
+      <y>596</y>
       <width>43</width>
       <height>31</height>
      </rect>
@@ -962,8 +962,8 @@
    <widget class="QPushButton" name="pushButton_NEXT">
     <property name="geometry">
      <rect>
-      <x>114</x>
-      <y>684</y>
+      <x>100</x>
+      <y>596</y>
       <width>43</width>
       <height>31</height>
      </rect>
@@ -981,8 +981,8 @@
    <widget class="QPushButton" name="pushButton_LAST">
     <property name="geometry">
      <rect>
-      <x>162</x>
-      <y>684</y>
+      <x>144</x>
+      <y>596</y>
       <width>55</width>
       <height>31</height>
      </rect>
@@ -1000,8 +1000,8 @@
    <widget class="QPushButton" name="pushButton_NEW">
     <property name="geometry">
      <rect>
-      <x>246</x>
-      <y>684</y>
+      <x>236</x>
+      <y>596</y>
       <width>75</width>
       <height>31</height>
      </rect>
@@ -1019,8 +1019,8 @@
    <widget class="QPushButton" name="pushButton_SAVE">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>684</y>
+      <x>320</x>
+      <y>596</y>
       <width>75</width>
       <height>31</height>
      </rect>
@@ -1038,8 +1038,8 @@
    <widget class="QPushButton" name="pushButton_DEL">
     <property name="geometry">
      <rect>
-      <x>432</x>
-      <y>684</y>
+      <x>664</x>
+      <y>596</y>
       <width>79</width>
       <height>31</height>
      </rect>
@@ -1080,13 +1080,83 @@
      <string>ISBN</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_17">
+    <property name="geometry">
+     <rect>
+      <x>761</x>
+      <y>2</y>
+      <width>69</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Lista książek</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget_BooksList">
+    <property name="geometry">
+     <rect>
+      <x>761</x>
+      <y>22</y>
+      <width>269</width>
+      <height>549</height>
+     </rect>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="showDropIndicator" stdset="0">
+     <bool>false</bool>
+    </property>
+    <property name="dragDropOverwriteMode">
+     <bool>false</bool>
+    </property>
+    <property name="alternatingRowColors">
+     <bool>true</bool>
+    </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::SingleSelection</enum>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <property name="sortingEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="cornerButtonEnabled">
+     <bool>false</bool>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>65</number>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>ID</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Tytuł</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Gatunek</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Premiera</string>
+     </property>
+    </column>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>768</width>
+     <width>1037</width>
      <height>21</height>
     </rect>
    </property>
@@ -1502,6 +1572,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>tableWidget_BooksList</sender>
+   <signal>itemClicked(QTableWidgetItem*)</signal>
+   <receiver>LibrarianBooksCatalogue</receiver>
+   <slot>BooksListClicked(QTableWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>881</x>
+     <y>114</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>972</x>
+     <y>28</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>BTN_FIRST_CLICKED()</slot>
@@ -1528,5 +1614,6 @@
   <slot>ActionAbout()</slot>
   <slot>ActionSearch()</slot>
   <slot>ActionExport()</slot>
+  <slot>BooksListClicked(QTableWidgetItem*)</slot>
  </slots>
 </ui>

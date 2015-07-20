@@ -49,6 +49,7 @@ public:
 	void CalcRecInfo();
 	int FindNextId();
 	int FindPrevId();
+    void RefreshBooksList();
 	static struct MAIN_REC main_rec;
 	static struct REC_AUTH auth_rec;
 	static struct REC_PUB pub_rec;
@@ -81,6 +82,7 @@ public slots :;
 	void ActionAbout();
 
     void SetRecAkt(QString id);
+    void BooksListClicked(QTableWidgetItem* item);
 private:
 	Ui::LibrarianBooksCatalogue ui;
 	

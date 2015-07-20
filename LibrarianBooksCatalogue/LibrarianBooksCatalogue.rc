@@ -53,8 +53,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,1,5
- PRODUCTVERSION 1,0,1,5
+ FILEVERSION 1,0,2,0
+ PRODUCTVERSION 1,0,2,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -71,12 +71,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Marcin Ka³at"
             VALUE "FileDescription", "Librarian Books Catalogue"
-            VALUE "FileVersion", "1,0,1,5"
+            VALUE "FileVersion", "1,0,2,0"
             VALUE "InternalName", "LibrarianBooksCatalogue"
-            VALUE "LegalCopyright", "Copyright (C) Marcin Ka³at 2012 - 2014"
+            VALUE "LegalCopyright", "Copyright (C) Marcin Ka³at 2012 - 2015"
             VALUE "OriginalFilename", "Libraria.exe"
             VALUE "ProductName", "Librarian Books Catalogue"
-            VALUE "ProductVersion", "1,0,1,5"
+            VALUE "ProductVersion", "1,0,2,0"
         END
     END
     BLOCK "VarFileInfo"
