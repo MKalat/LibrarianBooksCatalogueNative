@@ -1,10 +1,10 @@
 #ifndef LBOOKSCATALOGUE_H
 #define LBOOKSCATALOGUE_H
 
-#include <QtGui/QDialog>
+#include <QtWidgets/QDialog>
 
-#include <QTableWidgetItem>
-#include <QMessageBox>
+#include <QtWidgets/QTableWidgetItem>
+#include <QtWidgets/QMessageBox>
 #include <QFile>
 #include "ui_lbookscatalogue.h"
 #include "Wyszukaj.h"
@@ -24,7 +24,7 @@ class LBooksCatalogue : public QMainWindow
 	Q_OBJECT
 
 public:
-	LBooksCatalogue(QWidget *parent = 0, Qt::WFlags flags = 0);
+	LBooksCatalogue(QWidget *parent = 0, Qt::WindowFlags flags = 0);
 	~LBooksCatalogue();
 	void ReadSettings();
 	bool CheckDBExists();

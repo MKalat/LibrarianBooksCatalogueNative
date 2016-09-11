@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Drukuj.h"
 
-Drukuj::Drukuj(QWidget *parent, Qt::WFlags flags, int id_act)
+Drukuj::Drukuj(QWidget *parent, Qt::WindowFlags flags, int id_act)
 	: QDialog(parent, flags)
 {
 	ui.setupUi(this);

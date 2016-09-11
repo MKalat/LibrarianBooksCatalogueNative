@@ -1,21 +1,23 @@
 #ifndef DRUKUJ_H
 #define DRUKUJ_H
 
-#include <QtGui/QDialog>
+#include <QtWidgets/QDialog>
 #include "ui_Drukuj.h"
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 #include <QStringList>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QSqlError>
+#include <QtPrintSupport/QPrinter>
+#include <QtPrintSupport/QPrintDialog>
 
 class Drukuj : public QDialog
 {
 	Q_OBJECT
 
 public:
-    Drukuj(QWidget *parent = 0, Qt::WFlags flags = 0, int id_act = 0);
+	Drukuj(QWidget *parent = 0, Qt::WindowFlags flags = 0, int id_act = 0);
 	~Drukuj();
 	int id;
     void print_doc();

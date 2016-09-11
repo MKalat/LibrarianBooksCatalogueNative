@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Wyszukaj.h"
 
-Wyszukaj::Wyszukaj(QWidget *parent, Qt::WFlags flags)
+Wyszukaj::Wyszukaj(QWidget *parent, Qt::WindowFlags flags)
 	: QDialog(parent, flags)
 {
 	ui.setupUi(this);

@@ -3,7 +3,7 @@
 
 
 
-LBooksCatalogue::LBooksCatalogue(QWidget *parent, Qt::WFlags flags)
+LBooksCatalogue::LBooksCatalogue(QWidget *parent, Qt::WindowFlags flags)
 	: QMainWindow(parent, flags)
 {
 	ui.setupUi(this);

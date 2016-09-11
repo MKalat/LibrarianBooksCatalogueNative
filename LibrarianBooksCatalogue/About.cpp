@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "About.h"
 
-About::About(QWidget *parent, Qt::WFlags flags)
+About::About(QWidget *parent, Qt::WindowFlags flags)
 	: QDialog(parent, flags)
 {
 	ui.setupUi(this);

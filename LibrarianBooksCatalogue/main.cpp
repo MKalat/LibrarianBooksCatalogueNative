@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "lbookscatalogue.h"
-#include <QtGui/QApplication>
+#include <QtWidgets/QApplication>
 #include <QTranslator>
 
 int main(int argc, char *argv[])

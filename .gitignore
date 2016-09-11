@@ -31,3 +31,6 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 *.svn*/
+LibrarianBooksCatalogue.opensdf
+LibrarianBooksCatalogue.sdf
+UpgradeLog.htm
