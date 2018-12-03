@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "Drukuj.h"
 
 Drukuj::Drukuj(QWidget *parent, Qt::WindowFlags flags, int id_act)
@@ -75,13 +75,13 @@ void Drukuj::BTN_PRINT_CLICKED()
                     fnout << QString::fromWCharArray(L"<h1>");
                     fnout << QString(query.value(titleCol).toString());
                     fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
-                    fnout << tr("Oryginalny tytu³") << QString::fromWCharArray(L"</p></td><td>");
+                    fnout << tr("Oryginalny tytuÅ‚") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(title_origCol).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
                     fnout << tr("Gatunek") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(genreCol).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-                    fnout << tr("Iloœæ") << QString::fromWCharArray(L"</p></td><td>");
+                    fnout << tr("IloÅ›Ä‡") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(countCol).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
                     fnout << tr("Rok wydania") << QString::fromWCharArray(L"</p></td><td>");
@@ -90,16 +90,16 @@ void Drukuj::BTN_PRINT_CLICKED()
                     fnout << tr("Wydawnictwo") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(pubCol).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-                    fnout << tr("Jêzyk wydania") << QString::fromWCharArray(L"</p></td><td>");
+                    fnout << tr("JÄ™zyk wydania") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(lang_pubCol).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
                     fnout << tr("Opis") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(descCol).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-                    fnout << tr("W³aœciciel - Imiê i nazwisko") << QString::fromWCharArray(L"</p></td><td>");
+                    fnout << tr("WÅ‚aÅ›ciciel - ImiÄ™ i nazwisko") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(WL_Im_Nazw_Col).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-                    fnout << tr("W³aœciciel - Adres") << QString::fromWCharArray(L"</p></td><td>");
+                    fnout << tr("WÅ‚aÅ›ciciel - Adres") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(WL_Adres_Col).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
                     fnout << tr("Miejsce zakupu - Nazwa") << QString::fromWCharArray(L"</p></td><td>");
@@ -111,7 +111,7 @@ void Drukuj::BTN_PRINT_CLICKED()
                     fnout << tr("Miejsce zakupu - WWW") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(MZ_WWW_Col).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-                    fnout << tr("Iloœæ stron") << QString::fromWCharArray(L"</p></td><td>");
+                    fnout << tr("IloÅ›Ä‡ stron") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(INFO_IloscStr_Col).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
                     fnout << tr("Format") << QString::fromWCharArray(L"</p></td><td>");
@@ -120,7 +120,7 @@ void Drukuj::BTN_PRINT_CLICKED()
                     fnout << tr("Oprawa") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(INFO_Oprawa_Col).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-                    fnout << tr("Ocena ksi¹¿ki") << QString::fromWCharArray(L"</p></td><td>");
+                    fnout << tr("Ocena ksiÄ…Å¼ki") << QString::fromWCharArray(L"</p></td><td>");
                     fnout << QString(query.value(INFO_Ocena_Col).toString());
                     fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
                     fnout << tr("ISBN") << QString::fromWCharArray(L"</p></td><td>");
@@ -151,13 +151,13 @@ void Drukuj::BTN_PRINT_CLICKED()
 								fnout << tr("Imie i Nazwisko") << QString::fromWCharArray(L"</p></td><td>");
 								fnout << QString(query2.value(imienazwCol).toString());
 								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Narodowoœæ") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << tr("NarodowoÅ›Ä‡") << QString::fromWCharArray(L"</p></td><td>");
 								fnout << QString(query2.value(narodCol).toString());
 								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Specjalnoœæ") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << tr("SpecjalnoÅ›Ä‡") << QString::fromWCharArray(L"</p></td><td>");
 								fnout << QString(query2.value(specCol).toString());
 								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Napisane rozdzia³y") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << tr("Napisane rozdziaÅ‚y") << QString::fromWCharArray(L"</p></td><td>");
 								fnout << QString(query2.value(rozdzCol).toString());
 								fnout << QString::fromWCharArray(L"</td></tr>");
 								
@@ -193,7 +193,7 @@ void Drukuj::BTN_PRINT_CLICKED()
 								fnout << tr("Wydawca") << QString::fromWCharArray(L"</p></td><td>");
 								fnout << QString(query3.value(wydCol).toString());
 								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Jêzyk wydania") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << tr("JÄ™zyk wydania") << QString::fromWCharArray(L"</p></td><td>");
 								fnout << QString(query3.value(langCol).toString());
 								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 								fnout << tr("Numer Wydania") << QString::fromWCharArray(L"</p></td><td>");
@@ -229,16 +229,16 @@ void Drukuj::BTN_PRINT_CLICKED()
 							{		
 								
 								fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
-								fnout << tr("Osoba wypo¿yczaj¹ca") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << tr("Osoba wypoÅ¼yczajÄ…ca") << QString::fromWCharArray(L"</p></td><td>");
 								fnout << QString(query4.value(osobaCol).toString());
 								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Data wypo¿yczenia") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << tr("Data wypoÅ¼yczenia") << QString::fromWCharArray(L"</p></td><td>");
 								fnout << QString(query4.value(dwypCol).toString());
 								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 								fnout << tr("Data oddania") << QString::fromWCharArray(L"</p></td><td>");
 								fnout << QString(query4.value(doddCol).toString());
 								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-								fnout << tr("Stan przed wypo¿yczeniem") << QString::fromWCharArray(L"</p></td><td>");
+								fnout << tr("Stan przed wypoÅ¼yczeniem") << QString::fromWCharArray(L"</p></td><td>");
 								fnout << QString(query4.value(swypCol).toString());
 								fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 								fnout << tr("Stan po oddaniu") << QString::fromWCharArray(L"</p></td><td>");
@@ -322,13 +322,13 @@ void Drukuj::BTN_PRINT_CLICKED()
 						fnout << QString::fromWCharArray(L"<h1>");
 						fnout << QString(query.value(titleCol).toString());
 						fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
-						fnout << tr("Oryginalny tytu³") << QString::fromWCharArray(L"</p></td><td>");
+						fnout << tr("Oryginalny tytuÅ‚") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(title_origCol).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 						fnout << tr("Gatunek") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(genreCol).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-						fnout << tr("Iloœæ") << QString::fromWCharArray(L"</p></td><td>");
+						fnout << tr("IloÅ›Ä‡") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(countCol).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 						fnout << tr("Rok wydania") << QString::fromWCharArray(L"</p></td><td>");
@@ -337,16 +337,16 @@ void Drukuj::BTN_PRINT_CLICKED()
 						fnout << tr("Wydawnictwo") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(pubCol).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-						fnout << tr("Jêzyk wydania") << QString::fromWCharArray(L"</p></td><td>");
+						fnout << tr("JÄ™zyk wydania") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(lang_pubCol).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 						fnout << tr("Opis") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(descCol).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-						fnout << tr("W³aœciciel - Imiê i nazwisko") << QString::fromWCharArray(L"</p></td><td>");
+						fnout << tr("WÅ‚aÅ›ciciel - ImiÄ™ i nazwisko") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(WL_Im_Nazw_Col).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-						fnout << tr("W³aœciciel - Adres") << QString::fromWCharArray(L"</p></td><td>");
+						fnout << tr("WÅ‚aÅ›ciciel - Adres") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(WL_Adres_Col).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 						fnout << tr("Miejsce zakupu - Nazwa") << QString::fromWCharArray(L"</p></td><td>");
@@ -358,7 +358,7 @@ void Drukuj::BTN_PRINT_CLICKED()
 						fnout << tr("Miejsce zakupu - WWW") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(MZ_WWW_Col).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-						fnout << tr("Iloœæ stron") << QString::fromWCharArray(L"</p></td><td>");
+						fnout << tr("IloÅ›Ä‡ stron") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(INFO_IloscStr_Col).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 						fnout << tr("Format") << QString::fromWCharArray(L"</p></td><td>");
@@ -367,7 +367,7 @@ void Drukuj::BTN_PRINT_CLICKED()
 						fnout << tr("Oprawa") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(INFO_Oprawa_Col).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-						fnout << tr("Ocena ksi¹¿ki") << QString::fromWCharArray(L"</p></td><td>");
+						fnout << tr("Ocena ksiÄ…Å¼ki") << QString::fromWCharArray(L"</p></td><td>");
 						fnout << QString(query.value(INFO_Ocena_Col).toString());
 						fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 						fnout << tr("ISBN") << QString::fromWCharArray(L"</p></td><td>");
@@ -396,13 +396,13 @@ void Drukuj::BTN_PRINT_CLICKED()
 									fnout << tr("Imie i Nazwisko") << QString::fromWCharArray(L"</p></td><td>");
 									fnout << QString(query2.value(imienazwCol).toString());
 									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-									fnout << tr("Narodowoœæ") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << tr("NarodowoÅ›Ä‡") << QString::fromWCharArray(L"</p></td><td>");
 									fnout << QString(query2.value(narodCol).toString());
 									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-									fnout << tr("Specjalnoœæ") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << tr("SpecjalnoÅ›Ä‡") << QString::fromWCharArray(L"</p></td><td>");
 									fnout << QString(query2.value(specCol).toString());
 									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-									fnout << tr("Napisane rozdzia³y") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << tr("Napisane rozdziaÅ‚y") << QString::fromWCharArray(L"</p></td><td>");
 									fnout << QString(query2.value(rozdzCol).toString());
 									fnout << QString::fromWCharArray(L"</td></tr>");
 									
@@ -438,7 +438,7 @@ void Drukuj::BTN_PRINT_CLICKED()
 									fnout << tr("Wydawca") << QString::fromWCharArray(L"</p></td><td>");
 									fnout << QString(query3.value(wydCol).toString());
 									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-									fnout << tr("Jêzyk wydania") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << tr("JÄ™zyk wydania") << QString::fromWCharArray(L"</p></td><td>");
 									fnout << QString(query3.value(langCol).toString());
 									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 									fnout << tr("Numer Wydania") << QString::fromWCharArray(L"</p></td><td>");
@@ -474,16 +474,16 @@ void Drukuj::BTN_PRINT_CLICKED()
 								{		
 									
 									fnout << QString::fromWCharArray(L"</h1><table ><tr><td><p>");
-									fnout << tr("Osoba wypo¿yczaj¹ca") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << tr("Osoba wypoÅ¼yczajÄ…ca") << QString::fromWCharArray(L"</p></td><td>");
 									fnout << QString(query4.value(osobaCol).toString());
 									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-									fnout << tr("Data wypo¿yczenia") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << tr("Data wypoÅ¼yczenia") << QString::fromWCharArray(L"</p></td><td>");
 									fnout << QString(query4.value(dwypCol).toString());
 									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 									fnout << tr("Data oddania") << QString::fromWCharArray(L"</p></td><td>");
 									fnout << QString(query4.value(doddCol).toString());
 									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
-									fnout << tr("Stan przed wypo¿yczeniem") << QString::fromWCharArray(L"</p></td><td>");
+									fnout << tr("Stan przed wypoÅ¼yczeniem") << QString::fromWCharArray(L"</p></td><td>");
 									fnout << QString(query4.value(swypCol).toString());
 									fnout << QString::fromWCharArray(L"</td></tr><tr><td><p>");
 									fnout << tr("Stan po oddaniu") << QString::fromWCharArray(L"</p></td><td>");

@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 TEMPLATE = app
-VERSION = 1.2.3
+VERSION = 1.2.5
 TARGET = LibrarianBooksCatalogue
 DESTDIR = ../Release
 QT += core widgets sql printsupport

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "lbookscatalogue.h"
 
 
@@ -80,7 +80,7 @@ void LBooksCatalogue::BTN_SAVE_CLICKED()
 	if (new_rec_adding) // program wtrybie dodawania nowego rekordu
 	{
 		AddNewRec(0);
-		new_rec_adding = false; // po zakoñczonych dodaniach wyczyœæ status dodawania nowego rekordu
+		new_rec_adding = false; // po zakoÅ„czonych dodaniach wyczyÅ›Ä‡ status dodawania nowego rekordu
 		this->ui.pushButton_NEW->setEnabled(true);
 		cur_id = GetLastId(0);
 	}
@@ -377,7 +377,7 @@ if(db.open())
 
 void LBooksCatalogue::ReadSettings()
 {
-	//TODO: Napisaæ odczytwyanie ustawieñ aplikacji
+	//TODO: NapisaÄ‡ odczytwyanie ustawieÅ„ aplikacji
 
 }
 
@@ -412,7 +412,7 @@ if(db.open())
 			db.close();
 			
 				
-				//UpdateDB(cur_id); // update-uj tabele podrzêdne
+				//UpdateDB(cur_id); // update-uj tabele podrzÄ™dne
 				
 			}
 			else
@@ -427,7 +427,7 @@ if(db.open())
 
 void LBooksCatalogue::SaveSettings()
 {
-	//TODO: napisac zapisywanie ustawieñ aplikacji
+	//TODO: napisac zapisywanie ustawieÅ„ aplikacji
 
 
 }
@@ -896,7 +896,7 @@ void LBooksCatalogue::BTN_W_SAVE_CLICKED()
 
 void LBooksCatalogue::CreateDefConf()
 {
-	//TODO: Napisaæ tworzenie domyœlnej konfiguracji i zapsiawanie jej na dysk
+	//TODO: NapisaÄ‡ tworzenie domyÅ›lnej konfiguracji i zapsiawanie jej na dysk
 
 }
 
