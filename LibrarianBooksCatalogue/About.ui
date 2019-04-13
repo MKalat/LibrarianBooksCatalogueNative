@@ -40,7 +40,7 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
     </rect>
    </property>
    <property name="text">
-    <string>(C) Copyright by Marcin Kałat 2012 - 2016</string>
+    <string>(C) Copyright by Marcin Kałat 2012 - 2019</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">

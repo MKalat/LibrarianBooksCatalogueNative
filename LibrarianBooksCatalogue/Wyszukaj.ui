@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>487</width>
-    <height>382</height>
+    <width>688</width>
+    <height>579</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -43,7 +43,7 @@
     <rect>
      <x>90</x>
      <y>18</y>
-     <width>355</width>
+     <width>581</width>
      <height>16</height>
     </rect>
    </property>
@@ -161,8 +161,8 @@
     <rect>
      <x>6</x>
      <y>108</y>
-     <width>475</width>
-     <height>265</height>
+     <width>671</width>
+     <height>471</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -171,6 +171,9 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>166</number>
+   </attribute>
    <column>
     <property name="text">
      <string>Title</string>
@@ -195,8 +198,8 @@
   <widget class="QPushButton" name="pushButton_Search">
    <property name="geometry">
     <rect>
-     <x>348</x>
-     <y>58</y>
+     <x>570</x>
+     <y>60</y>
      <width>97</width>
      <height>25</height>
     </rect>
